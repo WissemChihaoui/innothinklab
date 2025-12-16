@@ -1,15 +1,22 @@
 import dbConnect from "@/lib/dbConnect";
-import BlogPost, { IBlogPost } from "@/models/BlogPost";
-import { NextResponse } from "next/server";
+import BlogPost from "@/models/BlogPost";
+import { NextRequest, NextResponse } from "next/server";
+
+type RouteContext = {
+  params: {
+    slug: string;
+  };
+};
 
 export async function GET(
-  request: Request,
-  { params }: { params: { slug: string } }
+  request: NextRequest,
+  context: RouteContext
 ) {
   try {
     await dbConnect();
-    const { slug } = params;
-    
+
+    const { slug } = context.params;
+
     // Get the current blog post
     const currentBlog = await BlogPost.findOne({ slug, published: true })
       .populate("category", "name slug")
@@ -26,20 +33,20 @@ export async function GET(
     // Get previous blog (older)
     const prevBlog = await BlogPost.findOne({
       published: true,
-      _id: { $ne: currentBlog._id }, // Exclude current blog
-      createdAt: { $lt: currentBlog.createdAt } // Older than current
+      _id: { $ne: currentBlog._id },
+      createdAt: { $lt: currentBlog.createdAt }
     })
-      .sort({ createdAt: -1 }) // Get the most recent one before current
+      .sort({ createdAt: -1 })
       .select("title slug")
       .lean();
 
     // Get next blog (newer)
     const nextBlog = await BlogPost.findOne({
       published: true,
-      _id: { $ne: currentBlog._id }, // Exclude current blog
-      createdAt: { $gt: currentBlog.createdAt } // Newer than current
+      _id: { $ne: currentBlog._id },
+      createdAt: { $gt: currentBlog.createdAt }
     })
-      .sort({ createdAt: 1 }) // Get the oldest one after current
+      .sort({ createdAt: 1 })
       .select("title slug")
       .lean();
 
@@ -65,9 +72,10 @@ export async function GET(
     });
 
   } catch (error) {
-    console.error('Error fetching blog post:', error);
+    console.error("Error fetching blog post:", error);
+
     return NextResponse.json(
-      { error: 'Failed to fetch blog post' },
+      { error: "Failed to fetch blog post" },
       { status: 500 }
     );
   }
