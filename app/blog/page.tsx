@@ -42,16 +42,20 @@ async function getTags() {
     return res.json();
 }
 
+// ✅ Changed: searchParams is now a Promise
 interface BlogPageProps {
-    searchParams: {
+    searchParams: Promise<{
         category?: string;
         tag?: string;
         page?: string;
-    };
+    }>;
 }
 
+// ✅ Changed: await searchParams before using it
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-    const res = await getBlogs(searchParams);
+    const resolvedSearchParams = await searchParams;
+    
+    const res = await getBlogs(resolvedSearchParams);
     const categories = await getCategories();
     const tags = await getTags();
 
@@ -92,7 +96,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     blogs={res?.data || []}
                     categories={categories}
                     tags={tags}
-                    filter={{ category: searchParams.category || '', tag: '' }}
+                    filter={{ category: resolvedSearchParams.category || '', tag: '' }}
                     pagination={res?.pagination}
                 />
             </main>
