@@ -7,14 +7,15 @@ if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable');
 }
 
+// ✅ Fixed: Correct type declaration
 declare global {
   var mongoose: {
-    conn: typeof mongoose | null;
-    promise: Promise<typeof mongoose> | null;
+    conn: typeof import('mongoose') | null;
+    promise: Promise<typeof import('mongoose')> | null;
   };
 }
 
-// ✅ Fixed: Initialize global.mongoose if it doesn't exist
+// Initialize global.mongoose if it doesn't exist
 if (!global.mongoose) {
   global.mongoose = { conn: null, promise: null };
 }
@@ -31,9 +32,7 @@ async function dbConnect() {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
+    cached.promise = mongoose.connect(MONGODB_URI, opts);
   }
 
   try {
