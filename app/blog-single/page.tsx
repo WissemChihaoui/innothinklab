@@ -47,7 +47,7 @@ export default function BlogDetailsPage() {
             </div>
           </div>
         </section>
-        <BlogSingle blog={{}}/>
+        {/* <BlogSingle blog={{}}/> */}
       </main>
 
       <CtaSection cClass={"bg"} />
