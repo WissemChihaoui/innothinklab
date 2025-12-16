@@ -3,9 +3,9 @@ import BlogPost from "@/models/BlogPost";
 import { NextRequest, NextResponse } from "next/server";
 
 type RouteContext = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function GET(
@@ -15,9 +15,9 @@ export async function GET(
   try {
     await dbConnect();
 
-    const { slug } = context.params;
+    // ⬅️ params is async in Next 15
+    const { slug } = await context.params;
 
-    // Get the current blog post
     const currentBlog = await BlogPost.findOne({ slug, published: true })
       .populate("category", "name slug")
       .populate("tags", "name slug")
@@ -30,7 +30,6 @@ export async function GET(
       );
     }
 
-    // Get previous blog (older)
     const prevBlog = await BlogPost.findOne({
       published: true,
       _id: { $ne: currentBlog._id },
@@ -40,7 +39,6 @@ export async function GET(
       .select("title slug")
       .lean();
 
-    // Get next blog (newer)
     const nextBlog = await BlogPost.findOne({
       published: true,
       _id: { $ne: currentBlog._id },
@@ -50,7 +48,6 @@ export async function GET(
       .select("title slug")
       .lean();
 
-    // Get related blogs (same category, exclude current)
     const relatedBlogs = await BlogPost.find({
       published: true,
       _id: { $ne: currentBlog._id },
@@ -73,7 +70,6 @@ export async function GET(
 
   } catch (error) {
     console.error("Error fetching blog post:", error);
-
     return NextResponse.json(
       { error: "Failed to fetch blog post" },
       { status: 500 }
