@@ -1,4 +1,3 @@
-
 import React, { Fragment } from "react";
 import Header from "@/components/header/Header";
 import Scrollbar from "@/components/scrollbar/scrollbar";
@@ -27,11 +26,20 @@ async function getTags() {
   return res.json();
 }
 
-export default async function BlogDetailsPage({ params }: { params: { slug: string } }) {
-  const {blog, related, navigation } = await getBlog(params.slug);
+// ✅ Changed: params is now Promise<{ slug: string }>
+export default async function BlogDetailsPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}) {
+  // ✅ Changed: await params before using it
+  const { slug } = await params;
+  
+  const {blog, related, navigation } = await getBlog(slug);
 
   const categories = await getCategories();
   const tags = await getTags();
+  
   return (
     <Fragment>
       <Header />
