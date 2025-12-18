@@ -4,65 +4,48 @@ import Scrollbar from "@/components/scrollbar/scrollbar";
 import Footer from "@/components/footer/Footer";
 import CtaSection from "@/components/CtaSection/CtaSection";
 import BlogSingle from "@/components/BlogDetails/BlogDetails";
-
 import icon from "@/public/images/icon/cap.svg";
 import Image1 from "@/public/images/hero/cd-img02.png";
 import Image2 from "@/public/images/shape/brd_shape.png";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-async function getBlog(slug: string) {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/${slug}`);
-  return res.json();
-}
+// Static data
+const staticBlog = {
+  id: 1,
+  title: "Sample Blog Post",
+  content: "This is a sample blog post content.",
+  slug: "sample-blog-post",
+  // Add other blog properties as needed
+};
 
-async function getCategories() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`);
-  return res.json();
-}
+const staticRelated = null;
 
-async function getTags() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/tags`);
-  return res.json();
-}
+const staticNavigation = {
+  // Add navigation data if needed
+};
 
+const staticCategories = [
+  { id: 1, name: "Technology", slug: "technology" },
+  { id: 2, name: "Design", slug: "design" },
+  // Add more categories as needed
+];
 
-export default async function BlogDetailsPage({
+const staticTags = [
+  { id: 1, name: "React", slug: "react" },
+  { id: 2, name: "Next.js", slug: "nextjs" },
+  // Add more tags as needed
+];
+
+export default function BlogDetailsPage({
   params
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }) {
-  // Initialize variables at component level
-  let blog = null;
-  let related = null;
-  let navigation = null;
-  let categories = [];
-  let tags = [];
-
-  try {
-    const resolvedParams = await params
-    const blogSlug = resolvedParams?.slug;
-    if (!blogSlug) {
-      notFound()
-    }
-    const res = await getBlog(blogSlug);
-
-    if (!res) {
-      notFound()
-    }
-
-    const [blogData, categoriesData, tagsData] = await Promise.all([
-      res,
-      getCategories(),
-      getTags()
-    ]);
-
-    ({ blog, related, navigation } = blogData);
-    categories = categoriesData;
-    tags = tagsData;
-  } catch (error) {
-    console.error('Error fetching blog data:', error);
-    return <div>Error loading blog post. Please try again later.</div>;
+  const blogSlug = params?.slug;
+  
+  if (!blogSlug) {
+    notFound();
   }
 
   return (
@@ -81,7 +64,7 @@ export default async function BlogDetailsPage({
                     <span className="sub-title">
                       <Image src={icon} alt="Icon" /> Blog details
                     </span>
-                    <h2 className="title">{blog?.title || 'Loading...'}</h2>
+                    <h2 className="title">{staticBlog.title}</h2>
                   </div>
                 </div>
                 <div className="col-lg-3 mt-30">
@@ -100,9 +83,14 @@ export default async function BlogDetailsPage({
             </div>
           </div>
         </section>
-        <BlogSingle blog={blog} related={related} navigation={navigation} categories={categories} tags={tags} />
+        {/* <BlogSingle 
+          blog={staticBlog} 
+          related={staticRelated} 
+          navigation={staticNavigation} 
+          categories={staticCategories} 
+          tags={staticTags} 
+        /> */}
       </main>
-
       <CtaSection cClass={"bg"} />
       <Footer />
       <Scrollbar />
