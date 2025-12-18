@@ -27,7 +27,11 @@ async function getTags() {
 }
 
 
-export default async function BlogDetailsPage({ params }: {params: {slug: string}}) {
+export default async function BlogDetailsPage({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}) {
   // Initialize variables at component level
   let blog = null;
   let related = null;
