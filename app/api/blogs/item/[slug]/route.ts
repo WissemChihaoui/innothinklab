@@ -65,7 +65,7 @@ export async function GET(
         prev: prevBlog || null,
         next: nextBlog || null
       },
-      related: relatedBlogs
+      related: relatedBlogs || []
     });
 
   } catch (error) {
