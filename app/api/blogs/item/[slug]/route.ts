@@ -1,6 +1,4 @@
-import dbConnect from "@/lib/dbConnect";
-import BlogPost from "@/models/BlogPost";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 type RouteContext = {
   params: Promise<{
@@ -9,69 +7,22 @@ type RouteContext = {
 };
 
 export async function GET(
-  request: NextRequest,
+  request: Request,
   context: RouteContext
 ) {
   try {
-    await dbConnect();
-
-    // ⬅️ params is async in Next 15
     const { slug } = await context.params;
-
-    const currentBlog = await BlogPost.findOne({ slug, published: true })
-      .populate("category", "name slug")
-      .populate("tags", "name slug")
-      .lean();
-
-    if (!currentBlog) {
-      return NextResponse.json(
-        { error: "Blog post not found" },
-        { status: 404 }
-      );
-    }
-
-    const prevBlog = await BlogPost.findOne({
-      published: true,
-      _id: { $ne: currentBlog._id },
-      createdAt: { $lt: currentBlog.createdAt }
-    })
-      .sort({ createdAt: -1 })
-      .select("title slug")
-      .lean();
-
-    const nextBlog = await BlogPost.findOne({
-      published: true,
-      _id: { $ne: currentBlog._id },
-      createdAt: { $gt: currentBlog.createdAt }
-    })
-      .sort({ createdAt: 1 })
-      .select("title slug")
-      .lean();
-
-    const relatedBlogs = await BlogPost.find({
-      published: true,
-      _id: { $ne: currentBlog._id },
-      category: currentBlog.category
-    })
-      .sort({ createdAt: -1 })
-      .limit(3)
-      .select("title slug excerpt featuredImage createdAt")
-      .populate("category", "name slug")
-      .lean();
-
+    
     return NextResponse.json({
-      blog: currentBlog,
-      navigation: {
-        prev: prevBlog || null,
-        next: nextBlog || null
-      },
-      related: relatedBlogs || []
+      success: true,
+      slug: slug,
+      message: "Route is working!",
+      timestamp: new Date().toISOString()
     });
-
-  } catch (error) {
-    console.error("Error fetching blog post:", error);
+  } catch (error: any) {
+    console.error("Error:", error);
     return NextResponse.json(
-      { error: "Failed to fetch blog post" },
+      { error: "Failed", details: error?.message || "Unknown error" },
       { status: 500 }
     );
   }
