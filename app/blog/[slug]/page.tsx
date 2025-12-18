@@ -11,7 +11,7 @@ import Image2 from "@/public/images/shape/brd_shape.png";
 import Image from "next/image";
 
 async function getBlog(slug: string) {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blogs/item/${slug}`);
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/${slug}`);
   return res.json();
 }
 

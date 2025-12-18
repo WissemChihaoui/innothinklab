@@ -74,7 +74,14 @@ Example structure for content:
   try {
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    const blogContent = JSON.parse(response.text());
+    let responseText = response.text();
+    
+    // Clean up markdown code block syntax if present
+    if (responseText.startsWith('```json')) {
+      responseText = responseText.replace(/^```json\n|\n```$/g, '');
+    }
+    
+    const blogContent = JSON.parse(responseText);
 
     // Clean up any markdown that might have slipped through
     const cleanHtml = (html: string) => {

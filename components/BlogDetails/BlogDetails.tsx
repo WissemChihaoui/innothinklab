@@ -66,10 +66,10 @@ const BlogSingle: React.FC<{ blog: any, categories: any, tags: any, related: any
           <div className="col-lg-8 mt-30">
             <div className="blog_details_content">
               
-
+{/* 
               <h3 className="item_details_info_heading">
-                {blog.excerpt}
-              </h3>
+                <div dangerouslySetInnerHTML={{ __html: blog.title }} />
+              </h3> */}
 
               <Description description={blog.content}/>
               <OtherDescription navigation={navigation}/>
