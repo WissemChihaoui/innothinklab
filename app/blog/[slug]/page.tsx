@@ -9,6 +9,7 @@ import icon from "@/public/images/icon/cap.svg";
 import Image1 from "@/public/images/hero/cd-img02.png";
 import Image2 from "@/public/images/shape/brd_shape.png";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 async function getBlog(slug: string) {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/${slug}`);
@@ -25,19 +26,45 @@ async function getTags() {
   return res.json();
 }
 
-// ✅ Changed: params is now Promise<{ slug: string }>
-export default async function BlogDetailsPage({
-  params
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  // ✅ Changed: await params before using it
-  const { slug } = await params;
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
 
-  const { blog, related, navigation } = await getBlog(slug);
+export default async function BlogDetailsPage({ params }: PageProps) {
+  // Initialize variables at component level
+  let blog = null;
+  let related = null;
+  let navigation = null;
+  let categories = [];
+  let tags = [];
 
-  const categories = await getCategories();
-  const tags = await getTags();
+  try {
+    const resolvedParams = await params
+    const blogSlug = resolvedParams?.slug;
+    if (!blogSlug) {
+      notFound()
+    }
+    const res = await getBlog(blogSlug);
+
+    if (!res) {
+      notFound()
+    }
+
+    const [blogData, categoriesData, tagsData] = await Promise.all([
+      res,
+      getCategories(),
+      getTags()
+    ]);
+
+    ({ blog, related, navigation } = blogData);
+    categories = categoriesData;
+    tags = tagsData;
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return <div>Error loading blog post. Please try again later.</div>;
+  }
 
   return (
     <Fragment>
@@ -55,7 +82,7 @@ export default async function BlogDetailsPage({
                     <span className="sub-title">
                       <Image src={icon} alt="Icon" /> Blog details
                     </span>
-                    <h2 className="title">{blog.title}</h2>
+                    <h2 className="title">{blog?.title || 'Loading...'}</h2>
                   </div>
                 </div>
                 <div className="col-lg-3 mt-30">

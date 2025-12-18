@@ -78,18 +78,10 @@ const Header: React.FC = () => {
 
                   <li>
                     <Link href="/casestudy"><span>Portfolio</span></Link>
-                    {/* <ul className="submenu">
-                      <li><Link href="/casestudy"><span>Casestudy</span></Link></li>
-                      <li><Link href="/casestudy-details"><span>Casestudy Details</span></Link></li>
-                    </ul> */}
                   </li>
 
                   <li>
                     <Link href="/blog"><span>Blog</span></Link>
-                    {/* <ul className="submenu">
-                      <li><Link href="/blog"><span>Blog</span></Link></li>
-                      <li><Link href="/blog-single"><span>Blog Details</span></Link></li>
-                    </ul> */}
                   </li>
 
                   {/* <li><Link href="/contact"><span>Contact</span></Link></li> */}
@@ -133,7 +125,7 @@ const Header: React.FC = () => {
             {/* CTA */}
             <div className="header-contact d-none d-md-block">
               <Link href="/contact" className="thm-btn thm-btn--aso thm-btn--header-black">
-                Let’s talk
+                Contactez-nous
                 <Image src="/images/icon/sms-white-icon01.svg" alt="Message Icon" width={20} height={20} />
               </Link>
             </div>

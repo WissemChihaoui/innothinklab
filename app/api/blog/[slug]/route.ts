@@ -60,7 +60,7 @@ export async function GET(
       .lean();
 
     return NextResponse.json({
-      blog: currentBlog,
+      blog: currentBlog || null,
       navigation: {
         prev: prevBlog || null,
         next: nextBlog || null
@@ -76,3 +76,4 @@ export async function GET(
     );
   }
 }
+
