@@ -25,7 +25,6 @@ async function getBlogs(searchParams: { category?: string; tag?: string; page?: 
     }
 
     const queryString = params.toString();
-    console.log(queryString)
     const url = `${process.env.NEXTAUTH_URL}/api/blogs/list${queryString ? `?${queryString}` : ''}`;
 
     const res = await fetch(url, { next: { revalidate: 60 } }); // Cache for 60 seconds
@@ -59,7 +58,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     const categories = await getCategories();
     const tags = await getTags();
 
-    console.log(res)
     return (
         <Fragment>
             <Header />

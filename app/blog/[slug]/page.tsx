@@ -12,7 +12,6 @@ import Image from "next/image";
 
 async function getBlog(slug: string) {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blogs/item/${slug}`);
-  console.log(res)
   return res.json();
 }
 
@@ -27,19 +26,19 @@ async function getTags() {
 }
 
 // ✅ Changed: params is now Promise<{ slug: string }>
-export default async function BlogDetailsPage({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export default async function BlogDetailsPage({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }) {
   // ✅ Changed: await params before using it
   const { slug } = await params;
-  
-  const {blog, related, navigation } = await getBlog(slug);
+
+  const { blog, related, navigation } = await getBlog(slug);
 
   const categories = await getCategories();
   const tags = await getTags();
-  
+
   return (
     <Fragment>
       <Header />
@@ -75,7 +74,7 @@ export default async function BlogDetailsPage({
             </div>
           </div>
         </section>
-        <BlogSingle blog={blog} related={related} navigation={navigation} categories={categories} tags={tags}/>
+        <BlogSingle blog={blog} related={related} navigation={navigation} categories={categories} tags={tags} />
       </main>
 
       <CtaSection cClass={"bg"} />
