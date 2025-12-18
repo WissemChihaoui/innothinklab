@@ -26,13 +26,8 @@ async function getTags() {
   return res.json();
 }
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
 
-export default async function BlogDetailsPage({ params }: PageProps) {
+export default async function BlogDetailsPage({ params }: {params: {slug: string}}) {
   // Initialize variables at component level
   let blog = null;
   let related = null;
