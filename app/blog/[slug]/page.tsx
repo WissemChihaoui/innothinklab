@@ -37,12 +37,13 @@ const staticTags = [
   // Add more tags as needed
 ];
 
-export default function BlogDetailsPage({
+export default async function BlogDetailsPage({
   params
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const blogSlug = params?.slug;
+  const resolvedParams = await params;
+  const blogSlug = resolvedParams?.slug;
   
   if (!blogSlug) {
     notFound();
