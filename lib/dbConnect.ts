@@ -1,48 +1,28 @@
-// lib/dbConnect.ts
-import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || '';
+import { MongoClient, Db } from 'mongodb';
 
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
-}
+const uri = process.env.MONGODB_URI || '';
+let client: MongoClient;
+let clientPromise: Promise<MongoClient>;
 
-// ✅ Fixed: Correct type declaration
-declare global {
-  var mongoose: {
-    conn: typeof import('mongoose') | null;
-    promise: Promise<typeof import('mongoose')> | null;
+if (process.env.NODE_ENV === 'development') {
+  let globalWithMongo = global as typeof globalThis & {
+    _mongoClientPromise?: Promise<MongoClient>;
   };
+
+  if (!globalWithMongo._mongoClientPromise) {
+    client = new MongoClient(uri);
+    globalWithMongo._mongoClientPromise = client.connect();
+  }
+  clientPromise = globalWithMongo._mongoClientPromise;
+} else {
+  client = new MongoClient(uri);
+  clientPromise = client.connect();
 }
 
-// Initialize global.mongoose if it doesn't exist
-if (!global.mongoose) {
-  global.mongoose = { conn: null, promise: null };
+export async function getDatabase(): Promise<Db> {
+  const client = await clientPromise;
+  return client.db('innothinklab');
 }
 
-const cached = global.mongoose;
-
-async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
-  }
-
-  if (!cached.promise) {
-    const opts = {
-      bufferCommands: false,
-    };
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts);
-  }
-
-  try {
-    cached.conn = await cached.promise;
-  } catch (e) {
-    cached.promise = null;
-    throw e;
-  }
-
-  return cached.conn;
-}
-
-export default dbConnect;
+export default clientPromise;

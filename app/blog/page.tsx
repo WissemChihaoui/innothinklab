@@ -8,6 +8,7 @@ import Footer from '../../components/footer/Footer';
 import CtaSection from '../../components/CtaSection/CtaSection';
 import BlogList from '../../components/BlogList';
 import Image from 'next/image';
+import { getAllBlogs } from '@/lib/blogServices';
 
 async function getBlogs(searchParams: { category?: string; tag?: string; page?: string } = {}) {
     const params = new URLSearchParams();
@@ -52,16 +53,18 @@ interface BlogPageProps {
 
 // ✅ Changed: await searchParams before using it
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-    const resolvedSearchParams = await searchParams;
+    const newBlogs = await getAllBlogs();
+    console.log("New Blogs",newBlogs)
+    // const resolvedSearchParams = await searchParams;
     
-    const res = await getBlogs(resolvedSearchParams);
-    const categories = await getCategories();
-    const tags = await getTags();
+    // const res = await getBlogs(resolvedSearchParams);
+    // const categories = await getCategories();
+    // const tags = await getTags();
 
     return (
         <Fragment>
             <Header />
-            <main className="page_content blog-page">
+            {/* <main className="page_content blog-page">
                 <section className="page-title pt-200 pos-rel bg_img" style={{ backgroundImage: `url('/images/bg/page_bg01.jpg')` }}>
                     <div className="container">
                         <div className="page-title-wrap sd-title-wrap">
@@ -97,7 +100,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     filter={{ category: resolvedSearchParams.category || '', tag: '' }}
                     pagination={res?.pagination}
                 />
-            </main>
+            </main> */}
             <CtaSection />
             <Footer />
             <Scrollbar />

@@ -10,62 +10,20 @@ import Image1 from "@/public/images/hero/cd-img02.png";
 import Image2 from "@/public/images/shape/brd_shape.png";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { getBlogBySlug, getAllCategories, getAllTags } from "@/lib/blogServices";
 
-async function getBlog(slug: string) {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog/${slug}`);
-  return res.json();
-}
 
-async function getCategories() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`);
-  return res.json();
-}
 
-async function getTags() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/tags`);
-  return res.json();
-}
+export default async function BlogDetailsPage({ params }: { params: { slug: string } }) {
+  const { slug } = params; 
+  const blogData = await getBlogBySlug(slug);
+  const categories = await getAllCategories();
+  const tags = await getAllTags();
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function BlogDetailsPage({ params }: PageProps) {
-  // Initialize variables at component level
-  let blog = null;
-  let related = null;
-  let navigation = null;
-  let categories = [];
-  let tags = [];
-
-  try {
-    const resolvedParams = await params
-    const blogSlug = resolvedParams?.slug;
-  if (!blogSlug) {
-      notFound()
-    }
-    const res = await getBlog(blogSlug);
-
-    if (!res) {
-      notFound()
-    }
-
-    const [blogData, categoriesData, tagsData] = await Promise.all([
-      res,
-      getCategories(),
-      getTags()
-    ]);
-
-    ({ blog, related, navigation } = blogData);
-    categories = categoriesData;
-    tags = tagsData;
-  } catch (error) {
-    console.error('Error fetching blog data:', error);
-    return <div>Error loading blog post. Please try again later.</div>;
+  if (!blogData) {
+    notFound();
   }
-
+  const { blog, related, prev, next } = blogData;
   return (
     <Fragment>
       <Header />
@@ -80,7 +38,7 @@ export default async function BlogDetailsPage({ params }: PageProps) {
                 <div className="col-lg-9 mt-30">
                   <div className="page-title-box">
                     <span className="sub-title">
-                      <Image src={icon} alt="Icon" /> Blog details
+                      <Image src={icon} alt="Icon" /> Détails du blog
                     </span>
                     <h2 className="title">{blog?.title || 'Loading...'}</h2>
                   </div>
@@ -101,7 +59,7 @@ export default async function BlogDetailsPage({ params }: PageProps) {
             </div>
           </div>
         </section>
-        <BlogSingle blog={blog} related={related} navigation={navigation} categories={categories} tags={tags} />
+        <BlogSingle blog={blog} related={related} navigation={{ prev, next }} categories={categories} tags={tags} />
       </main>
 
       <CtaSection cClass={"bg"} />

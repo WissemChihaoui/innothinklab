@@ -22,43 +22,44 @@ export async function GET(
       );
     }
 
-    // Rest of your code remains the same...
-    const prevBlog = await BlogPost.findOne({
-      published: true,
-      _id: { $ne: currentBlog._id },
-      createdAt: { $lt: currentBlog.createdAt }
-    })
-    .sort({ createdAt: -1 })
-    .select("title slug")
-    .lean();
+    const [prevBlog, nextBlog, relatedBlogs] = await Promise.all([
+      BlogPost.findOne({
+        published: true,
+        _id: { $ne: currentBlog._id },
+        createdAt: { $lt: currentBlog.createdAt }
+      })
+      .sort({ createdAt: -1 })
+      .select("title slug")
+      .lean(),
+      
+      BlogPost.findOne({
+        published: true,
+        _id: { $ne: currentBlog._id },
+        createdAt: { $gt: currentBlog.createdAt }
+      })
+      .sort({ createdAt: 1 })
+      .select("title slug")
+      .lean(),
 
-    const nextBlog = await BlogPost.findOne({
-      published: true,
-      _id: { $ne: currentBlog._id },
-      createdAt: { $gt: currentBlog.createdAt }
-    })
-    .sort({ createdAt: 1 })
-    .select("title slug")
-    .lean();
-
-    const relatedBlogs = await BlogPost.find({
-      published: true,
-      _id: { $ne: currentBlog._id },
-      category: currentBlog.category
-    })
-    .sort({ createdAt: -1 })
-    .limit(3)
-    .select("title slug excerpt featuredImage createdAt")
-    .populate("category", "name slug")
-    .lean();
+      BlogPost.find({
+        published: true,
+        _id: { $ne: currentBlog._id },
+        category: currentBlog.category
+      })
+      .sort({ createdAt: -1 })
+      .limit(3)
+      .select("title slug excerpt featuredImage createdAt")
+      .populate("category", "name slug")
+      .lean()
+    ]);
 
     return NextResponse.json({
-      blog: currentBlog || null,
+      blog: currentBlog,
       navigation: {
-        prev: prevBlog || null,
-        next: nextBlog || null
+        prev: prevBlog,
+        next: nextBlog
       },
-      related: relatedBlogs || []
+      related: relatedBlogs
     });
 
   } catch (error) {
