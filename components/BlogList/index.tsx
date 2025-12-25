@@ -89,7 +89,7 @@ const BlogList = ({
                       <h2 className="xb-item--title border-effect">
                         <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                       </h2>
-                      <p className="xb-item--content">{blog.excerpt}</p>
+                      <p className="xb-item--content">{blog.excerpt?.replace(/<[^>]+>/g, '')}</p>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -140,7 +140,7 @@ const BlogList = ({
                           <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                         </h3>
                         <p className="xb-item--content">
-                          {blog.metaDescription}
+                          {blog.metaDescription?.replace(/<[^>]+>/g, '')}
                         </p>
                         <div className="xb-item--button mt-50">
                           <Link href={`/blog/${blog.slug}`}>

@@ -14,7 +14,7 @@ const OtherDescription: FC<OtherDescriptionProps> = ({navigation}) => {
   return (
     <div>
       <hr className="mb-50" />
-      <div className="other_post_nav ul_li_between">
+      <div className="other_post_nav ul_li_between" style={{flexWrap: "nowrap"}}>
         {!!navigation.prev && <Link href={`/blog/${navigation.prev.slug}`} className="post-nav-item">
           <div className="xb-item--arrow pos-rel">
             <Image src={icon7} alt="Previous Post" />

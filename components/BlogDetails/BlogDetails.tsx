@@ -66,10 +66,10 @@ const BlogSingle: React.FC<{ blog: any, categories: any, tags: any, related: any
           <div className="col-lg-8 mt-30">
             <div className="blog_details_content">
               
-{/* 
+
               <h3 className="item_details_info_heading">
                 <div dangerouslySetInnerHTML={{ __html: blog.title }} />
-              </h3> */}
+              </h3>
 
               <Description description={blog.content}/>
               <OtherDescription navigation={navigation}/>
@@ -79,9 +79,9 @@ const BlogSingle: React.FC<{ blog: any, categories: any, tags: any, related: any
           <BlogSidebar categories={categories} tags={tags}/>
         </div>
 
-        {!!related.length && <div className="related-blog pt-130 pb-130">
+        {!!related?.length && <div className="related-blog pt-130 pb-130">
           <h2 className="related-blog-title">Parcourir les blogs associés</h2>
-          <RelatedService />
+          <RelatedService related={related} />
         </div>}
       </div>
     </section>

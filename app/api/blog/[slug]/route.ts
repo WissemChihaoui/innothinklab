@@ -1,22 +1,14 @@
 import dbConnect from "@/lib/dbConnect";
 import BlogPost from "@/models/BlogPost";
-import { NextRequest, NextResponse } from "next/server";
-
-type RouteContext = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
+import { NextResponse } from "next/server";
 
 export async function GET(
-  request: NextRequest,
-  context: RouteContext
+  request: Request,
+  { params }: { params: { slug: string } }
 ) {
   try {
     await dbConnect();
-
-    // ⬅️ params is async in Next 15
-    const { slug } = await context.params;
+    const { slug } = params;
 
     const currentBlog = await BlogPost.findOne({ slug, published: true })
       .populate("category", "name slug")
@@ -30,34 +22,35 @@ export async function GET(
       );
     }
 
+    // Rest of your code remains the same...
     const prevBlog = await BlogPost.findOne({
       published: true,
       _id: { $ne: currentBlog._id },
       createdAt: { $lt: currentBlog.createdAt }
     })
-      .sort({ createdAt: -1 })
-      .select("title slug")
-      .lean();
+    .sort({ createdAt: -1 })
+    .select("title slug")
+    .lean();
 
     const nextBlog = await BlogPost.findOne({
       published: true,
       _id: { $ne: currentBlog._id },
       createdAt: { $gt: currentBlog.createdAt }
     })
-      .sort({ createdAt: 1 })
-      .select("title slug")
-      .lean();
+    .sort({ createdAt: 1 })
+    .select("title slug")
+    .lean();
 
     const relatedBlogs = await BlogPost.find({
       published: true,
       _id: { $ne: currentBlog._id },
       category: currentBlog.category
     })
-      .sort({ createdAt: -1 })
-      .limit(3)
-      .select("title slug excerpt featuredImage createdAt")
-      .populate("category", "name slug")
-      .lean();
+    .sort({ createdAt: -1 })
+    .limit(3)
+    .select("title slug excerpt featuredImage createdAt")
+    .populate("category", "name slug")
+    .lean();
 
     return NextResponse.json({
       blog: currentBlog || null,
@@ -76,4 +69,3 @@ export async function GET(
     );
   }
 }
-
