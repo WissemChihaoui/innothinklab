@@ -28,15 +28,15 @@ const PricingSection: React.FC = () => {
           <Fade direction='down' triggerOnce={false} duration={1000} delay={9}>
             <div>
               <div className="sub-title wow fadeInDown" data-wow-duration="600ms">
-                <Image src={icon} alt="Dollar Icon" />
-                {' '}Our best pricing
+                <Image src={icon} alt="Icône Dollar" />
+                {' '}Nos meilleurs tarifs
               </div>
             </div>
           </Fade>
           <Fade direction='down' triggerOnce={false} duration={1200} delay={9}>
             <div>
               <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">
-                We offered best pricing
+                Nous offrons les meilleurs tarifs
               </h2>
             </div>
           </Fade>
@@ -50,7 +50,7 @@ const PricingSection: React.FC = () => {
                 onClick={() => toggle('1')}
                 style={{ cursor: 'pointer' }}
               >
-                Billed yearly <span>30%</span>
+                Facturation annuelle <span>-30%</span>
               </NavLink>
             </NavItem>
             <NavItem>
@@ -59,7 +59,7 @@ const PricingSection: React.FC = () => {
                 onClick={() => toggle('2')}
                 style={{ cursor: 'pointer' }}
               >
-                Billed monthly
+                Facturation mensuelle
               </NavLink>
             </NavItem>
           </Nav>
@@ -79,25 +79,25 @@ const PricingSection: React.FC = () => {
                           <Image src={picon} alt="Basic Icon" />
                         </div>
                         <div className="xb-item--right">
-                          <h3 className="xb-item--title">Basic</h3>
-                          <span className="xb-item--text">For businesses starting.</span>
+                          <h3 className="xb-item--title">Essentiel</h3>
+                          <span className="xb-item--text">Pour les entreprises qui débutent.</span>
                         </div>
                       </div>
                       <div className="xb-item--price">
-                        <h2 className="xb-item--number">$299</h2>
-                        <span className="xb-item--time">Per Year</span>
+                        <h2 className="xb-item--number">TND 299</h2>
+                        <span className="xb-item--time">Par an</span>
                       </div>
                       <div className="xb-item--line"></div>
-                      <h4 className="xb-item--feature">Features</h4>
+                      <h4 className="xb-item--feature">Fonctionnalités</h4>
                       <ul className="xb-item--list list-unstyled">
-                        <li><Image src={check} alt="Check" /> In-depth Keyword Research</li>
-                        <li><Image src={check} alt="Check" /> On-Page SEO Optimization</li>
-                        <li><Image src={check} alt="Check" /> Technical SEO Audits</li>
-                        <li><Image src={check} alt="Check" /> Monthly Performance Reporting</li>
-                        <li className="deactive"><Image src={cross} alt="Cross" /> Weekly Reports & SEO Manager</li>
+                        <li><Image src={check} alt="Check" /> Recherche de mots-clés approfondie</li>
+                        <li><Image src={check} alt="Check" /> Optimisation SEO on-page</li>
+                        <li><Image src={check} alt="Check" /> Audits SEO techniques</li>
+                        <li><Image src={check} alt="Check" /> Rapports de performance mensuels</li>
+                        <li className="deactive"><Image src={cross} alt="Cross" /> Rapports hebdomadaires & Manager SEO</li>
                       </ul>
                       <div className="pg-det-btn">
-                        <Link href="/contact" className="cp-btn">Choose your plan</Link>
+                        <Link href="/contact" className="cp-btn">Choisissez votre plan</Link>
                       </div>
                     </div>
                   </div>
@@ -114,24 +114,24 @@ const PricingSection: React.FC = () => {
                         </div>
                         <div className="xb-item--right">
                           <h3 className="xb-item--title">Standard</h3>
-                          <span className="xb-item--text">For businesses with more traffic.</span>
+                          <span className="xb-item--text">Pour les entreprises avec plus de trafic.</span>
                         </div>
                       </div>
                       <div className="xb-item--price">
-                        <h2 className="xb-item--number">$499</h2>
-                        <span className="xb-item--time">Per Year</span>
+                        <h2 className="xb-item--number">TND 499</h2>
+                        <span className="xb-item--time">Par an</span>
                       </div>
                       <div className="xb-item--line"></div>
-                      <h4 className="xb-item--feature">Features</h4>
+                      <h4 className="xb-item--feature">Fonctionnalités</h4>
                       <ul className="xb-item--list list-unstyled">
-                        <li><Image src={check} alt="Check" /> All features of Basic SEO Package</li>
-                        <li><Image src={check} alt="Check" /> Local SEO Strategy & Optimization</li>
-                        <li><Image src={check} alt="Check" /> Content Creation & Optimization</li>
-                        <li><Image src={check} alt="Check" /> High-Quality Link Building</li>
-                        <li><Image src={check} alt="Check" /> Weekly Reports & SEO Manager</li>
+                        <li><Image src={check} alt="Check" /> Toutes les fonctionnalités du forfait Essentiel</li>
+                        <li><Image src={check} alt="Check" /> Stratégie SEO locale & optimisation</li>
+                        <li><Image src={check} alt="Check" /> Création & optimisation de contenu</li>
+                        <li><Image src={check} alt="Check" /> Netlinking de haute qualité</li>
+                        <li><Image src={check} alt="Check" /> Rapports hebdomadaires & Manager SEO</li>
                       </ul>
                       <div className="pg-det-btn">
-                        <Link href="/contact" className="cp-btn">Choose your plan</Link>
+                        <Link href="/contact" className="cp-btn">Choisissez votre plan</Link>
                       </div>
                     </div>
                   </div>
@@ -147,24 +147,24 @@ const PricingSection: React.FC = () => {
                         </div>
                         <div className="xb-item--right">
                           <h3 className="xb-item--title">Premium</h3>
-                          <span className="xb-item--text">For large enterprises.</span>
+                          <span className="xb-item--text">Pour les entreprises de taille moyenne.</span>
                         </div>
                       </div>
                       <div className="xb-item--price">
-                        <h2 className="xb-item--number">$999</h2>
-                        <span className="xb-item--time">Per Year</span>
+                        <h2 className="xb-item--number">TND 999</h2>
+                        <span className="xb-item--time">Par an</span>
                       </div>
                       <div className="xb-item--line"></div>
-                      <h4 className="xb-item--feature">Features</h4>
+                      <h4 className="xb-item--feature">Fonctionnalités</h4>
                       <ul className="xb-item--list list-unstyled">
-                        <li><Image src={check} alt="Check" /> All features of Advanced SEO Package</li>
-                        <li><Image src={check} alt="Check" /> Full Website & Technical SEO Audit</li>
-                        <li><Image src={check} alt="Check" /> Competitor Analysis & Monitoring</li>
-                        <li><Image src={check} alt="Check" /> Advanced Backlink Building Campaigns</li>
-                        <li><Image src={check} alt="Check" /> Weekly Reports & SEO Manager</li>
+                        <li><Image src={check} alt="Check" /> Toutes les fonctionnalités du forfait Standard</li>
+                        <li><Image src={check} alt="Check" /> Audit complet du site web & techniques SEO</li>
+                        <li><Image src={check} alt="Check" /> Analyse et suivi concurrentiel</li>
+                        <li><Image src={check} alt="Check" /> Campagnes de construction de liens avancées</li>
+                        <li><Image src={check} alt="Check" /> Rapports hebdomadaires & Manager SEO</li>
                       </ul>
                       <div className="pg-det-btn">
-                        <Link href="/contact" className="cp-btn">Choose your plan</Link>
+                        <Link href="/contact" className="cp-btn">Choisissez votre plan</Link>
                       </div>
                     </div>
                   </div>
@@ -184,25 +184,25 @@ const PricingSection: React.FC = () => {
                           <Image src={picon} alt="Basic Icon" />
                         </div>
                         <div className="xb-item--right">
-                          <h3 className="xb-item--title">Basic</h3>
-                          <span className="xb-item--text">For businesses starting.</span>
+                          <h3 className="xb-item--title">Essentiel</h3>
+                          <span className="xb-item--text">Pour les entreprises qui débutent.</span>
                         </div>
                       </div>
                       <div className="xb-item--price">
-                        <h2 className="xb-item--number">$29</h2>
-                        <span className="xb-item--time">Per Month</span>
+                        <h2 className="xb-item--number">TND 299</h2>
+                        <span className="xb-item--time">Par mois</span>
                       </div>
                       <div className="xb-item--line"></div>
-                      <h4 className="xb-item--feature">Features</h4>
+                      <h4 className="xb-item--feature">Fonctionnalités</h4>
                       <ul className="xb-item--list list-unstyled">
-                        <li><Image src={check} alt="Check" /> In-depth Keyword Research</li>
-                        <li><Image src={check} alt="Check" /> On-Page SEO Optimization</li>
-                        <li><Image src={check} alt="Check" /> Technical SEO Audits</li>
-                        <li><Image src={check} alt="Check" /> Monthly Performance Reporting</li>
+                        <li><Image src={check} alt="Check" /> Recherche approfondie des mots-clés</li>
+                        <li><Image src={check} alt="Check" /> Optimisation SEO sur la page</li>
+                        <li><Image src={check} alt="Check" /> Audit SEO technique</li>
+                        <li><Image src={check} alt="Check" /> Rapports de performance mensuels</li>
                         <li className="deactive"><Image src={cross} alt="Cross" /> Weekly Reports & SEO Manager</li>
                       </ul>
                       <div className="pg-det-btn">
-                        <Link href="/contact" className="cp-btn">Choose your plan</Link>
+                        <Link href="/contact" className="cp-btn">Choisissez votre plan</Link>
                       </div>
                     </div>
                   </div>
@@ -219,24 +219,24 @@ const PricingSection: React.FC = () => {
                         </div>
                         <div className="xb-item--right">
                           <h3 className="xb-item--title">Standard</h3>
-                          <span className="xb-item--text">For businesses with more traffic.</span>
+                          <span className="xb-item--text">Pour les entreprises avec plus de trafic.</span>
                         </div>
                       </div>
                       <div className="xb-item--price">
-                        <h2 className="xb-item--number">$49</h2>
-                        <span className="xb-item--time">Per Month</span>
+                        <h2 className="xb-item--number">TND 499</h2>
+                        <span className="xb-item--time">Par mois</span>
                       </div>
                       <div className="xb-item--line"></div>
-                      <h4 className="xb-item--feature">Features</h4>
+                      <h4 className="xb-item--feature">Fonctionnalités</h4>
                       <ul className="xb-item--list list-unstyled">
-                        <li><Image src={check} alt="Check" /> All features of Basic SEO Package</li>
-                        <li><Image src={check} alt="Check" /> Local SEO Strategy & Optimization</li>
-                        <li><Image src={check} alt="Check" /> Content Creation & Optimization</li>
-                        <li><Image src={check} alt="Check" /> High-Quality Link Building</li>
-                        <li><Image src={check} alt="Check" /> Weekly Reports & SEO Manager</li>
+                        <li><Image src={check} alt="Check" /> Toutes les fonctionnalités du forfait Essentiel</li>
+                        <li><Image src={check} alt="Check" /> Stratégie SEO locale & optimisation</li>
+                        <li><Image src={check} alt="Check" /> Création & optimisation de contenu</li>
+                        <li><Image src={check} alt="Check" /> Netlinking de haute qualité</li>
+                        <li><Image src={check} alt="Check" /> Rapports hebdomadaires & Manager SEO</li>
                       </ul>
                       <div className="pg-det-btn">
-                        <Link href="/contact" className="cp-btn">Choose your plan</Link>
+                        <Link href="/contact" className="cp-btn">Choisissez votre plan</Link>
                       </div>
                     </div>
                   </div>
@@ -252,24 +252,24 @@ const PricingSection: React.FC = () => {
                         </div>
                         <div className="xb-item--right">
                           <h3 className="xb-item--title">Premium</h3>
-                          <span className="xb-item--text">For large enterprises.</span>
+                          <span className="xb-item--text">Pour les entreprises de taille moyenne.</span>
                         </div>
                       </div>
                       <div className="xb-item--price">
-                        <h2 className="xb-item--number">$99</h2>
-                        <span className="xb-item--time">Per Month</span>
+                        <h2 className="xb-item--number">TND 999</h2>
+                        <span className="xb-item--time">Par an</span>
                       </div>
                       <div className="xb-item--line"></div>
-                      <h4 className="xb-item--feature">Features</h4>
+                      <h4 className="xb-item--feature">Fonctionnalités</h4>
                       <ul className="xb-item--list list-unstyled">
-                        <li><Image src={check} alt="Check" /> All features of Advanced SEO Package</li>
-                        <li><Image src={check} alt="Check" /> Full Website & Technical SEO Audit</li>
-                        <li><Image src={check} alt="Check" /> Competitor Analysis & Monitoring</li>
-                        <li><Image src={check} alt="Check" /> Advanced Backlink Building Campaigns</li>
-                        <li><Image src={check} alt="Check" /> Weekly Reports & SEO Manager</li>
+                        <li><Image src={check} alt="Check" /> Toutes les fonctionnalités du forfait Standard</li>
+                        <li><Image src={check} alt="Check" /> Audit complet du site & SEO technique</li>
+                        <li><Image src={check} alt="Check" /> Analyse concurrentielle & monitoring</li>
+                        <li><Image src={check} alt="Check" /> Campagnes avancées de netlinking</li>
+                        <li><Image src={check} alt="Check" /> Rapports hebdomadaires & Manager SEO</li>
                       </ul>
                       <div className="pg-det-btn">
-                        <Link href="/contact" className="cp-btn">Choose your plan</Link>
+                        <Link href="/contact" className="cp-btn">Choisissez votre plan</Link>
                       </div>
                     </div>
                   </div>

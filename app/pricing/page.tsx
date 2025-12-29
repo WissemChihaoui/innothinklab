@@ -35,11 +35,11 @@ const PricingPage: React.FC = () => {
                 <div className="col-lg-8 mt-30">
                   <div className="page-title-box">
                     <span className="sub-title">
-                      <Image src={icon} alt="Dollar Icon" />
-                      {' '}Simple pricing
+                      <Image src={icon} alt="Icône Dollar" />
+                      {' '}Tarification simple
                     </span>
                     <h2 className="title">
-                      Choose the SEO package <br /> that fits your business and <br /> drives real results
+                      Choisissez le forfait numérique <br /> qui convient à votre entreprise et <br /> génère des résultats réels
                     </h2>
                   </div>
                 </div>
@@ -64,9 +64,9 @@ const PricingPage: React.FC = () => {
                   <CountUp end={65} enableScrollSpy />
                   %
                 </h2>
-                <span className="xb-item--text">More website traffic</span>
+                <span className="xb-item--text">Plus de trafic web</span>
                 <p className="xb-item--content">
-                  Our clients experience a 65% increase in organic traffic year-over-year.
+                  Nos clients constatent une augmentation de 65% du trafic organique d'une année sur l'autre.
                 </p>
               </div>
               <div className="ap-fanfact-item pg-fanfact-item mt-30">
@@ -74,9 +74,9 @@ const PricingPage: React.FC = () => {
                   <CountUp end={48} enableScrollSpy />
                   %
                 </h2>
-                <span className="xb-item--text">Conversion rate growth</span>
+                <span className="xb-item--text">Croissance du taux de conversion</span>
                 <p className="xb-item--content">
-                  Clients grow their conversion rates by 48% annually with our SEO strategies.
+                  Nos clients augmentent leurs taux de conversion de 48% annuellement avec nos stratégies numériques.
                 </p>
               </div>
               <div className="ap-fanfact-item pg-fanfact-item mt-30">
@@ -84,9 +84,9 @@ const PricingPage: React.FC = () => {
                   <CountUp end={55} enableScrollSpy />
                   %
                 </h2>
-                <span className="xb-item--text">Higher search rankings</span>
+                <span className="xb-item--text">Meilleurs classements</span>
                 <p className="xb-item--content">
-                  Our clients see a 55% boost in search rankings within the first 6 months.
+                  Nos clients voient une amélioration de 55% de leurs classements dans les 6 premiers mois.
                 </p>
               </div>
             </div>

@@ -30,10 +30,10 @@ const AboutUsPage: React.FC = () => {
                   <div className="page-title-box">
                     <span className="sub-title">
                       <Image src={icon} alt="Magic Icon" />
-                      About Innomax
+                      À propos d'InnoThinkLab
                     </span>
                     <h2 className="title">
-                      Unlocking new heights of online success: how our SEO agency transforms visibility and growth
+                      Solutions Numériques Innovantes pour Votre Réussite en Ligne
                     </h2>
                   </div>
                 </div>
@@ -42,7 +42,7 @@ const AboutUsPage: React.FC = () => {
                     <h2 className="number">
                       12 <span className="suffix">+</span>
                     </h2>
-                    <span className="text">Years of experience</span>
+                    <span className="text">Années d'expérience</span>
                   </div>
                 </div>
               </div>
@@ -55,7 +55,7 @@ const AboutUsPage: React.FC = () => {
             <div className="career_video">
               <video loop muted playsInline autoPlay>
                 <source src="/images/video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
+                Votre navigateur ne supporte pas la vidéo.
               </video>
             </div>
           </div>
@@ -67,8 +67,8 @@ const AboutUsPage: React.FC = () => {
           <FunfactSection />
         </div>
         <Roadmap />
-        <AwardSection />
-        <GallerySection pClass="pt-130" />
+        {/* <AwardSection /> */}
+        {/* <GallerySection pClass="pt-130" /> */}
         <CtaSection /> 
       </div>
       <Footer />

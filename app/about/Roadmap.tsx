@@ -22,11 +22,11 @@ interface RoadmapItem {
 }
 
 const roadmapData: RoadmapItem[] = [
-  { quarter: 'Q-1', year: '2012', title: 'Innomax was founded', content: 'Innomax started in USA with only five employees...' },
-  { quarter: 'Q-2', year: '2014', title: 'We grew to 40 full-time employees', content: 'In 2014, Innomax completed over 100 SEO audits...' },
-  { quarter: 'Q-3', year: '2016', title: 'Top 3 SEO Company', content: 'By 2016, our hard work was starting to be recognized...' },
-  { quarter: 'Q-4', year: '2018', title: 'Global Expertise', content: 'By 2018, InnoMax attracted international clients...' },
-  { quarter: 'Q-5', year: '2024', title: 'Present', content: 'Today, InnoMax has over 200 employees...' },
+  { quarter: 'T-1', year: '2012', title: 'Création d\'InnoThinkLab', content: 'InnoThinkLab a démarré en France avec seulement cinq employés...' },
+  { quarter: 'T-2', year: '2014', title: 'Croissance à 40 employés', content: 'En 2014, InnoThinkLab a complété plus de 100 projets web...' },
+  { quarter: 'T-3', year: '2016', title: 'Top 3 Agence Digitale', content: 'Dès 2016, notre travail a commencé à être reconnu...' },
+  { quarter: 'T-4', year: '2018', title: 'Expertise Internationale', content: 'Dès 2018, InnoThinkLab a attiré des clients internationaux...' },
+  { quarter: 'T-5', year: '2024', title: 'Aujourd\'hui', content: 'Aujourd\'hui, InnoThinkLab a plus de 200 employés...' },
 ];
 
 const RoadmapSlider: React.FC = () => {
@@ -34,16 +34,16 @@ const RoadmapSlider: React.FC = () => {
   const nextRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="roadmap roadmap-pb pt-130 pb-200 pos-rel" style={{ backgroundColor: '#0F55DC' }}>
+    <section className="roadmap roadmap-pb pt-130 pb-200 pos-rel mb-130" style={{ backgroundColor: '#0F55DC' }}>
       <div className="container">
         <div className="sa-tes_top roadmap-top pos-rel mb-85">
           <div className="sec-title--two">
             <div className="sub-title sub-title--strock wow fadeInDown" data-wow-duration="600ms">
-              <Image src={icon} alt="Process Icon" />
-              Our Journey
+              <Image src={icon} alt="Icône Processus" />
+              Notre Parcours
             </div>
             <h2 className="title clr-white wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">
-              Our Journey 0 to 200 Clients
+              De 0 à 200 Clients
             </h2>
           </div>
           <div className="sa-tes_button roadmap-button">

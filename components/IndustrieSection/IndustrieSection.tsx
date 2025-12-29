@@ -20,16 +20,16 @@ interface IndustryItem {
 }
 
 const Industrie: IndustryItem[] = [
-  { icon: sIcon1, title: 'SaaS' },
-  { icon: sIcon2, title: 'Lawyers' },
-  { icon: sIcon3, title: 'Real estate' },
-  { icon: sIcon4, title: 'Insurance' },
-  { icon: sIcon5, title: 'Crypto' },
-  { icon: sIcon6, title: 'Private equity' },
-  { icon: sIcon7, title: 'Education' },
-  { icon: sIcon8, title: 'Finance' },
-  { icon: sIcon9, title: 'Healthcare' },
-  { icon: sIcon10, title: 'Automotive' },
+  { icon: sIcon1, title: 'E-commerce' },
+  { icon: sIcon2, title: 'Santé' },
+  { icon: sIcon3, title: 'Immobilier' },
+  { icon: sIcon4, title: 'Éducation' },
+  { icon: sIcon5, title: 'Finance' },
+  { icon: sIcon6, title: 'Startups' },
+  { icon: sIcon7, title: 'Tourisme' },
+  { icon: sIcon8, title: 'Restauration' },
+  { icon: sIcon9, title: 'Mode' },
+  { icon: sIcon10, title: 'Services' },
 ];
 
 const IndustrieSection: React.FC = () => {
@@ -41,14 +41,14 @@ const IndustrieSection: React.FC = () => {
             <Fade direction='down' triggerOnce={false} duration={1000} delay={9}>
               <div>
                 <div className="sub-title wow fadeInDown" data-wow-duration="600ms">
-                  <Image src={hicon} alt="Industries icon" />Industries we work
+                  <Image src={hicon} alt="Icône industries" />Secteurs d'activité
                 </div>
               </div>
             </Fade>
             <Fade direction='up' triggerOnce={false} duration={1200} delay={9}>
               <div>
                 <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">
-                  Serving diverse industries
+Des solutions adaptées à votre secteur
                 </h2>
               </div>
             </Fade>
@@ -66,7 +66,7 @@ const IndustrieSection: React.FC = () => {
             ))}
           </div>
           <div className="xb-btn text-center mt-60">
-            <Link href="/contact" className="thm-btn thm-btn--aso">Book a free consultation</Link>
+            <Link href="/contact" className="thm-btn thm-btn--aso">Demander un devis</Link>
           </div>
         </div>
       </div>

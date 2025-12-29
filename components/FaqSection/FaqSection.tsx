@@ -28,7 +28,7 @@ const FaqSection: React.FC = () => {
         <div className="sec-title--two text-center mb-60">
           <Fade direction="down" triggerOnce={false} duration={1000} delay={9}>
             <div className="sub-title wow fadeInDown" data-wow-duration="600ms">
-              <Image src={hicon} alt="Magic Icon" /> FAQ’s
+              <Image src={hicon} alt="Icône FAQ" /> FAQ
             </div>
           </Fade>
           <Fade direction="up" triggerOnce={false} duration={1200} delay={9}>
@@ -37,7 +37,7 @@ const FaqSection: React.FC = () => {
               data-wow-delay="150ms"
               data-wow-duration="600ms"
             >
-              Have a question? Look here
+Vous avez des questions ? Trouvez vos réponses
             </h2>
           </Fade>
         </div>
@@ -92,61 +92,70 @@ interface FaqItem {
 const faqList: FaqItem[] = [
   {
     id: '1',
-    question: 'How long does it take to get results from SEO?',
+    question: 'Quel est le délai pour développer un site web ?',
     content: {
-      text: "On average, our clients start to see initial results from SEO in 4–6 months. For competitive niches, it may take up to 1–2 years. The timeline depends on factors like:",
+      text: "Le délai de développement varie selon la complexité de votre projet :",
       points: [
-        'The age and authority of your site.',
-        'Your on-page and off-page optimization.',
-        'Any penalties pulling your ranking down.'
+        'Site vitrine : 2-4 semaines',
+        'Site e-commerce : 4-8 semaines',
+        'Application web personnalisée : À partir de 8 semaines',
+        'Application mobile : 10-16 semaines'
       ]
     }
   },
   {
     id: '2',
-    question: 'What SEO strategies do you implement for optimal results?',
+    question: 'Proposez-vous des solutions de référencement (SEO) ?',
     content: {
-      text: "We implement a holistic SEO strategy tailored to your goals. Factors affecting the timeline include:",
+      text: "Oui, nous offrons des services complets de référencement naturel :",
       points: [
-        'The age and authority of your site.',
-        'Your on-page and off-page optimization.',
-        'Any penalties pulling your ranking down.'
+        'Audit technique du site',
+        'Optimisation du contenu',
+        'Stratégie de mots-clés',
+        'Netlinking de qualité',
+        'Suivi des performances'
       ]
     }
   },
   {
     id: '3',
-    question: 'What part of the SEO process do you outsource?',
+    question: 'Quelles technologies utilisez-vous pour le développement ?',
     content: {
-      text: "We focus on keeping critical SEO activities in-house, but may outsource specialized tasks if it adds value. Timeline depends on:",
+      text: "Nous utilisons les dernières technologies du marché :",
       points: [
-        'The age and authority of your site.',
-        'Your on-page and off-page optimization.',
-        'Any penalties pulling your ranking down.'
+        'Frontend : React, Next.js, Vue.js',
+        'Backend : Node.js, Python, PHP',
+        'Bases de données : MySQL, MongoDB, PostgreSQL',
+        'Mobile : React Native, Flutter',
+        'Hébergement : AWS, Google Cloud, Vercel'
       ]
     }
   },
   {
     id: '4',
-    question: 'Can you handle SEO for an enterprise-size company?',
+    question: 'Proposez-vous un accompagnement après la livraison ?',
     content: {
-      text: "Absolutely! We’ve worked with enterprise clients across various sectors. However, timelines depend on:",
+      text: "Oui, nous offrons différents niveaux de support :",
       points: [
-        'The age and authority of your site.',
-        'Your on-page and off-page optimization.',
-        'Any penalties pulling your ranking down.'
+        'Maintenance évolutive',
+        'Mises à jour de sécurité',
+        'Formation utilisateur',
+        'Support technique prioritaire',
+        'Hébergement géré'
       ]
     }
   },
   {
     id: '5',
-    question: 'Do you offer professional link-building services?',
+    question: 'Quelle est votre approche pour la conception UX/UI ?',
     content: {
-      text: "Yes, we provide white-hat link-building services aligned with your niche and goals. Results depend on:",
+      text: "Notre processus de conception est centré sur l'utilisateur :",
       points: [
-        'The age and authority of your site.',
-        'Your on-page and off-page optimization.',
-        'Any penalties pulling your ranking down.'
+        'Recherche utilisateur approfondie',
+        'Maquettes interactives',
+        'Tests utilisateurs itératifs',
+        'Design responsive',
+        'Optimisation des performances'
       ]
     }
   }

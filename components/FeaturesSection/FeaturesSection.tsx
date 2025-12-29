@@ -19,14 +19,14 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = (props) => {
               <Fade direction='down' triggerOnce={false} duration={1000} delay={9}>
                 <div>
                   <div className="sub-title wow fadeInDown" data-wow-duration="600ms">
-                    <Image src={star} alt="Star icon" />Why we’re different
+                    <Image src={star} alt="Icône étoile" />Pourquoi nous choisir
                   </div>
                 </div>
               </Fade>
               <Fade direction='up' triggerOnce={false} duration={1200} delay={9}>
                 <div>
                   <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">
-                    Take a look at how we&apos;re different
+                    Découvrez ce qui nous démarque
                   </h2>
                 </div>
               </Fade>
@@ -34,51 +34,51 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = (props) => {
             <table className="feature-table">
               <thead>
                 <tr>
-                  <th>Features</th>
-                  <th><Image src={logo} alt="Our Logo" /></th>
-                  <th>Other SEO agencies</th>
+                  <th>Fonctionnalités</th>
+                  <th><Image src={logo} alt="Notre Logo" /></th>
+                  <th>Autres agences</th>
                 </tr>
               </thead>
               <tbody className="table-body">
                 <tr>
-                  <td>Take on projects only if confident in delivery.</td>
-                  <td><Image src={check} alt="Checkmark" /></td>
-                  <td><Image src={error} alt="Error icon" /></td>
+                  <td>Solutions sur mesure adaptées à vos besoins</td>
+                  <td><Image src={check} alt="Coche" /></td>
+                  <td><Image src={error} alt="Croix" /></td>
                 </tr>
                 <tr>
-                  <td>Tailor-made, revenue-boosting strategy.</td>
-                  <td><Image src={check} alt="Checkmark" /></td>
-                  <td><Image src={error} alt="Error icon" /></td>
+                  <td>Développement web et mobile de pointe</td>
+                  <td><Image src={check} alt="Coche" /></td>
+                  <td><Image src={error} alt="Croix" /></td>
                 </tr>
                 <tr>
-                  <td>100% focus on your project.</td>
-                  <td><Image src={check} alt="Checkmark" /></td>
-                  <td><Image src={error} alt="Error icon" /></td>
+                  <td>100% dédié à votre projet</td>
+                  <td><Image src={check} alt="Coche" /></td>
+                  <td><Image src={error} alt="Croix" /></td>
                 </tr>
                 <tr>
-                  <td>Transparent about meeting goals and deadlines.</td>
-                  <td><Image src={check} alt="Checkmark" /></td>
-                  <td><Image src={check} alt="Checkmark" /></td>
+                  <td>Transparence sur les objectifs et délais</td>
+                  <td><Image src={check} alt="Coche" /></td>
+                  <td><Image src={check} alt="Coche" /></td>
                 </tr>
                 <tr>
-                  <td>Cares about long-term SEO success.</td>
-                  <td><Image src={check} alt="Checkmark" /></td>
-                  <td><Image src={error} alt="Error icon" /></td>
+                  <td>Support technique continu</td>
+                  <td><Image src={check} alt="Coche" /></td>
+                  <td><Image src={error} alt="Croix" /></td>
                 </tr>
                 <tr>
-                  <td>Knows that ROI is the most important metric.</td>
-                  <td><Image src={check} alt="Checkmark" /></td>
-                  <td><Image src={error} alt="Error icon" /></td>
+                  <td>Optimisation pour le référencement (SEO)</td>
+                  <td><Image src={check} alt="Coche" /></td>
+                  <td><Image src={error} alt="Croix" /></td>
                 </tr>
                 <tr>
-                  <td>Feels like an extension of your marketing team.</td>
-                  <td><Image src={check} alt="Checkmark" /></td>
-                  <td><Image src={check} alt="Checkmark" /></td>
+                  <td>Approche centrée sur l'expérience utilisateur</td>
+                  <td><Image src={check} alt="Coche" /></td>
+                  <td><Image src={check} alt="Coche" /></td>
                 </tr>
                 <tr>
-                  <td>Crafts a results-driven strategy.</td>
-                  <td><Image src={check} alt="Checkmark" /></td>
-                  <td><Image src={check} alt="Checkmark" /></td>
+                  <td>Rapport qualité/prix compétitif</td>
+                  <td><Image src={check} alt="Coche" /></td>
+                  <td><Image src={check} alt="Coche" /></td>
                 </tr>
               </tbody>
             </table>

@@ -12,18 +12,75 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getBlogBySlug, getAllCategories, getAllTags } from "@/lib/blogServices";
 
-
-
-export default async function BlogDetailsPage({ params }: { params: { slug: string } }) {
-  const { slug } = params; 
+export default async function BlogDetailsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const blogData = await getBlogBySlug(slug);
   const categories = await getAllCategories();
   const tags = await getAllTags();
-
   if (!blogData) {
     notFound();
   }
   const { blog, related, prev, next } = blogData;
+
+  // Convert Date objects to plain strings to avoid serialization issues
+  const serializedBlog = {
+    ...blog,
+    _id: blog._id?.toString(),
+    category: blog.category ? {
+      ...blog.category,
+      _id: blog.category._id?.toString(),
+      createdAt: blog.category.createdAt instanceof Date ? blog.category.createdAt.toISOString() : blog.category.createdAt,
+      updatedAt: blog.category.updatedAt instanceof Date ? blog.category.updatedAt.toISOString() : blog.category.updatedAt,
+    } : null,
+    tags: blog.tags.map((tag: any) => ({
+      ...tag,
+      _id: tag._id?.toString(),
+      createdAt: tag.createdAt instanceof Date ? tag.createdAt.toISOString() : tag.createdAt,
+      updatedAt: tag.updatedAt instanceof Date ? tag.updatedAt.toISOString() : tag.updatedAt,
+    })),
+    createdAt: blog.createdAt instanceof Date ? blog.createdAt.toISOString() : blog.createdAt,
+    publishedAt: blog.publishedAt instanceof Date ? blog.publishedAt.toISOString() : blog.publishedAt,
+    updatedAt: blog.updatedAt instanceof Date ? blog.updatedAt.toISOString() : blog.updatedAt,
+  };
+
+  const serializedRelated = related.map((relatedBlog: any) => ({
+    ...relatedBlog,
+    _id: relatedBlog._id?.toString(),
+    category: relatedBlog.category ? {
+      ...relatedBlog.category,
+      _id: relatedBlog.category._id?.toString(),
+      createdAt: relatedBlog.category.createdAt instanceof Date ? relatedBlog.category.createdAt.toISOString() : relatedBlog.category.createdAt,
+      updatedAt: relatedBlog.category.updatedAt instanceof Date ? relatedBlog.category.updatedAt.toISOString() : relatedBlog.category.updatedAt,
+    } : null,
+    tags: relatedBlog.tags.map((tag: any) => ({
+      ...tag,
+      _id: tag._id?.toString(),
+      createdAt: tag.createdAt instanceof Date ? tag.createdAt.toISOString() : tag.createdAt,
+      updatedAt: tag.updatedAt instanceof Date ? tag.updatedAt.toISOString() : tag.updatedAt,
+    })),
+    createdAt: relatedBlog.createdAt instanceof Date ? relatedBlog.createdAt.toISOString() : relatedBlog.createdAt,
+    publishedAt: relatedBlog.publishedAt instanceof Date ? relatedBlog.publishedAt.toISOString() : relatedBlog.publishedAt,
+    updatedAt: relatedBlog.updatedAt instanceof Date ? relatedBlog.updatedAt.toISOString() : relatedBlog.updatedAt,
+  }));
+
+  const serializedCategories = categories.map((cat: any) => ({
+    ...cat,
+    _id: cat._id?.toString(),
+    createdAt: cat.createdAt instanceof Date ? cat.createdAt.toISOString() : cat.createdAt,
+    updatedAt: cat.updatedAt instanceof Date ? cat.updatedAt.toISOString() : cat.updatedAt,
+  }));
+
+  const serializedTags = tags.map((tag: any) => ({
+    ...tag,
+    _id: tag._id?.toString(),
+    createdAt: tag.createdAt instanceof Date ? tag.createdAt.toISOString() : tag.createdAt,
+    updatedAt: tag.updatedAt instanceof Date ? tag.updatedAt.toISOString() : tag.updatedAt,
+  }));
+
   return (
     <Fragment>
       <Header />
@@ -59,7 +116,7 @@ export default async function BlogDetailsPage({ params }: { params: { slug: stri
             </div>
           </div>
         </section>
-        <BlogSingle blog={blog} related={related} navigation={{ prev, next }} categories={categories} tags={tags} />
+        <BlogSingle blog={serializedBlog} related={serializedRelated} navigation={{ prev, next }} categories={serializedCategories} tags={serializedTags} />
       </main>
 
       <CtaSection cClass={"bg"} />

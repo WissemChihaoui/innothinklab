@@ -20,29 +20,29 @@ interface ProcessItem {
 const Process: ProcessItem[] = [
   {
     id: "01",
-    title: 'Research niche',
-    subTitle: 'Identify your target market and understand customer needs to find competitive',
+    title: 'Analyse des Besoins',
+    subTitle: 'Compréhension approfondie de vos objectifs et analyse des besoins spécifiques de votre projet.',
     icon: sIcon1,
     direction: 'one',
   },
   {
     id: "02",
-    title: 'Set up your team',
-    subTitle: 'Assemble a skilled team aligned with your business goals and objectives.',
+    title: 'Conception',
+    subTitle: 'Élaboration d\'une architecture technique et d\'une maquette détaillée de votre solution.',
     icon: sIcon2,
     direction: 'two',
   },
   {
     id: "03",
-    title: 'Create a game plan',
-    subTitle: 'Develop a detailed strategy objectives, audiences, and marketing approaches.',
+    title: 'Développement',
+    subTitle: 'Implémentation des fonctionnalités avec les dernières technologies et bonnes pratiques.',
     icon: sIcon3,
     direction: 'three',
   },
   {
     id: "04",
-    title: 'Review and scale',
-    subTitle: 'Analyze performance metrics regularly to optimize and grow your strategy effectively.',
+    title: 'Lancement & Suivi',
+    subTitle: 'Mise en production, formation et suivi continu pour assurer le succès de votre projet.',
     icon: sIcon4,
     direction: 'four',
   },
@@ -56,14 +56,14 @@ const WorkProcess: React.FC = () => {
           <Fade direction='down' triggerOnce={false} duration={1000} delay={9}>
             <div>
               <div className="sub-title sub-title--strock wow fadeInDown" data-wow-duration="600ms">
-                <Image src={hicon} alt="Process icon" />Our working process
+                <Image src={hicon} alt="Icône processus" />Notre Processus
               </div>
             </div>
           </Fade>
           <Fade direction='up' triggerOnce={false} duration={1200} delay={9}>
             <div>
               <h2 className="title clr-white wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">
-                Our SEO workflow
+Notre Méthodologie de Développement
               </h2>
             </div>
           </Fade>

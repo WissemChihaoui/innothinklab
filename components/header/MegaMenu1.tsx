@@ -11,7 +11,7 @@ const MegaMenu1: React.FC = () => {
   const items = [
     { href: "/about", icon: "/images/icon/m_01.svg", title: "À propos", desc: "En savoir plus sur InnoThinkLab" },
     { href: "/pricing", icon: "/images/icon/m_02.svg", title: "Nos tarifs", desc: "Tarifs simplifiés" },
-    { href: "/team", icon: "/images/icon/m_03.svg", title: "Notre équipe", desc: "Rencontrez notre équipe." },
+    // { href: "/team", icon: "/images/icon/m_03.svg", title: "Notre équipe", desc: "Rencontrez notre équipe." },
     { href: "/service", icon: "/images/icon/m_04.svg", title: "Services", desc: "Heureux de vous aider !" },
     // { href: "/casestudy", icon: "/images/icon/m_06.svg", title: "Étude de cas", desc: "Découvrez toutes les études de cas." },
     { href: "/career", icon: "/images/icon/m_07.svg", title: "Carrière", desc: "Rejoignez-nous !" },

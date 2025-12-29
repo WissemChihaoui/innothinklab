@@ -8,63 +8,75 @@ import Footer from '../../components/footer/Footer';
 import CtaSection from '../../components/CtaSection/CtaSection';
 import BlogList from '../../components/BlogList';
 import Image from 'next/image';
-import { getAllBlogs } from '@/lib/blogServices';
+import { getAllBlogs, getAllCategories, getAllTags } from '@/lib/blogServices';
 
-async function getBlogs(searchParams: { category?: string; tag?: string; page?: string } = {}) {
-    const params = new URLSearchParams();
-
-    if (searchParams.category) {
-        params.append('category', searchParams.category);
-    }
-
-    if (searchParams.tag) {
-        params.append('tag', searchParams.tag);
-    }
-
-    if (searchParams.page) {
-        params.append('page', searchParams.page);
-    }
-
-    const queryString = params.toString();
-    const url = `${process.env.NEXTAUTH_URL}/api/blog${queryString ? `?${queryString}` : ''}`;
-
-    const res = await fetch(url, { next: { revalidate: 60 } }); // Cache for 60 seconds
-    return res.json();
-}
-
-async function getCategories() {
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`);
-    return res.json();
-}
-
-async function getTags() {
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/tags`);
-    return res.json();
-}
-
-// ✅ Changed: searchParams is now a Promise
-interface BlogPageProps {
+interface HomePageProps {
     searchParams: Promise<{
+        page?: string;
         category?: string;
         tag?: string;
-        page?: string;
     }>;
 }
 
-// ✅ Changed: await searchParams before using it
-export default async function BlogPage({ searchParams }: BlogPageProps) {
-    const newBlogs = await getAllBlogs();
-    console.log("New Blogs",newBlogs)
-    // const resolvedSearchParams = await searchParams;
-    
-    // const res = await getBlogs(resolvedSearchParams);
-    // const categories = await getCategories();
-    // const tags = await getTags();
+export default async function BlogPage({ searchParams }: HomePageProps) {
+    const resolvedSearchParams = await searchParams;
+    const page = Number(resolvedSearchParams.page) || 1;
+    const category = resolvedSearchParams.category;
+    const tag = resolvedSearchParams.tag;
+
+    const result = await getAllBlogs({
+        page,
+        category,
+        tag,
+        limit: 6,
+    });
+
+    const categories = await getAllCategories();
+    const tags = await getAllTags();
+
+    const { blogs, currentPage, totalPages, totalBlogs, hasNextPage, hasPrevPage } = result;
+
+    // Convert Date objects to plain strings to avoid serialization issues
+    const serializedBlogs = blogs.map((blog: any) => ({
+        ...blog,
+        _id: blog._id?.toString(),
+        category: blog.category ? {
+            ...blog.category,
+            _id: blog.category._id?.toString(),
+            createdAt: blog.category.createdAt instanceof Date ? blog.category.createdAt.toISOString() : blog.category.createdAt,
+            updatedAt: blog.category.updatedAt instanceof Date ? blog.category.updatedAt.toISOString() : blog.category.updatedAt,
+        } : null,
+        tags: blog.tags.map((tag: any) => ({
+            ...tag,
+            _id: tag._id?.toString(),
+            createdAt: tag.createdAt instanceof Date ? tag.createdAt.toISOString() : tag.createdAt,
+            updatedAt: tag.updatedAt instanceof Date ? tag.updatedAt.toISOString() : tag.updatedAt,
+        })),
+        createdAt: blog.createdAt instanceof Date ? blog.createdAt.toISOString() : blog.createdAt,
+        publishedAt: blog.publishedAt instanceof Date ? blog.publishedAt.toISOString() : blog.publishedAt,
+        updatedAt: blog.updatedAt instanceof Date ? blog.updatedAt.toISOString() : blog.updatedAt,
+    }));
+
+    const serializedCategories = categories.map((cat: any) => ({
+        ...cat,
+        _id: cat._id?.toString(),
+        createdAt: cat.createdAt instanceof Date ? cat.createdAt.toISOString() : cat.createdAt,
+        updatedAt: cat.updatedAt instanceof Date ? cat.updatedAt.toISOString() : cat.updatedAt,
+    }));
+
+    const serializedTags = tags.map((tag: any) => ({
+        ...tag,
+        _id: tag._id?.toString(),
+        createdAt: tag.createdAt instanceof Date ? tag.createdAt.toISOString() : tag.createdAt,
+        updatedAt: tag.updatedAt instanceof Date ? tag.updatedAt.toISOString() : tag.updatedAt,
+    }));
+
+    console.log(result)
 
     return (
         <Fragment>
             <Header />
-            {/* <main className="page_content blog-page">
+            <main className="page_content blog-page">
                 <section className="page-title pt-200 pos-rel bg_img" style={{ backgroundImage: `url('/images/bg/page_bg01.jpg')` }}>
                     <div className="container">
                         <div className="page-title-wrap sd-title-wrap">
@@ -94,13 +106,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     </div>
                 </section>
                 <BlogList
-                    blogs={res?.data || []}
-                    categories={categories}
-                    tags={tags}
-                    filter={{ category: resolvedSearchParams.category || '', tag: '' }}
-                    pagination={res?.pagination}
+                    blogs={serializedBlogs}
+                    pagination={{ currentPage: currentPage, totalPages: totalPages, totalBlogs: totalBlogs, hasNextPage: hasNextPage, hasPrevPage: hasPrevPage }}
+                    categories={serializedCategories}
+                    tags={serializedTags}
+                    filter={{ category, tag }}
                 />
-            </main> */}
+            </main>
             <CtaSection />
             <Footer />
             <Scrollbar />

@@ -17,13 +17,13 @@ const About: React.FC = () => {
           <div className="sec-title--two text-center">
             <Fade direction="down" triggerOnce={false} duration={1000} delay={9}>
               <div className="sub-title wow fadeInDown" data-wow-duration="600ms">
-                <Image src={icon} alt="We are Innomax" />
-                {' '}We are innomax
+                <Image src={icon} alt="InnoThinkLab" />
+                {' '}À propos de nous
               </div>
             </Fade>
             <Fade direction="down" triggerOnce={false} duration={1500} delay={9}>
               <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">
-                Committed to Your SEO Success
+                Votre Partenaire en Solutions Numériques
               </h2>
             </Fade>
           </div>
@@ -32,7 +32,7 @@ const About: React.FC = () => {
             {/* Left Column */}
             <div className="col-lg-6 mt-50">
               <div className="about-left">
-                <h2 className="title">Core values</h2>
+                <h2 className="title">Nos Valeurs</h2>
 
                 <div className="about-item_box ul_li">
                   <div className="xb-item--icon">
@@ -40,7 +40,7 @@ const About: React.FC = () => {
                   </div>
                   <div className="xb-item--holder">
                     <p className="xb-item--content">
-                      <span>Innovation:</span> Continuously refining SEO to stay ahead of search engine updates.
+                      <span>Innovation :</span> Des solutions technologiques de pointe pour votre réussite numérique.
                     </p>
                   </div>
                 </div>
@@ -51,7 +51,7 @@ const About: React.FC = () => {
                   </div>
                   <div className="xb-item--holder">
                     <p className="xb-item--content">
-                      <span>Client Focus:</span> Your success drives us; we craft custom SEO solutions for impact.
+                      <span>Approche Client :</span> Des solutions sur mesure adaptées à vos besoins spécifiques.
                     </p>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ const About: React.FC = () => {
                   </div>
                   <div className="xb-item--holder">
                     <p className="xb-item--content">
-                      <span>Transparency:</span> Clear communication and honest reporting at every step.
+                      <span>Excellence :</span> Un engagement envers la qualité et les résultats concrets.
                     </p>
                   </div>
                 </div>
@@ -73,15 +73,15 @@ const About: React.FC = () => {
             <div className="col-lg-6 mt-50">
               <div className="about-right">
                 <div className="xb-item--holder">
-                  <h3 className="xb-item--title">Our Mission</h3>
+                  <h3 className="xb-item--title">Notre Mission</h3>
                   <p className="xb-item--content">
-                    Our mission is to boost online presence with cutting-edge SEO, driving organic traffic, increasing visibility, and delivering measurable results.
+                    Notre mission est de transformer votre présence numérique grâce à des solutions web et mobiles innovantes, en mettant l'accent sur la qualité, la performance et l'expérience utilisateur.
                   </p>
                 </div>
                 <div className="xb-item--holder">
-                  <h3 className="xb-item--title">Our Vision</h3>
+                  <h3 className="xb-item--title">Notre Vision</h3>
                   <p className="xb-item--content">
-                    Our vision is to be a trusted leader in digital marketing, setting the standard for ethical SEO. We empower businesses to thrive with effective strategies.
+                    Être le partenaire de référence pour les entreprises ambitieuses qui cherchent à se démarquer dans l'univers numérique, en combinant créativité, expertise technique et approche centrée sur les résultats.
                   </p>
                 </div>
               </div>
@@ -91,7 +91,7 @@ const About: React.FC = () => {
             <div className="xb-btn text-center mt-90 wow fadeInUp" data-wow-duration="600ms">
               <Fade direction="up" triggerOnce={false} duration={1500} delay={9}>
                 <Link href="/about" className="thm-btn thm-btn--aso">
-                  Learn more about us
+                  En savoir plus sur nous
                 </Link>
               </Fade>
             </div>

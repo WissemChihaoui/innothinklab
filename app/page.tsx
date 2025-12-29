@@ -24,7 +24,7 @@ const HomePage = () => {
                 <Header />
                 <main className="page_content">
                     <Hero />
-                    <PartnerSection />
+                    {/* <PartnerSection /> */}
                     <About />
                     <ServiceSection />
                     <ProjectSection />
@@ -32,7 +32,7 @@ const HomePage = () => {
                     <IndustrieSection />
                     <Testimonial />
                     <FeaturesSection />
-                    <TeamSection />
+                    {/* <TeamSection /> */}
                     <FaqSection />
                     <CtaSection />  
                 </main>

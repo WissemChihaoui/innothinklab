@@ -14,20 +14,20 @@ const funFacts: FunFact[] = [
   {
     value: 120,
     suffix: '+',
-    text: 'success stories',
+    text: 'histoires de succès',
     delay: '0ms',
   },
   {
     value: 1.2,
     suffix: 'k',
-    text: 'companies trust us',
+    text: 'entreprises nous font confiance',
     delay: '200ms',
     isMiddle: true,
   },
   {
     value: 100,
     suffix: '%',
-    text: 'results guaranteed',
+    text: 'résultats garantis',
     delay: '300ms',
     isLast: true,
   },

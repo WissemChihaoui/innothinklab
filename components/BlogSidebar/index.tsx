@@ -50,8 +50,8 @@ const BlogSidebar = ({ categories, tags }: { categories: any[]; tags: any[] }) =
         <div className="sidebar_widget">
           <h3 className="sidebar_widget_title">Catégories</h3>
           <ul className="category_list_block list-unstyled">
-            {categories.map((category) => (
-              <li key={category._id}>
+            {categories.map((category, idx) => (
+              <li key={idx}>
                 <Link href={'/blog/?category=' + category.slug}>
                   <span>
                     <i className="far fa-arrow-right"></i>

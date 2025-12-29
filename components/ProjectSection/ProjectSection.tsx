@@ -101,18 +101,18 @@ const ProjectSection: React.FC = () => {
           <div className="sec-title--two mb-30">
             <Fade direction="up" triggerOnce={false} duration={1000} delay={9}>
               <span className="sub-title wow fadeInDown" data-wow-duration="600ms">
-                <Image src={icon} alt="" /> Case study
+                <Image src={icon} alt="" /> Nos Réalisations
               </span>
             </Fade>
             <Fade direction="up" triggerOnce={false} duration={1000} delay={9}>
               <h2 className="title wow skewIn" data-wow-duration="600ms">
-                Our resent SEO work
+                Nos Derniers Projets
               </h2>
             </Fade>
           </div>
           <Fade direction="right" triggerOnce={false} duration={1000} delay={9}>
-            <Link href={"/casestudy"} className="thm-btn thm-btn--aso">
-              View more casestudy
+            <Link href={"/projets"} className="thm-btn thm-btn--aso">
+              Voir tous les projets
             </Link>
           </Fade>
         </div>

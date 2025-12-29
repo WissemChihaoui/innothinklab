@@ -32,22 +32,22 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ services = Services }) 
                 <Fade direction="down" triggerOnce={false} duration={1000} delay={9}>
                   <div>
                     <span className="sub-title">
-                      <Image src={hIcon} alt="Feature services icon" />
-                      Feature-services
+                      <Image src={hIcon} alt="Nos services" />
+                      Nos Services
                     </span>
                   </div>
                 </Fade>
                 <Fade direction="up" triggerOnce={false} duration={1200} delay={9}>
                   <div>
                     <h2 className="title">
-                      Growth with <br /> SEO services
+                      Des Solutions <br /> Numériques Innovantes
                     </h2>
                   </div>
                 </Fade>
                 <Fade direction="up" triggerOnce={false} duration={1400} delay={9}>
                   <div>
                     <p className="content">
-                      SEO services boost visibility and organic traffic, driving leads and growth.
+                      Des services technologiques de pointe pour transformer votre présence en ligne et stimuler votre croissance.
                     </p>
                   </div>
                 </Fade>
@@ -60,7 +60,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ services = Services }) 
                       href="/service"
                       className="thm-btn thm-btn--aso thm-btn--aso_yellow"
                     >
-                      View more services
+                      Voir tous nos services
                     </Link>
                   </div>
                 </Fade>

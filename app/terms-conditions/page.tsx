@@ -22,43 +22,43 @@ interface Section {
 
 const sections: Section[] = [
   {
-    title: 'Copyright and intellectual property usage',
+    title: 'Droits d\'auteur et propriété intellectuelle',
     content: [
-      `All content on this website, including text, graphics, logos, and trademarks, is the intellectual property of Innomax...`,
-      `Images on this website may include licensed stock photos...`,
+      `Tout le contenu de ce site web, y compris les textes, graphiques, logos et marques de commerce, est la propriété intellectuelle d'InnoThinkLab...`,
+      `Les images sur ce site web peuvent inclure des photos de stock sous licence...`,
     ],
   },
   {
-    title: 'Website usage terms',
+    title: 'Conditions d\'utilisation du site web',
     content: [
-      `By accessing this website, you agree to comply with the following terms...`,
-      `Additionally, users must not submit or transmit any unlawful, abusive, defamatory...`,
-      `This website may contain links to external sites...`,
+      `En accédant à ce site web, vous acceptez de respecter les conditions suivantes...`,
+      `De plus, les utilisateurs ne doivent pas soumettre ou transmettre de contenu illégal, abusif, diffamatoire...`,
+      `Ce site web peut contenir des liens vers des sites externes...`,
     ],
   },
   {
-    title: 'Software and services',
+    title: 'Logiciels et services',
     content: [
-      `Our services, provided on an "as-is" and "as-available" basis...`,
+      `Nos services sont fournis "tels quels" et "selon disponibilité"...`,
     ],
   },
   {
-    title: 'Personal information policy',
+    title: 'Politique des informations personnelles',
     content: [
-      `Innomax adheres to ethical business practices and safeguards your personal information...`,
+      `InnoThinkLab adhère à des pratiques commerciales éthiques et protège vos informations personnelles...`,
     ],
   },
   {
-    title: 'Disclaimer',
+    title: 'Avertissement',
     content: [
-      `Information on this website is provided in good faith and sourced from reliable providers...`,
-      `Innomax disclaims all warranties, including those related to fitness for a particular purpose...`,
+      `Les informations sur ce site web sont fournies de bonne foi et proviennent de fournisseurs fiables...`,
+      `InnoThinkLab décline toutes garanties, y compris celles liées à l'adéquation à un usage particulier...`,
     ],
   },
   {
-    title: 'Limitation of liability',
+    title: 'Limitation de responsabilité',
     content: [
-      `Innomax disclaims liability for any damages, including lost data or profits...`,
+      `InnoThinkLab décline toute responsabilité pour les dommages, y compris la perte de données ou de profits...`,
     ],
   },
 ];
@@ -79,14 +79,14 @@ const TermsPage: React.FC = () => {
                 <div className="col-lg-8 mt-30">
                   <div className="page-title-box">
                     <span className="sub-title">
-                      <Image src={icon} alt="Terms icon" /> Terms & Conditions
+                      <Image src={icon} alt="Icône Conditions" /> Conditions Générales d'Utilisation
                     </span>
                     <h2 className="title">
-                      Innomax website terms & <br />
-                      conditions your access and <br />
-                      usage rights
+                      Conditions générales d'utilisation du site web <br />
+                      InnoThinkLab et vos droits <br />
+                      d'accès et d'utilisation
                     </h2>
-                    <span className="page-update_time">Updated on: December 10th, 2024</span>
+                    <span className="page-update_time">Mis à jour le : 29 décembre 2025</span>
                   </div>
                 </div>
                 <div className="col-lg-4 mt-30">
@@ -131,10 +131,10 @@ const TermsPage: React.FC = () => {
                     <h2 className="item_details_info_title">Contact</h2>
                     <p>
                       <Link href="/contact" className="details-link">
-                        Click here
+                        Cliquez ici
                       </Link>{' '}
-                      to contact us regarding this Terms & Conditions or other related issues. You can also send us an e-mail on:{' '}
-                      <a href="mailto:contact@innomax.com">contact@innomax.com</a>
+                      pour nous contacter concernant ces Conditions Générales d'Utilisation ou d'autres questions connexes. Vous pouvez également nous envoyer un e-mail à :{' '}
+                      <a href="mailto:contact@innothinklab.com">contact@innothinklab.com</a>
                     </p>
                   </div>
                 </div>

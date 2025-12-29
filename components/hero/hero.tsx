@@ -19,8 +19,8 @@ const Hero: React.FC = () => {
               <div className="xb-hero">
                 <Fade direction="up" triggerOnce duration={1000}>
                   <h1 className="xb-item--title wow fadeInUp" data-wow-duration="600ms">
-                    Grow your business
-                    <br /> with <span>SEO strategy</span>
+                    Solutions Numériques
+                    <span> sur Mesure</span>
                   </h1>
                 </Fade>
 
@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
                     data-wow-delay="100ms"
                     data-wow-duration="600ms"
                   >
-                    (like 0 to 1000 new sales per month kind of results)
+                    Votre partenaire technologique pour une présence en ligne exceptionnelle
                   </p>
                 </Fade>
 
@@ -41,13 +41,13 @@ const Hero: React.FC = () => {
                     data-wow-duration="600ms"
                   >
                     <li>
-                      <i className="far fa-check"></i> Recover lost traffic
+                      <i className="far fa-check"></i> Développement Web & Mobile
                     </li>
                     <li>
-                      <i className="far fa-check"></i> Boost organic traffic
+                      <i className="far fa-check"></i> Solutions Personnalisées
                     </li>
                     <li>
-                      <i className="far fa-check"></i> Get more sales
+                      <i className="far fa-check"></i> Référencement & Marketing
                     </li>
                   </ul>
                 </Fade>
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
                     data-wow-duration="600ms"
                   >
                     <Link href="/contact" className="thm-btn thm-btn--aso thm-btn--aso_yellow">
-                      Book a free consultation
+                      Contactez-nous
                     </Link>
                   </div>
                 </Fade>

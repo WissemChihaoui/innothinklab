@@ -16,21 +16,66 @@ import iconPrev from "@/public/images/icon/prev-icon.png";
 import iconNext from "@/public/images/icon/next-icon.png";
 import fallbackImage from "@/public/images/blog/b-img01.jpg";
 
+interface Blog {
+  _id?: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  metaDescription?: string;
+  category: {
+    name: string;
+    slug?: string;
+  };
+  tags: Array<{
+    name: string;
+    slug?: string;
+  }>;
+  screens?: string;
+  thumb?: string;
+  createdAt: string | Date;
+}
+
+interface Category {
+  name: string;
+  slug?: string;
+}
+
+interface Tag {
+  name: string;
+  slug?: string;
+}
+
+interface Pagination {
+  currentPage: number;
+  totalPages: number;
+  totalBlogs: number;
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+}
+
+interface Filter {
+  category?: string;
+  tag?: string;
+}
+
+interface BlogListProps {
+  blogs: Blog[];
+  categories: Category[];
+  tags: Tag[];
+  filter?: Filter;
+  pagination: Pagination;
+}
+
 const BlogList = ({
   blogs,
   categories,
   tags,
   filter,
   pagination
-}: {
-  blogs: any[];
-  categories: any[];
-  tags: any[];
-  filter?: { category?: string; tag?: string };
-  pagination?: any;
-}) => {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+}: BlogListProps) => {
+  const prevRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<any>(null);
 
   useEffect(() => {
@@ -49,6 +94,22 @@ const BlogList = ({
 
   const activeFilter = filter?.category || filter?.tag;
 
+  // Helper to build query params
+  const buildQuery = (pageNum: number) => {
+    const params: Record<string, string> = {};
+    if (filter?.category) params.category = filter.category;
+    if (filter?.tag) params.tag = filter.tag;
+    if (pageNum > 1) params.page = pageNum.toString();
+    return params;
+  };
+
+  // Helper to build URL string
+  const buildUrl = (pageNum: number) => {
+    const query = buildQuery(pageNum);
+    const queryString = new URLSearchParams(query).toString();
+    return `/blog${queryString ? `?${queryString}` : ''}`;
+  };
+
   return (
     <div>
       {/* Blog Hero Swiper Section */}
@@ -59,20 +120,20 @@ const BlogList = ({
               modules={[Navigation]}
               spaceBetween={50}
               slidesPerView={1}
-              loop={true}
+              loop={blogs.length > 1}
               speed={1800}
               parallax={true}
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
             >
-              {blogs.map((blog, index) => (
-                <SwiperSlide key={index}>
+              {blogs.slice(0, 3).map((blog, index) => (
+                <SwiperSlide key={blog.slug || index}>
                   <div className="blog-slide-item">
                     <div className="xb-item--img">
                       <Link href={`/blog/${blog.slug}`}>
                         <Image
-                          src={fallbackImage}
+                          src={blog.screens || fallbackImage}
                           alt={blog.title}
                           width={1200}
                           height={600}
@@ -81,7 +142,7 @@ const BlogList = ({
                     </div>
                     <div className="xb-item--holder">
                       <Link
-                        href={`/blog/${blog.slug}`}
+                        href={buildUrl(1) + `${filter?.category ? '' : `${buildUrl(1).includes('?') ? '&' : '?'}category=${blog.category.slug || blog.category.name}`}`}
                         className="xb-item--tag"
                       >
                         {blog.category.name}
@@ -89,7 +150,9 @@ const BlogList = ({
                       <h2 className="xb-item--title border-effect">
                         <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                       </h2>
-                      <p className="xb-item--content">{blog.excerpt?.replace(/<[^>]+>/g, '')}</p>
+                      <p className="xb-item--content">
+                        {blog.excerpt?.replace(/<[^>]+>/g, '')}
+                      </p>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -97,14 +160,16 @@ const BlogList = ({
             </Swiper>
 
             {/* Custom Navigation */}
-            <div className="blog-item_button">
-              <div className="blog-swiper-btn swiper-button-prev" ref={prevRef}>
-                <Image src={iconPrev} alt="Previous" width={40} height={40} />
+            {blogs.length > 1 && (
+              <div className="blog-item_button">
+                <div className="blog-swiper-btn swiper-button-prev" ref={prevRef}>
+                  <Image src={iconPrev} alt="Previous" width={40} height={40} />
+                </div>
+                <div className="blog-swiper-btn swiper-button-next" ref={nextRef}>
+                  <Image src={iconNext} alt="Next" width={40} height={40} />
+                </div>
               </div>
-              <div className="blog-swiper-btn swiper-button-next" ref={nextRef}>
-                <Image src={iconNext} alt="Next" width={40} height={40} />
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -116,14 +181,19 @@ const BlogList = ({
             <div className="col-lg-8 mt-30">
               <div className="blog_details_content">
                 {activeFilter && (
-                  <div className="active-filter">
-                    <span>Filtered by: {activeFilter}</span>
-                    <Link href="/blog">Clear filter</Link>
+                  <div className="filter-alert d-flex align-items-center mb-4 p-3 bg-light rounded">
+                    <span className="filter-alert-text me-3">
+                      Filtered by: <strong>{activeFilter}</strong>
+                    </span>
+                    <Link href="/blog" className="filter-alert-close btn btn-sm btn-outline-secondary">
+                      Clear Filter
+                    </Link>
                   </div>
                 )}
-                {blogs.length > 0 ? (
+
+                {pagination.totalBlogs > 0 ? (
                   blogs.map((blog, index) => (
-                    <div className="blog_details_item ul_li" key={index}>
+                    <div className="blog_details_item ul_li mb-5" key={blog.slug || index}>
                       <div className="xb-item--img">
                         <Link href={`/blog/${blog.slug}`}>
                           <Image
@@ -135,57 +205,55 @@ const BlogList = ({
                         </Link>
                       </div>
                       <div className="xb-item--holder">
-                        <span className="xb-item--text">{blog.thumb}</span>
+                        {blog.thumb && (
+                          <span className="xb-item--text">{blog.thumb}</span>
+                        )}
                         <h3 className="xb-item--title border-effect">
                           <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                         </h3>
                         <p className="xb-item--content">
-                          {blog.metaDescription?.replace(/<[^>]+>/g, '')}
+                          {blog.metaDescription?.replace(/<[^>]+>/g, '') || 
+                           blog.excerpt?.replace(/<[^>]+>/g, '')}
                         </p>
                         <div className="xb-item--button mt-50">
                           <Link href={`/blog/${blog.slug}`}>
-                            Read more <i className="far fa-arrow-right"></i>
+                            Lire la suite <i className="far fa-arrow-right"></i>
                           </Link>
                         </div>
                       </div>
                     </div>
                   ))
                 ) : (
-                  <p>No blogs found</p>
+                  <div className="text-center p-5">
+                    <p className="text-muted fs-5">No blogs found</p>
+                    {activeFilter && (
+                      <Link href="/blog" className="btn btn-primary mt-3">
+                        View All Blogs
+                      </Link>
+                    )}
+                  </div>
                 )}
 
                 {/* Pagination */}
                 {pagination && pagination.totalPages > 1 && (
-                  <ul className="blog-pagination ul_li">
+                  <ul className="blog-pagination ul_li mt-5">
                     {/* First Page */}
-                    <li className={pagination.page === 1 ? 'disabled' : ''}>
+                    <li className={pagination.currentPage === 1 ? 'disabled' : ''}>
                       <Link 
-                        href={{
-                          pathname: '/blog',
-                          query: { 
-                            ...(filter?.category && { category: filter.category }),
-                            ...(filter?.tag && { tag: filter.tag }),
-                            page: 1 
-                          },
-                        }}
+                        href={buildUrl(1)}
                         aria-label="First"
+                        className={pagination.currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
                       >
                         <i className="fas fa-chevron-double-left"></i>
                       </Link>
                     </li>
 
                     {/* Previous Page */}
-                    <li className={!pagination.hasPreviousPage ? 'disabled' : ''}>
+                    <li className={!pagination.hasPrevPage ? 'disabled' : ''}>
                       <Link 
-                        href={{
-                          pathname: '/blog',
-                          query: { 
-                            ...(filter?.category && { category: filter.category }),
-                            ...(filter?.tag && { tag: filter.tag }),
-                            page: pagination.page - 1 
-                          },
-                        }}
+                        href={buildUrl(Math.max(1, pagination.currentPage - 1))}
                         aria-label="Previous"
+                        className={!pagination.hasPrevPage ? 'pointer-events-none opacity-50' : ''}
                       >
                         <i className="fas fa-chevron-left"></i>
                       </Link>
@@ -193,33 +261,23 @@ const BlogList = ({
 
                     {/* Page Numbers */}
                     {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
-                      // Calculate page numbers to show (current page in the middle when possible)
                       let pageNum;
                       if (pagination.totalPages <= 5) {
                         pageNum = i + 1;
-                      } else if (pagination.page <= 3) {
+                      } else if (pagination.currentPage <= 3) {
                         pageNum = i + 1;
-                      } else if (pagination.page > pagination.totalPages - 3) {
+                      } else if (pagination.currentPage > pagination.totalPages - 3) {
                         pageNum = pagination.totalPages - 4 + i;
                       } else {
-                        pageNum = pagination.page - 2 + i;
+                        pageNum = pagination.currentPage - 2 + i;
                       }
 
                       return (
                         <li 
                           key={pageNum} 
-                          className={pagination.page === pageNum ? 'active' : ''}
+                          className={pagination.currentPage === pageNum ? 'active' : ''}
                         >
-                          <Link 
-                            href={{
-                              pathname: '/blog',
-                              query: { 
-                                ...(filter?.category && { category: filter.category }),
-                                ...(filter?.tag && { tag: filter.tag }),
-                                page: pageNum 
-                              },
-                            }}
-                          >
+                          <Link href={buildUrl(pageNum)}>
                             {pageNum}
                           </Link>
                         </li>
@@ -229,43 +287,44 @@ const BlogList = ({
                     {/* Next Page */}
                     <li className={!pagination.hasNextPage ? 'disabled' : ''}>
                       <Link 
-                        href={{
-                          pathname: '/blog',
-                          query: { 
-                            ...(filter?.category && { category: filter.category }),
-                            ...(filter?.tag && { tag: filter.tag }),
-                            page: pagination.page + 1 
-                          },
-                        }}
+                        href={buildUrl(Math.min(pagination.totalPages, pagination.currentPage + 1))}
                         aria-label="Next"
+                        className={!pagination.hasNextPage ? 'pointer-events-none opacity-50' : ''}
                       >
                         <i className="fas fa-chevron-right"></i>
                       </Link>
                     </li>
 
                     {/* Last Page */}
-                    <li className={pagination.page === pagination.totalPages ? 'disabled' : ''}>
+                    <li className={pagination.currentPage === pagination.totalPages ? 'disabled' : ''}>
                       <Link 
-                        href={{
-                          pathname: '/blog',
-                          query: { 
-                            ...(filter?.category && { category: filter.category }),
-                            ...(filter?.tag && { tag: filter.tag }),
-                            page: pagination.totalPages 
-                          },
-                        }}
+                        href={buildUrl(pagination.totalPages)}
                         aria-label="Last"
+                        className={pagination.currentPage === pagination.totalPages ? 'pointer-events-none opacity-50' : ''}
                       >
                         <i className="fas fa-chevron-double-right"></i>
                       </Link>
                     </li>
                   </ul>
                 )}
+
+                {/* Pagination Info */}
+                {pagination && pagination.totalPages > 1 && (
+                  <div className="text-center mt-3 text-muted">
+                    Page {pagination.currentPage} of {pagination.totalPages} 
+                    {' '}({pagination.totalBlogs} total posts)
+                  </div>
+                )}
               </div>
             </div>
 
             {/* Blog Sidebar */}
-            <BlogSidebar categories={categories} tags={tags} />
+            <BlogSidebar 
+              categories={categories} 
+              tags={tags}
+              // currentCategory={filter?.category}
+              // currentTag={filter?.tag}
+            />
           </div>
         </div>
       </section>

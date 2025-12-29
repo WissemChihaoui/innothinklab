@@ -36,50 +36,50 @@ const testimonial: TestimonialItem[] = [
     id: '01',
     tImg: tImg1,
     logo: icon1,
-    Des: "Working with Innomax was fantastic! Their strategies  improved our rankings and increased leads.",
-    Name: 'Christopher Smith',
-    sub: 'Brand Strat at near',
-    country: 'Seattle, Ukraine',
+    Des: "Approche sur mesure qui a boosté notre visibilité en ligne.",
+    Name: 'Thomas M.',
+    sub: 'Marketing, Paris',
+    country: 'France',
   },
   {
     id: '02',
     tImg: tImg2,
     logo: icon2,
-    Des: "Innomax exceeded all our expectations! Their expertise in SEO helped us achieve a remarkable 150%",
-    Name: 'Sarah Davis',
-    sub: 'Branding at spinlet',
+    Des: "Application mobile intuitive qui a dépassé nos attentes.",
+    Name: 'Sophie D.',
+    sub: 'CEO Mode & Style',
   },
   {
     id: '03',
     tImg: tImg3,
     logo: icon3,
-    Des: "Choosing Innomax was a great decision. Their focus on trends helped us rank for competitive keywords, our success!",
-    Name: 'Robert Miller',
-    sub: 'Marketing Dir. at BUSD',
+    Des: "Plateforme e-commerce modernisée avec des résultats impressionnants.",
+    Name: 'Julien L.',
+    sub: 'E-commerce',
   },
   {
     id: '04',
     tImg: tImg4,
     logo: icon4,
-    Des: "Since partnering with Innomax, our website's performance has improved remarkably. Their data-driven approach and top-notch!",
-    Name: 'Jessica Martinez',
-    sub: 'Project Manager at Kuda',
+    Des: "Solution sur mesure livrée dans les délais.",
+    Name: 'Amélie P.',
+    sub: 'Projet IT',
   },
   {
     id: '05',
     tImg: tImg3,
     logo: icon5,
-    Des: "Since partnering with Innomax, our website's performance has improved remarkably. Their data-driven approach and top-notch!",
-    Name: 'Jessica Martinez',
-    sub: 'Project Manager at Kuda',
+    Des: "+200% de trafic en 6 mois grâce à leur SEO.",
+    Name: 'Nicolas B.',
+    sub: 'Digital',
   },
   {
     id: '06',
     tImg: tImg2,
     logo: icon2,
-    Des: "Innomax exceeded all our expectations! Their expertise in SEO helped us achieve a remarkable 150%",
-    Name: 'Sarah Davis',
-    sub: 'Branding at spinlet',
+    Des: "Équipe réactive, solution qui a révolutionné notre travail.",
+    Name: 'Laura M.',
+    sub: 'Projet Web',
   },
 ];
 
@@ -109,13 +109,13 @@ const Testimonial: React.FC<TestimonialProps> = ({ tClass = '' }) => {
             <Fade direction='down' triggerOnce={false} duration={1000} delay={9}>
               <div>
                 <div className="sub-title wow fadeInDown" data-wow-duration="600ms">
-                  <Image src={hicon} alt="Like icon" />99% positive feedback
+                  <Image src={hicon} alt="Icône avis" />99% de satisfaction client
                 </div>
               </div>
             </Fade>
             <Fade direction='up' triggerOnce={false} duration={1200} delay={9}>
               <div>
-                <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">Feedback That Speaks</h2>
+                <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">Ce que disent nos clients</h2>
               </div>
             </Fade>
           </div>

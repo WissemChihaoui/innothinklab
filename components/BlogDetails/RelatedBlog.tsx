@@ -23,13 +23,13 @@ const RelatedBlog: FC<RelatedBlogProps> = ({ related }) => {
             <div className="blog-details_item">
               <div className="xb-item--img">
                 <Link href={`/blog/${blog.slug}`}>
-                  <Image 
+                  {/* <Image 
                     src={blog.screens} 
                     alt={blog.title} 
                     width={400}
                     height={250}
                     style={{ objectFit: 'cover' }}
-                  />
+                  /> */}
                 </Link>
               </div>
               <div className="xb-item--holder">

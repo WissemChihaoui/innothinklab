@@ -16,26 +16,26 @@ interface Feature {
 const features: Feature[] = [
   {
     icon: sIcon1,
-    title: 'Deliver results',
-    content: 'At Innomax, delivering results means achieving success.',
+    title: 'Résultats Garantis',
+    content: 'Des solutions numériques qui répondent à vos objectifs.',
     delay: '0ms',
   },
   {
     icon: sIcon2,
-    title: 'Being proactive',
-    content: 'At Innomax, being proactive means anticipating challenges.',
+    title: 'Approche Proactive',
+    content: 'Anticipons ensemble les défis de votre projet.',
     delay: '100ms',
   },
   {
     icon: sIcon3,
-    title: 'Sustainable Growth',
-    content: 'Sustainable growth means achieving long-term success.',
+    title: 'Croissance Durable',
+    content: 'Développement de solutions pérennes pour votre entreprise.',
     delay: '200ms',
   },
   {
     icon: sIcon4,
-    title: 'Maximize Speed',
-    content: 'We focus on delivering quick and efficient solutions.',
+    title: 'Innovation Continue',
+    content: 'Des technologies de pointe pour des résultats rapides.',
     delay: '300ms',
   },
 ];

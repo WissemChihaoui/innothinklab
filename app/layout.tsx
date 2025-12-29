@@ -31,24 +31,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // additionalMetaTags: [
-  //   {
-  //     name: "twitter:card",
-  //     content: "summary_large_image",
-  //   },
-  //   {
-  //     name: "twitter:title",
-  //     content: "InnoThinkLab - Création de sites web, SEO & Marketing",
-  //   },
-  //   {
-  //     name: "twitter:description",
-  //     content: "Optimisez votre présence en ligne avec nos services de création de sites web, développement mobile, développement de site web personnalisé, marketing en ligne et référencement. Notre équipe de specialiste en SEO vous offre des solutions professionnelles, performantes et de haute qualité. Nous vous aidons à développer votre visibilité en ligne, à augmenter votre trafic organique et à améliorer votre conversion.",
-  //   },
-  //   {
-  //     name: "twitter:image",
-  //     content: "https://innothinklab.com/images/logo.png",
-  //   },
-  // ],
 };
 
 export default function RootLayout({

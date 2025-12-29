@@ -30,14 +30,14 @@ const PrivacyPage: React.FC = () => {
                 <div className="col-lg-8 mt-30">
                   <div className="page-title-box">
                     <span className="sub-title">
-                      <Image src={icon} alt="Privacy Icon" /> Privacy Policy
+                      <Image src={icon} alt="Icône Confidentialité" /> Politique de Confidentialité
                     </span>
                     <h2 className="title">
-                      Innomax website privacy <br />
-                      policy your access and <br />
-                      usage rights
+                      Politique de confidentialité du site web <br />
+                      InnoThinkLab et vos droits <br />
+                      d'accès et d'utilisation
                     </h2>
-                    <span className="page-update_time">Updated on : December 10th, 2024</span>
+                    <span className="page-update_time">Mis à jour le : 29 décembre 2025</span>
                   </div>
                 </div>
                 <div className="col-lg-4 mt-30">
@@ -72,68 +72,68 @@ const PrivacyPage: React.FC = () => {
                 <div className="col-lg-11">
                   {[
                     {
-                      title: 'Data controller and data collection',
+                      title: 'Contrôleur de données et collecte de données',
                       content: [
-                        'Innomax is committed to safeguarding your privacy...',
-                        'Certain types of data may be necessary to access and utilize specific features...',
+                        'InnoThinkLab s\'engage à protéger votre vie privée...',
+                        'Certains types de données peuvent être nécessaires pour accéder et utiliser des fonctionnalités spécifiques...',
                       ],
                     },
                     {
-                      title: 'User responsibilities',
+                      title: 'Responsabilités de l\'utilisateur',
                       content: [
-                        'Users are responsible for any third-party data shared via the Innomax website...',
+                        'Les utilisateurs sont responsables des données tierces partagées via le site web InnoThinkLab...',
                       ],
                     },
                     {
-                      title: 'Data processing and security',
+                      title: 'Traitement et sécurité des données',
                       content: [
-                        'Data is processed using secure IT systems at Innomax’s operational offices...',
+                        'Les données sont traitées à l\'aide de systèmes IT sécurisés dans les bureaux opérationnels d\'InnoThinkLab...',
                       ],
                     },
                     {
-                      title: 'Data storage and retention',
+                      title: 'Stockage et conservation des données',
                       content: [
-                        'Personal data is retained only for as long as necessary...',
+                        'Les données personnelles ne sont conservées que le temps nécessaire...',
                       ],
                     },
                     {
-                      title: 'Legal action',
+                      title: 'Action légale',
                       content: [
-                        'Innomax may disclose personal data to comply with legal obligations...',
+                        'InnoThinkLab peut divulguer des données personnelles pour se conformer aux obligations légales...',
                       ],
                     },
                     {
-                      title: 'User rights',
+                      title: 'Droits de l\'utilisateur',
                       content: [
-                        'Users have the right to access, update, or delete their personal data...',
+                        'Les utilisateurs ont le droit d\'accéder, de mettre à jour ou de supprimer leurs données personnelles...',
                       ],
                       list: [
-                        'Users can request information about the personal data Innomax holds.',
-                        'Correct any inaccurate or incomplete data.',
-                        'Request the deletion of their data when it’s no longer needed.',
-                        'Request their data in a transferable format.',
-                        'Limit the processing of their data in certain situations.',
-                        'Object to the processing of their data for direct marketing or legitimate interests.',
-                        'Withdraw consent for data processing at any time.',
-                        'File a complaint with a supervisory authority if they feel their rights are violated.',
+                        'Les utilisateurs peuvent demander des informations sur les données personnelles détenues par InnoThinkLab.',
+                        'Corriger toute donnée inexacte ou incomplète.',
+                        'Demander la suppression de leurs données lorsqu\'elles ne sont plus nécessaires.',
+                        'Demander leurs données dans un format transférable.',
+                        'Limiter le traitement de leurs données dans certaines situations.',
+                        'S\'opposer au traitement de leurs données à des fins de marketing direct ou d\'intérêts légitimes.',
+                        'Retirer le consentement au traitement des données à tout moment.',
+                        'Déposer une plainte auprès d\'une autorité de contrôle s\'ils estiment que leurs droits sont violés.',
                       ],
                     },
                     {
-                      title: "'Do not track' requests",
+                      title: "Demandes 'Ne pas suivre'",
                       content: [
-                        'Innomax does not currently support “Do Not Track” requests...',
+                        'InnoThinkLab ne prend actuellement pas en charge les demandes "Ne pas suivre"...',
                       ],
                     },
                     {
-                      title: 'Policy updates',
+                      title: 'Mises à jour de la politique',
                       content: [
-                        'Innomax may update this Privacy Policy periodically...',
+                        'InnoThinkLab peut mettre à jour cette Politique de Confidentialité périodiquement...',
                       ],
                     },
                     {
-                      title: 'Retargeting and ad cookies',
+                      title: 'Retargeting et cookies publicitaires',
                       content: [
-                        'Innomax uses cookies for advertising purposes through partners like AdRoll...',
+                        'InnoThinkLab utilise des cookies à des fins publicitaires via des partenaires comme AdRoll...',
                       ],
                     },
                   ].map((section, i) => (
@@ -156,10 +156,10 @@ const PrivacyPage: React.FC = () => {
                     <h2 className="item_details_info_title">Contact</h2>
                     <p>
                       <Link href="/contact" className="details-link">
-                        Click here
+                        Cliquez ici
                       </Link>{' '}
-                      to contact us regarding this Privacy Policy or other related issues. You can also send us an e-mail on:{' '}
-                      <a href="mailto:contact@innomax.com">contact@innomax.com</a>
+                      pour nous contacter concernant cette Politique de Confidentialité ou d'autres questions connexes. Vous pouvez également nous envoyer un e-mail à :{' '}
+                      <a href="mailto:contact@innothinklab.com">contact@innothinklab.com</a>
                     </p>
                   </div>
                 </div>

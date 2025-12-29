@@ -1,7 +1,7 @@
 // app/api/generate-blog/route.ts
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import dbConnect from "@/lib/dbConnect";
+import {getDatabase} from "@/lib/dbConnect";
 import BlogPost from "@/models/BlogPost";
 import Category from "@/models/Category";
 import Tag from "@/models/Tag";
@@ -179,7 +179,7 @@ async function generateTitle(
 // Function to generate a blog post
 export async function POST(request: Request) {
   try {
-    await dbConnect();
+    await getDatabase();
 
     // Get existing categories or create default ones
     let categories = await Category.find();
