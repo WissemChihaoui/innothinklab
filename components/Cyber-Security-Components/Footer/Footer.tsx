@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                 {Services.slice(14, 18).map((service, index) => (
                   <li key={index} className="xb-item--list">
                     {service.title ? (
-                      <Link href={'/service-single'}>
+                      <Link href={`/service/${service.slug}`}>
                         {service.title}
                       </Link>
                     ) : null}

@@ -18,28 +18,28 @@ const MegaMenu2 = () => {
                         <div className="megamenu_widget">
                           <ul className="icon_list unordered_list_block">
                             <li>
-                              <Link href="/service-single">
+                              <Link href="/service/web">
                                 <span className="icon_list_text">
                                   Développement Web
                                 </span>
                               </Link>
                             </li>
                             <li>
-                              <Link href="/service-single">
+                              <Link href="/service/mobile">
                                 <span className="icon_list_text">
                                   Développement Mobile
                                 </span>
                               </Link>
                             </li>
                             <li>
-                              <Link href="/service-single">
+                              <Link href="/service/customized">
                                 <span className="icon_list_text">
                                   Développement Personnalisé
                                 </span>
                               </Link>
                             </li>
                             <li>
-                              <Link href="/service-single">
+                              <Link href="/service/seo">
                                 <span className="icon_list_text">SEO</span>
                               </Link>
                             </li>
@@ -50,21 +50,21 @@ const MegaMenu2 = () => {
                         <div className="megamenu_widget">
                           <ul className="icon_list unordered_list_block">
                             <li>
-                              <Link href="/service-single">
+                              <Link href="/service/marketing">
                                 <span className="icon_list_text">
                                   Marketing
                                 </span>
                               </Link>
                             </li>
                             <li>
-                              <Link href="/service-single">
+                              <Link href="/service/content">
                                 <span className="icon_list_text">
                                   Création de contenu
                                 </span>
                               </Link>
                             </li>
                             <li>
-                              <Link href="/service-single">
+                              <Link href="/service/hosting">
                                 <span className="icon_list_text">
                                   Hébergement
                                 </span>

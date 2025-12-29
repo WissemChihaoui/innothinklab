@@ -104,7 +104,7 @@ const Footer: React.FC<FooterProps> = () => {
                 {Services.slice(0, 6).map((service, index) => (
                   <li key={index} className="xb-item--list">
                     {service.title && (
-                      <Link href={'/service-single'}>
+                      <Link href={`/service/${service.slug}`}>
                         <span className="icon_list_text">{service.title}</span>
                       </Link>
                     )}

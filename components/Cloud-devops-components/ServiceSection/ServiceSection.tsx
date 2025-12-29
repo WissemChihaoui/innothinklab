@@ -63,7 +63,7 @@ const ServiceSection: React.FC = () => {
                   <span></span>
                 </div>
                 <Link
-                  href="/service-single"
+                  href={`/service/${service.slug}`}
                   className="xb-overlay"
                   aria-label={`Read more about ${service.title}`}
                 />

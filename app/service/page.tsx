@@ -47,14 +47,14 @@ const ServicePage: React.FC = () => {
                     </h2>
                   </div>
                 </div>
-                <div className="col-lg-3 mt-30">
+                {/* <div className="col-lg-3 mt-30">
                   <div className="count-box">
                     <h2 className="number">09</h2>
                     <span className="text">
                       Professional top <br /> services
                     </span>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ const ServicePage: React.FC = () => {
                             />
                           </div>
                           <Link
-                            href="/service-single"
+                            href={`/service/${service.slug}`}
                             className="xb-item--arrow"
                             aria-label={`Read more about ${service.title}`}
                           >
@@ -93,7 +93,7 @@ const ServicePage: React.FC = () => {
                           </Link>
                         </div>
                         <Link
-                          href="/service-single"
+                          href={`/service/${service.slug}`}
                           className="xb-overlay"
                           aria-label={`Navigate to ${service.title} service page`}
                         />
@@ -111,7 +111,7 @@ const ServicePage: React.FC = () => {
               data-wow-duration="600ms"
             >
               <Link href="/contact" className="thm-btn thm-btn--aso thm-btn--aso_yellow">
-                Book a free consultation
+                Contactez-nous
               </Link>
             </div>
           </div>
