@@ -2,10 +2,7 @@
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import {getDatabase} from "@/lib/dbConnect";
-import BlogPost from "@/models/BlogPost";
-import Category from "@/models/Category";
-import Tag from "@/models/Tag";
-import User from "@/models/User";
+import { getAllCategories, getAllTags, createBlog } from "@/lib/blogServices";
 
 // Initialize Google's Generative AI
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || "");
@@ -25,8 +22,7 @@ async function generateBlogContent(
 ): Promise<NextResponse> {
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
-  const prompt = `Write a detailed, professional blog post about "${topic}" in the ${category} category.
-  
+  const prompt = `Write a detailed, professional blog post about "${topic}" in the ${category} category.  
 Requirements:
 - Language: French
 - Word count: 400-600 words
@@ -39,7 +35,6 @@ Requirements:
       - <h3> for subsection headings
       - <p> for paragraphs
       - <ul><li> for lists
-      - <pre><code> for code blocks
       - <strong> for important terms
       - <a> for links (when applicable)
     ",
@@ -56,10 +51,16 @@ Requirements:
 - Make it engaging and informative for professionals
 - Include up-to-date information (2025)
 - Tags to consider: ${tags.join(", ")}
-- Avoid markdown formatting, use HTML tags as specified
 - Keep paragraphs concise (3-4 sentences max)
 - Use active voice and professional tone
 - Include relevant statistics or data where applicable
+- CRITICAL HTML FORMATTING:
+  * DO NOT escape HTML characters (use < > not &lt; &gt;)
+  * Use actual HTML tags, not escaped entities
+  * DO NOT use HTML entities like &lt; &gt; &amp;
+  * NO code blocks or <pre><code> tags
+- Return ONLY a valid JSON object, no additional text or explanations
+- Do NOT wrap in markdown code blocks
 
 Example structure for content:
 <p>Introduction paragraph...</p>
@@ -68,9 +69,9 @@ Example structure for content:
 <h3>Subsection 1.1</h3>
 <p>More details...</p>
 <ul><li>Point 1</li><li>Point 2</li></ul>
-<pre><code>// Example code if relevant</code></pre>
 <h2>Conclusion</h2>
 <p>Summary and final thoughts...</p>`;
+
   try {
     const result = await model.generateContent(prompt);
     const response = await result.response;
@@ -81,7 +82,37 @@ Example structure for content:
       responseText = responseText.replace(/^```json\n|\n```$/g, '');
     }
     
-    const blogContent = JSON.parse(responseText);
+    // Clean up control characters and invalid JSON
+    responseText = responseText
+      .replace(/[\u0000-\u001F\u007F-\u009F]/g, '') // Remove control characters
+      .replace(/\\n/g, '\\\\n') // Escape newlines
+      .replace(/\\t/g, '\\\\t') // Escape tabs
+      .replace(/\\"/g, '\\"') // Fix escaped quotes
+      .trim();
+    
+    console.log("🔍 Cleaned response text:", responseText.substring(0, 200) + "...");
+    
+    let blogContent;
+    try {
+      blogContent = JSON.parse(responseText);
+    } catch (parseError) {
+      console.error("❌ JSON parsing failed, attempting manual extraction...");
+      
+      // Fallback: try to extract content manually
+      const titleMatch = responseText.match(/"title"\s*:\s*"([^"]+)"/);
+      const excerptMatch = responseText.match(/"excerpt"\s*:\s*"([^"]+)"/);
+      const contentMatch = responseText.match(/"content"\s*:\s*"([^"]+)"/);
+      
+      blogContent = {
+        title: titleMatch ? titleMatch[1] : "Generated Blog Post",
+        excerpt: excerptMatch ? excerptMatch[1] : "Generated blog content",
+        content: contentMatch ? contentMatch[1] : "<p>Generated content could not be parsed properly.</p>",
+        seo: {
+          metaDescription: excerptMatch ? excerptMatch[1] : "Generated blog content",
+          keywords: ["AI", "Technology", "Development"]
+        }
+      };
+    }
 
     // Clean up any markdown that might have slipped through
     const cleanHtml = (html: string) => {
@@ -182,12 +213,12 @@ export async function POST(request: Request) {
     await getDatabase();
 
     // Get existing categories or create default ones
-    let categories = await Category.find();
+    let categories = await getAllCategories();
 
     if (categories.length === 0) {
       const defaultCategories = [
         {
-          name: "Dévéloppement Web",
+          name: "Développement Web",
           description: "Création de sites web et applications web",
         },
         {
@@ -216,18 +247,7 @@ export async function POST(request: Request) {
         },
       ];
 
-      categories = await Promise.all(
-        defaultCategories.map((cat) =>
-          Category.create({
-            name: cat.name,
-            slug: cat.name
-              .toLowerCase()
-              .replace(/[^\w ]+/g, "")
-              .replace(/ +/g, "-"),
-            description: cat.description,
-          })
-        )
-      );
+      categories = defaultCategories;
     }
 
     // Select a random category
@@ -245,22 +265,6 @@ export async function POST(request: Request) {
     ];
     const shuffledTags = tagNames.sort(() => 0.5 - Math.random()).slice(0, 4);
 
-    const tags = await Promise.all(
-      shuffledTags.map(async (name) => {
-        let tag = await Tag.findOne({ name });
-        if (!tag) {
-          tag = await Tag.create({
-            name,
-            slug: name
-              .toLowerCase()
-              .replace(/[^\w ]+/g, "")
-              .replace(/ +/g, "-"),
-          });
-        }
-        return tag._id;
-      })
-    );
-
     console.log(`🎯 Category: ${randomCategory.name}`);
 
     // Generate title with retry logic
@@ -273,12 +277,12 @@ export async function POST(request: Request) {
     // Generate the blog content with retry logic
     console.log("🤖 Generating content...");
     const response = await generateBlogContent(
-  randomCategory.name,
-  randomCategory.name,
-  shuffledTags
-);
-const contentData = await response.json();
-const content = contentData.content;
+      randomCategory.name,
+      randomCategory.name,
+      shuffledTags
+    );
+    const contentData = await response.json();
+    const content = contentData.content;
 
     // Generate excerpt
     const plainTextContent = content
@@ -296,36 +300,74 @@ const content = contentData.content;
       .replace(/[éèà]/g, (match) => match.charCodeAt(0) === 233 ? "e" : "a") // Replace é, è, à with e or a
       .replace(/\s+/g, "-") // Replace spaces with -
       .replace(/-+/g, "-"); // Remove multiple -
-    // Create and save the blog post
-    const blogPost = new BlogPost({
+
+    // Generate reading time (rough estimate: words per minute)
+    const wordCount = plainTextContent.split(/\s+/).length;
+    const readingTime = Math.ceil(wordCount / 200); // Assume 200 words per minute
+
+    // Get real category ID from database
+    const db = await getDatabase();
+    const existingCategories = await db.collection('categories').find({}).toArray();
+    
+    const categoryFromDb = existingCategories.find(c => c.name === randomCategory.name);
+    const categoryId = categoryFromDb ? categoryFromDb._id : randomCategory._id || randomCategory.id;
+    
+    // Get real tag IDs from database or create them
+    const existingTags = await db.collection('tags').find({}).toArray();
+    
+    const tagIds = await Promise.all(shuffledTags.map(async (tagName) => {
+      const existingTag = existingTags.find(t => t.name === tagName);
+      if (existingTag) {
+        return existingTag._id;
+      } else {
+        // Create new tag if it doesn't exist
+        const newTag = {
+          name: tagName,
+          slug: tagName
+            .toLowerCase()
+            .replace(/[^\w ]+/g, "")
+            .replace(/ +/g, "-"),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+        const result = await db.collection('tags').insertOne(newTag);
+        return result.insertedId;
+      }
+    }));
+
+    // Create blog post object and save to database
+    const blogPostData = {
       title,
       slug,
       content,
       excerpt,
-      category: randomCategory._id,
-      tags,
+      category: categoryId,
+      tags: tagIds,
       published: true,
       status: "published",
       metaTitle: title,
       metaDescription: excerpt,
       seoKeywords: shuffledTags,
-    });
+      readingTime,
+    };
 
-    await blogPost.save();
+    // Save the blog post to database
+    const savedBlogPost = await createBlog(blogPostData);
 
-    console.log(`✅ Blog post created: ${blogPost.slug}`);
+    console.log(`✅ Blog post created and saved: ${savedBlogPost.slug}`);
 
     return NextResponse.json({
       success: true,
-      message: "Blog post generated successfully",
+      message: "Blog post generated and saved successfully",
       data: {
-        id: blogPost._id,
-        title: blogPost.title,
-        slug: blogPost.slug,
+        id: savedBlogPost._id,
+        title: savedBlogPost.title,
+        slug: savedBlogPost.slug,
         category: randomCategory.name,
         tags: shuffledTags,
-        readingTime: blogPost.readingTime,
+        readingTime: savedBlogPost.readingTime,
         excerpt: excerpt.substring(0, 100) + "...",
+        content: savedBlogPost.content,
       },
     });
   } catch (error) {

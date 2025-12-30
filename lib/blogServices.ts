@@ -228,7 +228,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogWithRelations | n
     const relatedByCategoryResult = await db
       .collection('blogposts')
       .aggregate<BlogWithCategoryAndTags>([
-        { $match: { slug: { $ne: slug }, category: blog.category._id } },
+        { $match: { slug: { $ne: slug }, category: blog.category?._id || blog.category } },
         {
           $lookup: {
             from: 'categories',
@@ -345,6 +345,43 @@ export async function getBlogBySlug(slug: string): Promise<BlogWithRelations | n
   } catch (error) {
     console.error('Error fetching blog by slug:', error);
     throw new Error('Failed to fetch blog');
+  }
+}
+
+export async function createBlog(blogData: {
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  category: any; // ObjectId
+  tags: any[]; // ObjectId[]
+  published: boolean;
+  status: string;
+  metaTitle: string;
+  metaDescription: string;
+  seoKeywords: string[];
+  readingTime?: number;
+}): Promise<any> {
+  try {
+    const db = await getDatabase();
+    
+    const blogPost = {
+      ...blogData,
+      likes: 0,
+      views: 0,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    const result = await db.collection('blogposts').insertOne(blogPost);
+    
+    return {
+      _id: result.insertedId,
+      ...blogPost,
+    };
+  } catch (error) {
+    console.error('Error creating blog post:', error);
+    throw new Error('Failed to create blog post');
   }
 }
 

@@ -142,10 +142,10 @@ const BlogList = ({
                     </div>
                     <div className="xb-item--holder">
                       <Link
-                        href={buildUrl(1) + `${filter?.category ? '' : `${buildUrl(1).includes('?') ? '&' : '?'}category=${blog.category.slug || blog.category.name}`}`}
+                        href={buildUrl(1) + `${filter?.category ? '' : `${buildUrl(1).includes('?') ? '&' : '?'}category=${blog.category?.slug || blog.category?.name}`}`}
                         className="xb-item--tag"
                       >
-                        {blog.category.name}
+                        {blog.category?.name}
                       </Link>
                       <h2 className="xb-item--title border-effect">
                         <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>

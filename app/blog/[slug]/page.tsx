@@ -81,6 +81,8 @@ export default async function BlogDetailsPage({
     updatedAt: tag.updatedAt instanceof Date ? tag.updatedAt.toISOString() : tag.updatedAt,
   }));
 
+  console.log(serializedBlog)
+
   return (
     <Fragment>
       <Header />
