@@ -71,7 +71,6 @@ export default async function BlogPage({ searchParams }: HomePageProps) {
         updatedAt: tag.updatedAt instanceof Date ? tag.updatedAt.toISOString() : tag.updatedAt,
     }));
 
-    console.log(result)
 
     return (
         <Fragment>

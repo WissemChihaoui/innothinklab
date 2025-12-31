@@ -45,14 +45,14 @@ async function generateBlogPost() {
 }
 
 export function initCronJobs() {
-  // Run once a day at 9:00 AM (safe for free tier)
-  cron.schedule('0 9 * * *', () => {
+  // Run once a day at 13:35 (1:35 PM)
+  cron.schedule('35 13 * * *', () => {
     console.log('📅 Scheduled blog generation started');
     generateBlogPost();
   });
 
   console.log('⏰ Cron jobs initialized');
-  console.log('   - Daily blog generation at 9:00 AM');
+  console.log('   - Daily blog generation at 13:35 (1:35 PM)');
   console.log('   - Rate limit: 15 requests per minute');
 }
 

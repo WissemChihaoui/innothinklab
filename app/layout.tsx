@@ -8,7 +8,7 @@ import "../styles/animate.css";
 import "../styles/cursor.css";
 import "../styles/custom-font.css";
 import "../styles/main.css";
-import { startScheduler } from "@/lib/scheduler";
+import { initCronJobs } from "@/lib/cronJobs";
 
 export const metadata: Metadata = {
   title: "InnoThinkLab - Création de sites web, SEO & Marketing",
@@ -38,9 +38,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  if (process.env.NODE_ENV === "development") {
-    startScheduler();
-  }
+  // Always initialize scheduler in both development and production
+  
+    initCronJobs();
+  
+
   return (
     <html lang="en">
       <head>
