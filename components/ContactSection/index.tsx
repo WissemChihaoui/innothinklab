@@ -26,10 +26,10 @@ const ContactSection: React.FC = () => {
                   <div className="xb-item--top">
                     <h3 className="xb-item--title">Contact Info</h3>
                     <span className="xb-item--hotline">
-                      <Image src={icon1} alt="Phone" /> +(1) 1230 452 8597
+                      <Image src={icon1} alt="Phone" /> +216 99 310 778
                     </span>
                     <span className="xb-item--email">
-                      <Image src={icon2} alt="Email" /> innomax@example.com
+                      <Image src={icon2} alt="Email" /> innothinklab@gmail.com
                     </span>
                     <ul className="social_icons_block list-unstyled ul_li">
                       <li>
@@ -62,28 +62,29 @@ const ContactSection: React.FC = () => {
                   </div>
 
                   <div className="contact-info_widget">
-                    <h3 className="xb-title">United States Office</h3>
+                    <h3 className="xb-title">Notre Siège</h3>
                     <span className="xb-location">
-                      Sunshine Example Park, Floor <br />
-                      No 05A, Sector-94,
+                      5 eme étage, Place F.Hached <br />
+                      Immeuble Hadrumet, Sousse 4000
                     </span>
                   </div>
 
                   <div className="contact-info_widget">
-                    <h3 className="xb-title">United Kingdom Office</h3>
+                    <h3 className="xb-title">Contact</h3>
                     <span className="xb-location">
-                      12 Buckingham Rd, Example <br />
-                      Thwaite, HG3 4TY, UK
+                      Email: Contact@thinklab.tn <br />
+                      Téléphone: +216 99 310 778
                     </span>
                   </div>
 
                   <hr className="breack-line" />
 
                   <div className="contact-info_widget">
-                    <h3 className="xb-title">Our Office Hours</h3>
+                    <h3 className="xb-title">Heures d'Ouverture</h3>
                     <span className="xb-location">
-                      Mon - Sat: 8.00 - 5.00 <br />
-                      Sunday: Closed
+                      Lun - Ven: 9.00 - 18.00 <br />
+                      Samedi: 9.00 - 13.00 <br />
+                      Dimanche: Fermé
                     </span>
                   </div>
                 </div>
@@ -96,7 +97,7 @@ const ContactSection: React.FC = () => {
       <div className="gmap_canvas bg-light">
         <iframe
           title="Google Map"
-          src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001.595917970317!2d10.6420461!3d35.828451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13027500283a39f1%3A0xce0188dccd4dd376!2sArmstrong+Hall!5e0!3m2!1sfr!2sfr!4v1688051830165!5m2!1sfr!2sfr"
           width="100%"
           height="400"
           style={{ border: 0 }}

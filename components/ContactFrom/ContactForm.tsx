@@ -46,7 +46,7 @@ const ContactForm: React.FC = () => {
 
     if (validator.current.allValid()) {
       validator.current.hideMessages();
-      alert('Form submitted successfully!'); // You can replace this with actual logic
+      alert('Formulaire soumis avec succès!'); // You can replace this with actual logic
 
       setForms({
         name: '',
@@ -67,7 +67,7 @@ const ContactForm: React.FC = () => {
       <div className="row">
         <div className="col-lg-6">
           <div className="input-field">
-            <label htmlFor="name">Name*</label>
+            <label htmlFor="name">Nom*</label>
             <div className="input-box">
               <input
                 value={forms.name}
@@ -103,7 +103,7 @@ const ContactForm: React.FC = () => {
 
         <div className="col-lg-12">
           <div className="input-field">
-            <label htmlFor="phone">Phone*</label>
+            <label htmlFor="phone">Téléphone*</label>
             <div className="input-box">
               <input
                 value={forms.phone}
@@ -128,7 +128,7 @@ const ContactForm: React.FC = () => {
                 name="message"
                 id="message"
                 className="form-control"
-                placeholder="How can we help you?"
+                placeholder="Comment pouvons-nous vous aider?"
                 onChange={changeHandler}
                 onBlur={changeHandler}
               ></textarea>
@@ -140,7 +140,7 @@ const ContactForm: React.FC = () => {
 
       <div className="cp-det-btn mt-20 d-grid">
         <button className="cp-btn" type="submit">
-          Send us a message <i className="fal fa-arrow-right"></i>
+          Envoyez-nous un message <i className="fal fa-arrow-right"></i>
         </button>
       </div>
     </form>

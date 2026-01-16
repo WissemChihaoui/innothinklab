@@ -26,31 +26,69 @@ const ContactPage: React.FC = () => {
                 <div className="col-lg-9 mt-30">
                   <div className="page-title-box">
                     <span className="sub-title">
-                      <Image src={icon} alt="Contact Icon" /> Contact us
+                      <Image src={icon} alt="Contact Icon" /> Contactez-nous
                     </span>
                     <h2 className="title">
-                      Connect with our team for <br />
-                      innovative solutions and <br />
-                      your digital success
+                      Contactez notre équipe pour des <br />
+                      solutions innovantes et <br />
+                      votre succès numérique
                     </h2>
                   </div>
                 </div>
                 <div className="col-lg-3 mt-30">
-                  <div className="sd-right-img pos-rel">
-                    <Image src={bImg1} alt="Contact Illustration" />
-                    <div className="sd-arrow-shape style-3">
-                      <Image className="xbzoominzoomup" src={bImg2} alt="Arrow Decoration" />
-                    </div>
+                  <div className="page-title-img">
+                    <Image src={bImg1} alt="Contact" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div className="page-shape">
+            <div className="shape shape--one">
+              <Image src={bImg2} alt="Shape" />
+            </div>
+          </div>
         </section>
+
+        {/* Contact Information Section */}
+        <section className="contact-info-section pt-130 pb-100">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-lg-4 col-md-6 mb-30">
+                <div className="contact-info-item text-center">
+                  <div className="contact-icon">
+                    <i className="fas fa-envelope"></i>
+                  </div>
+                  <h4>Email</h4>
+                  <p>Contact@thinklab.tn</p>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6 mb-30">
+                <div className="contact-info-item text-center">
+                  <div className="contact-icon">
+                    <i className="fas fa-phone"></i>
+                  </div>
+                  <h4>Téléphone</h4>
+                  <p>+216 99 310 778</p>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6 mb-30">
+                <div className="contact-info-item text-center">
+                  <div className="contact-icon">
+                    <i className="fas fa-map-marker-alt"></i>
+                  </div>
+                  <h4>Adresse</h4>
+                  <p>5 eme étage, Place F.Hached,<br />Immeuble Hadrumet, Sousse 4000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <ContactSection />
         <CtaSection />
+        <Footer />
       </div>
-      <Footer />
       <Scrollbar />
     </>
   );
