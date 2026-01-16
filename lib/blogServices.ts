@@ -2,6 +2,7 @@ import { getDatabase } from './dbConnect';
 import { IBlogPost } from '../models/BlogPost';
 import { ITag } from '@/models/Tag';
 import { ICategory } from '@/models/Category';
+import { getCategoryBySlugOrName, getTagBySlugOrName, isValidObjectId } from './blogUtils';
 
 export interface BlogWithCategoryAndTags {
   _id: any;
@@ -71,14 +72,54 @@ export async function getAllBlogs(filters: BlogFilters = {}): Promise<PaginatedB
     const skip = (page - 1) * limit;
 
     // Build match stage based on filters
-    const matchStage: any = {};
+    const matchStage: any = { published: true, status: 'published' };
     
     if (filters.category) {
-      matchStage.category = filters.category;
+      // Handle both ObjectId and slug/name filtering
+      if (isValidObjectId(filters.category)) {
+        // It's an ObjectId
+        matchStage.category = filters.category;
+      } else {
+        // It's a slug or name, need to lookup category first
+        const category = await getCategoryBySlugOrName(filters.category);
+        if (category) {
+          matchStage.category = category._id;
+        } else {
+          // If category not found, return empty results
+          return {
+            blogs: [],
+            currentPage: page,
+            totalPages: 0,
+            totalBlogs: 0,
+            hasNextPage: false,
+            hasPrevPage: false,
+          };
+        }
+      }
     }
     
     if (filters.tag) {
-      matchStage.tags = filters.tag;
+      // Handle both ObjectId and slug/name filtering
+      if (isValidObjectId(filters.tag)) {
+        // It's an ObjectId
+        matchStage.tags = { $in: [filters.tag] };
+      } else {
+        // It's a slug or name, need to lookup tag first
+        const tag = await getTagBySlugOrName(filters.tag);
+        if (tag) {
+          matchStage.tags = { $in: [tag._id] };
+        } else {
+          // If tag not found, return empty results
+          return {
+            blogs: [],
+            currentPage: page,
+            totalPages: 0,
+            totalBlogs: 0,
+            hasNextPage: false,
+            hasPrevPage: false,
+          };
+        }
+      }
     }
 
     // Get total count for pagination
@@ -393,7 +434,16 @@ export async function getAllCategories(): Promise<any[]> {
       .find({})
       .sort({ name: 1 })
       .toArray();
-    return categories.map(category => { return { name: category.name, slug: category.slug } });
+    return categories.map(category => { 
+      return { 
+        _id: category._id?.toString(),
+        name: category.name, 
+        slug: category.slug,
+        description: category.description,
+        createdAt: category.createdAt,
+        updatedAt: category.updatedAt
+      }; 
+    });
   } catch (error) {
     console.error('Error fetching categories:', error);
     return [];
@@ -408,7 +458,15 @@ export async function getAllTags(): Promise<any[]> {
       .find({})
       .sort({ name: 1 })
       .toArray();
-    return tags.map(tag => { return { name: tag.name, slug: tag.slug } });
+    return tags.map(tag => { 
+      return { 
+        _id: tag._id?.toString(),
+        name: tag.name, 
+        slug: tag.slug,
+        createdAt: tag.createdAt,
+        updatedAt: tag.updatedAt
+      }; 
+    });
   } catch (error) {
     console.error('Error fetching tags:', error);
     return [];

@@ -92,7 +92,19 @@ const BlogList = ({
     }
   }, []);
 
-  const activeFilter = filter?.category || filter?.tag;
+  const getFilterDisplay = () => {
+    if (filter?.category) {
+      const category = categories.find(cat => cat.slug === filter.category || cat.name === filter.category);
+      return category?.name || filter.category;
+    }
+    if (filter?.tag) {
+      const tag = tags.find(t => t.slug === filter.tag || t.name === filter.tag);
+      return tag?.name || filter.tag;
+    }
+    return null;
+  };
+
+  const activeFilter = getFilterDisplay();
 
   // Helper to build query params
   const buildQuery = (pageNum: number) => {
@@ -181,12 +193,12 @@ const BlogList = ({
             <div className="col-lg-8 mt-30">
               <div className="blog_details_content">
                 {activeFilter && (
-                  <div className="filter-alert d-flex align-items-center mb-4 p-3 bg-light rounded">
-                    <span className="filter-alert-text me-3">
-                      Filtered by: <strong>{activeFilter}</strong>
+                  <div className="alert alert-info d-flex align-items-center justify-content-between mb-4">
+                    <span>
+                      Filtré par: <strong>{activeFilter}</strong> ({pagination.totalBlogs} articles)
                     </span>
-                    <Link href="/blog" className="filter-alert-close btn btn-sm btn-outline-secondary">
-                      Clear Filter
+                    <Link href="/blog" className="btn btn-sm btn-outline-secondary">
+                      Effacer
                     </Link>
                   </div>
                 )}

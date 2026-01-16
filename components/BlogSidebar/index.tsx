@@ -2,9 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { blogs } from '../../api/blogs';
-import Services from '../../api/service';
-
 import searchIcon from '@/public/images/icon/search-icon.svg';
 import authorIcon from '@/public/images/icon/profile-circle.svg';
 

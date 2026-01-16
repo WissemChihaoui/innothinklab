@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from 'next/image';
 
 import logo from '@/public/images/logo/logo-white.svg';
-import logo2 from '@/public/images/logo/logo-black.svg';
+import logo2 from '@/public/logo.png';
 
 import MobileMenu from '../MobileMenu/MobileMenu';
 import MegaMenu1 from './MegaMenu1';
