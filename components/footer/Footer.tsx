@@ -32,8 +32,8 @@ const Footer: React.FC<FooterProps> = () => {
                 </span>
               </div>
               <div className="xb-item--holder">
-                <p className="xb-item--content">Write to us</p>
-                <h4 className="xb-item--title">innomax@gmail.com</h4>
+                <p className="xb-item--content">Notre Email</p>
+                <h4 className="xb-item--title">Contact@thinklab.tn</h4>
               </div>
             </div>
             <div className="info-item ul_li">
@@ -43,8 +43,8 @@ const Footer: React.FC<FooterProps> = () => {
                 </span>
               </div>
               <div className="xb-item--holder">
-                <p className="xb-item--content">Call Us (USA)</p>
-                <h4 className="xb-item--title">+(1) 1230 452 8597</h4>
+                <p className="xb-item--content">Notre Téléphone</p>
+                <h4 className="xb-item--title">+216 99 310 778</h4>
               </div>
             </div>
             <div className="info-item ul_li">
@@ -54,8 +54,8 @@ const Footer: React.FC<FooterProps> = () => {
                 </span>
               </div>
               <div className="xb-item--holder">
-                <p className="xb-item--content">Our Office</p>
-                <h4 className="xb-item--title">Waterloo, Park, Australia</h4>
+                <p className="xb-item--content">Notre Adresse</p>
+                <h4 className="xb-item--title">5 eme étage, Place F.Hached,<br/> Immeuble Hadrumet, Sousse 4000</h4>
               </div>
             </div>
           </div>
@@ -66,10 +66,10 @@ const Footer: React.FC<FooterProps> = () => {
             <div className="sa-newslatter footer-widget">
               <span className="xb-item--sub-title">Newsletter</span>
               <p className="xb-item--content clr-white">
-                Sign up to techco weekly newsletter to get the latest updates.
+                Recevez nos dernières actualités
               </p>
               <form className="xb-item--input_field pos-rel" onSubmit={SubmitHandler}>
-                <input type="email" name="gmail" id="text6" placeholder="Enter your email" required />
+                <input type="email" name="gmail" id="text6" placeholder="Votre Email" required />
                 <div className="img">
                   <Image src={icon4} alt="Mail Icon" />
                 </div>
@@ -78,22 +78,22 @@ const Footer: React.FC<FooterProps> = () => {
                 </button>
               </form>
               <span className="xb-item--text">
-                By continuing, you agree to innomax{' '}
-                <Link href="/terms-conditions">Terms</Link> of Use and{' '}
-                <Link href="/privacy-policy">Privacy Policy</Link>
+                En vous inscrivant, vous acceptez nos{' '}
+                <Link href="/terms-conditions">Conditions d'utilisation</Link> et{' '}
+                <Link href="/privacy-policy">Politique de confidentialité</Link>
               </span>
             </div>
 
             {/* Company Links */}
             <div className="footer-widget">
-              <span className="xb-item--sub-title">Company</span>
+              <span className="xb-item--sub-title">Navigation</span>
               <ul className="xb-item--holder list-unstyled">
-                <li className="xb-item--list"><Link href="/about">About us</Link></li>
+                <li className="xb-item--list"><Link href="/">Acceuil</Link></li>
+                <li className="xb-item--list"><Link href="/about">Société</Link></li>
+                <li className="xb-item--list"><Link href="/service">Services</Link></li>
+                <li className="xb-item--list"><Link href="/casestudy">Portfolio</Link></li>
+                <li className="xb-item--list"><Link href="/blog">Blog</Link></li>
                 <li className="xb-item--list"><Link href="/contact">Contact</Link></li>
-                <li className="xb-item--list"><Link href="/pricing">Price table</Link></li>
-                <li className="xb-item--list"><Link href="/blog">Our blog</Link></li>
-                <li className="xb-item--list"><Link href="/team">Team member</Link></li>
-                <li className="xb-item--list"><Link href="/casestudy">Our Cases</Link></li>
               </ul>
             </div>
 
@@ -114,7 +114,7 @@ const Footer: React.FC<FooterProps> = () => {
             </div>
 
             {/* Industries */}
-            <div className="footer-widget">
+            {/* <div className="footer-widget">
               <span className="xb-item--sub-title">Our Industries</span>
               <ul className="xb-item--holder list-unstyled">
                 <li className="xb-item--list"><Link href="/">Healthcare</Link></li>
@@ -124,16 +124,16 @@ const Footer: React.FC<FooterProps> = () => {
                 <li className="xb-item--list"><Link href="/">Crypto</Link></li>
                 <li className="xb-item--list"><Link href="/">Automotive</Link></li>
               </ul>
-            </div>
+            </div> */}
           </div>
 
           {/* Footer Bottom */}
           <div className="footer-copyright mt-70 ul_li_between">
             <p className="copyright mt-20">
-              Copyright © 2025 <Link href="/">innomax</Link>. All rights reserved.
+              Copyright © 2025 <Link href="/">innothinklab</Link>. Tous droits reservés.
             </p>
             <ul className="footer-link ul_li mt-20">
-              <li><span>Follow us :</span></li>
+              <li><span>Abonnez-vous :</span></li>
               <li><Link href="/"><i className="fab fa-twitter"></i></Link></li>
               <li><Link href="/"><i className="fab fa-facebook-f"></i></Link></li>
               <li><Link href="/"><i className="fab fa-linkedin-in"></i></Link></li>
