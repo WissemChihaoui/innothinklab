@@ -19,8 +19,7 @@ const Hero: React.FC = () => {
               <div className="xb-hero">
                 <Fade direction="up" triggerOnce duration={1000}>
                   <h1 className="xb-item--title wow fadeInUp" data-wow-duration="600ms">
-                    Solutions Numériques
-                    <span> sur Mesure</span>
+                    Une approche fondée sur <span>l'innovation</span>
                   </h1>
                 </Fade>
 
@@ -30,7 +29,7 @@ const Hero: React.FC = () => {
                     data-wow-delay="100ms"
                     data-wow-duration="600ms"
                   >
-                    Votre partenaire technologique pour une présence en ligne exceptionnelle
+                    INNO THINK LAB accompagne les entreprises et institutions dans la conception, le développement et l’optimisation de solutions digitales sur mesure.
                   </p>
                 </Fade>
 
@@ -41,13 +40,13 @@ const Hero: React.FC = () => {
                     data-wow-duration="600ms"
                   >
                     <li>
-                      <i className="far fa-check"></i> Développement Web & Mobile
+                      <i className="far fa-check"></i> Développement Web & Mobile sur mesure
                     </li>
                     <li>
-                      <i className="far fa-check"></i> Solutions Personnalisées
+                      <i className="far fa-check"></i> Solutions digitales adaptées aux besoins métiers
                     </li>
                     <li>
-                      <i className="far fa-check"></i> Référencement & Marketing
+                      <i className="far fa-check"></i> Référencement naturel & performance digitale
                     </li>
                   </ul>
                 </Fade>
@@ -72,42 +71,12 @@ const Hero: React.FC = () => {
                   <Image
                     className="wow fadeInRight"
                     data-wow-duration="600ms"
-                    src="/images/hero/hero-img02.png"
+                    src="/images/homeheader.jpeg"
                     alt="Main Hero"
                     fill
                     style={{ objectFit: 'contain' }}
                   />
                 </Fade>
-
-                <div className="out-image">
-                  <div className="img img--one updown-2">
-                    <Fade direction="down" triggerOnce duration={1200}>
-                      <Image
-                        className="wow fadeInDown"
-                        data-wow-delay="100ms"
-                        data-wow-duration="600ms"
-                        src="/images/hero/hero-img03.png"
-                        alt="Floating Image 1"
-                        fill
-                        style={{ objectFit: 'contain' }}
-                      />
-                    </Fade>
-                  </div>
-
-                  <div className="img img--two updown-3">
-                    <Fade direction="up" triggerOnce duration={1200}>
-                      <Image
-                        className="wow fadeInUp"
-                        data-wow-delay="300ms"
-                        data-wow-duration="600ms"
-                        src="/images/hero/hero-img04.png"
-                        alt="Floating Image 2"
-                        fill
-                        style={{ objectFit: 'contain' }}
-                      />
-                    </Fade>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -117,7 +86,7 @@ const Hero: React.FC = () => {
             <span></span>
             <span></span>
             <span></span>
-        </AnchorLink>
+          </AnchorLink>
         </div>
       </div>
     </section>

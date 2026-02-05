@@ -10,7 +10,7 @@ export interface BlogWithCategoryAndTags {
   slug: string;
   content: string;
   excerpt: string;
-  featuredImage?: string;
+  coverImage?: string;
   published: boolean;
   metaTitle: string;
   metaDescription: string;
@@ -156,7 +156,7 @@ export async function getAllBlogs(filters: BlogFilters = {}): Promise<PaginatedB
             slug: 1,
             content: 1,
             excerpt: 1,
-            featuredImage: 1,
+            coverImage: 1,
             published: 1,
             metaTitle: 1,
             metaDescription: 1,
@@ -223,7 +223,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogWithRelations | n
             slug: 1,
             content: 1,
             excerpt: 1,
-            featuredImage: 1,
+            coverImage: 1,
             published: 1,
             metaTitle: 1,
             metaDescription: 1,
@@ -292,7 +292,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogWithRelations | n
             slug: 1,
             content: 1,
             excerpt: 1,
-            featuredImage: 1,
+            coverImage: 1,
             published: 1,
             metaTitle: 1,
             metaDescription: 1,
@@ -345,7 +345,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogWithRelations | n
               slug: 1,
               content: 1,
               excerpt: 1,
-              featuredImage: 1,
+              coverImage: 1,
               published: 1,
               metaTitle: 1,
               metaDescription: 1,
@@ -389,6 +389,89 @@ export async function getBlogBySlug(slug: string): Promise<BlogWithRelations | n
   }
 }
 
+export async function incrementBlogViews(slug: string): Promise<boolean> {
+  try {
+    const db = await getDatabase();
+    const result = await db.collection('blogposts').updateOne(
+      { slug: slug },
+      { $inc: { views: 1 } }
+    );
+    return result.modifiedCount > 0;
+  } catch (error) {
+    console.error('Error incrementing blog views:', error);
+    return false;
+  }
+}
+
+export async function getBlogBySlugWithIncrement(slug: string): Promise<BlogWithCategoryAndTags | null> {
+  try {
+    const db = await getDatabase();
+    const blog = await db.collection('blogposts').findOne({ slug: slug });
+    
+    if (!blog) {
+      return null;
+    }
+
+    // Increment views
+    await db.collection('blogposts').updateOne(
+      { _id: blog._id },
+      { $inc: { views: 1 } }
+    );
+
+    // Populate category
+    const category = await db.collection('categories').findOne({ _id: blog.category });
+    
+    // Populate tags
+    const populatedTags = await db.collection('tags').find({ _id: { $in: blog.tags } }).toArray();
+
+    // Serialize Date objects to ISO strings
+    const serializedBlog = {
+      title: blog.title,
+      slug: blog.slug,
+      content: blog.content,
+      excerpt: blog.excerpt,
+      coverImage: blog.coverImage,
+      published: blog.published,
+      metaTitle: blog.metaTitle,
+      metaDescription: blog.metaDescription,
+      seoKeywords: blog.seoKeywords,
+      likes: blog.likes,
+      views: blog.views,
+      status: blog.status,
+      readingTime: blog.readingTime,
+      _id: blog._id.toString(),
+      category: category ? {
+        _id: category._id.toString(),
+        name: category.name,
+        slug: category.slug,
+        createdAt: category.createdAt instanceof Date ? category.createdAt.toISOString() : category.createdAt,
+        updatedAt: category.updatedAt instanceof Date ? category.updatedAt.toISOString() : category.updatedAt
+      } : {
+        _id: 'uncategorized',
+        name: 'Uncategorized',
+        slug: 'uncategorized',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      },
+      tags: populatedTags.map(tag => ({
+        _id: tag._id.toString(),
+        name: tag.name,
+        slug: tag.slug,
+        createdAt: tag.createdAt instanceof Date ? tag.createdAt.toISOString() : tag.createdAt,
+        updatedAt: tag.updatedAt instanceof Date ? tag.updatedAt.toISOString() : tag.updatedAt
+      })),
+      createdAt: blog.createdAt instanceof Date ? blog.createdAt.toISOString() : blog.createdAt,
+      updatedAt: blog.updatedAt instanceof Date ? blog.updatedAt.toISOString() : blog.updatedAt,
+      publishedAt: blog.publishedAt instanceof Date ? blog.publishedAt.toISOString() : blog.publishedAt
+    };
+
+    return serializedBlog;
+  } catch (error) {
+    console.error('Error fetching blog by slug:', error);
+    return null;
+  }
+}
+
 export async function createBlog(blogData: {
   title: string;
   slug: string;
@@ -421,8 +504,6 @@ export async function createBlog(blogData: {
       ...blogPost,
     };
   } catch (error) {
-    console.error('Error creating blog post:', error);
-    throw new Error('Failed to create blog post');
   }
 }
 

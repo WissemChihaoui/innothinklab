@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  innothinklabs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - MONGODB_URI=${MONGODB_URI}
+        - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
+        - NEXT_PUBLIC_IMAGE_URL=${NEXT_PUBLIC_IMAGE_URL}
+        - NEXTAUTH_URL=${NEXTAUTH_URL}
+        - AI_USER_PASSWORD=${AI_USER_PASSWORD}
+        - CRON_SECRET=${CRON_SECRET}
+        - NODE_ENV=production
+    container_name: innothinklabs-main
+    restart: unless-stopped
+    ports:
+      - "3004:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    networks:
+      - innothinklabs-network
+
+networks:
+  innothinklabs-network:
+    driver: bridge

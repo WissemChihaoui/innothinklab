@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'standalone',
   images: {
-    domains: ["cdn.shopify.com"],
+    domains: ["agencyadmin.innothinklabs.com"],
   },
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
+  // Removed experimental.missingSuspenseWithCSRBailout (deprecated in Next.js 15)
 };
 
 export default nextConfig;

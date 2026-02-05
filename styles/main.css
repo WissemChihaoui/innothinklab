@@ -7687,7 +7687,7 @@ body[data-aos-easing=ease] [data-aos] {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
-  background: linear-gradient(272deg, #0c111d 0%, rgba(12, 17, 29, 0.84) 24.69%, rgba(12, 17, 29, 0.48) 55.72%, rgba(12, 17, 29, 0.9) 82.18%, #0c111d 100%);
+  background: linear-gradient(272deg, #0c111d21 0%, rgb(12 17 29 / 39%) 24.69%, rgb(12 17 29 / 0%) 55.72%, rgb(12 17 29 / 48%) 82.18%, #0c111d70 100%);
 }
 
 .sa-project-item .xb-item--project_title {

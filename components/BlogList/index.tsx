@@ -34,6 +34,7 @@ interface Blog {
   screens?: string;
   thumb?: string;
   createdAt: string | Date;
+  coverImage?: string;
 }
 
 interface Category {
@@ -77,6 +78,19 @@ const BlogList = ({
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<any>(null);
+
+  // Helper to construct image URL safely
+  const getImageUrl = (coverImage?: string) => {
+    if (!coverImage) return fallbackImage.src;
+    
+    const baseUrl = 'http://localhost:3001';
+    console.log("baseUrl", baseUrl)
+    // Ensure baseUrl doesn't end with slash and path starts with slash
+    const cleanBaseUrl = baseUrl.replace(/\/$/, '');
+    const imagePath = `/images/blog-covers/${coverImage.replace(/^\//, '')}`;
+    
+    return `${cleanBaseUrl}${imagePath}`;
+  };
 
   useEffect(() => {
     if (
@@ -143,12 +157,13 @@ const BlogList = ({
                 <SwiperSlide key={blog.slug || index}>
                   <div className="blog-slide-item">
                     <div className="xb-item--img">
-                      <Link href={`/blog/${blog.slug}`}>
-                        <Image
-                          src={blog.screens || fallbackImage}
+                      <Link href={`/blog/${blog.slug}`} style={{display: 'block', width: '100%'}}>
+                        <img
+                          src={getImageUrl(blog.coverImage)}
                           alt={blog.title}
                           width={1200}
                           height={600}
+                          style={{ objectFit: "contain", width: "100%", height: 600}}
                         />
                       </Link>
                     </div>
@@ -208,8 +223,8 @@ const BlogList = ({
                     <div className="blog_details_item ul_li mb-5" key={blog.slug || index}>
                       <div className="xb-item--img">
                         <Link href={`/blog/${blog.slug}`}>
-                          <Image
-                            src={blog.screens || fallbackImage}
+                          <img
+                            src={getImageUrl(blog.coverImage)}
                             alt={blog.title}
                             width={800}
                             height={500}

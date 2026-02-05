@@ -27,7 +27,7 @@ const HomePage = () => {
                     <PartnerSection />
                     <About />
                     <ServiceSection />
-                    <ProjectSection />
+                    {/* <ProjectSection /> */}
                     <WorkProcess />
                     <IndustrieSection />
                     <Testimonial />

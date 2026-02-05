@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 import blog1 from '@/public/images/service/cd-image.jpg';
 import blog2 from '@/public/images/blog/blog_details-img01.jpg';
@@ -19,6 +18,18 @@ import BlogSidebar from '../BlogSidebar';
 import RelatedService from './RelatedBlog';
 import Description from './Description';
 import OtherDescription from './OtherDescription';
+
+// Helper function to construct image URL safely
+const getImageUrl = (coverImage?: string) => {
+  if (!coverImage) return blog2.src;
+  
+  const baseUrl = 'http://localhost:3001';
+  // Ensure baseUrl doesn't end with slash and path starts with slash
+  const cleanBaseUrl = baseUrl.replace(/\/$/, '');
+  const imagePath = `/images/blog-covers/${coverImage.replace(/^\//, '')}`;
+  
+  return `${cleanBaseUrl}${imagePath}`;
+};
 
 const BlogSingle: React.FC<{ blog: any, categories: any, tags: any, related: any, navigation: any }> = ({ blog, categories, tags, related, navigation }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -37,8 +48,8 @@ const BlogSingle: React.FC<{ blog: any, categories: any, tags: any, related: any
   return (
     <section className="blog_details_section pt-70">
       <div className="container">
-        <div className="item-details_image pos-rel mb-80">
-          <Image src={blog1} alt="Blog Feature" />
+        <div className="item-details_image pos-rel mb-80" style={{display: 'block', width: '100%'}}>
+          <img src={getImageUrl(blog.coverImage)} alt="Blog Feature" style={{ objectFit: "cover", width: "100%", height: 600}} />
         </div>
 
         <div className="item_details_content pb-80">
@@ -51,7 +62,7 @@ const BlogSingle: React.FC<{ blog: any, categories: any, tags: any, related: any
             <li>
               <Link href="/blog">
                 <span className="meta_icon">
-                  <Image src={icon1} alt="Calendar" />
+                  <img src={icon1.src} alt="Calendar" style={{width: '16px', height: '16px', marginRight: '8px'}} />
                 </span>
                 <span className="meta_label">{new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(blog.updatedAt))}</span>
               </Link>

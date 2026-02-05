@@ -40,14 +40,14 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ services = Services }) 
                 <Fade direction="up" triggerOnce={false} duration={1200} delay={9}>
                   <div>
                     <h2 className="title">
-                      Des Solutions <br /> Numériques Innovantes
+                      Des solutions numériques performantes
                     </h2>
                   </div>
                 </Fade>
                 <Fade direction="up" triggerOnce={false} duration={1400} delay={9}>
                   <div>
                     <p className="content">
-                      Des services technologiques de pointe pour transformer votre présence en ligne et stimuler votre croissance.
+                      Des services technologiques conçus pour structurer, développer et optimiser votre écosystème digital, avec une approche rigoureuse, orientée usages et performance durable.
                     </p>
                   </div>
                 </Fade>
@@ -71,7 +71,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ services = Services }) 
           {/* Middle Column */}
           <div className="col-lg-4 col-md-6 mt-30">
             <div className="service-all_item">
-              {services.slice(0, 3).map((service, index) =>
+              {services.slice(0, 2).map((service, index) =>
                 service.title ? (
                   <div className="service-box" key={`left-${index}`}>
                     <div className="service-item">
@@ -108,7 +108,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ services = Services }) 
           {/* Right Column */}
           <div className="col-lg-4 col-md-6 mt-30">
             <div className="service-all_item">
-              {services.slice(3, 6).map((service, index) =>
+              {services.slice(2, 4).map((service, index) =>
                 service.title ? (
                   <div className="service-box" key={`right-${index}`}>
                     <div className="service-item">

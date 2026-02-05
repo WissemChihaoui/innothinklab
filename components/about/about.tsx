@@ -23,7 +23,7 @@ const About: React.FC = () => {
             </Fade>
             <Fade direction="down" triggerOnce={false} duration={1500} delay={9}>
               <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">
-                Votre Partenaire en Solutions Numériques
+                Structurer, développer et optimiser votre écosystème digital
               </h2>
             </Fade>
           </div>
@@ -40,7 +40,7 @@ const About: React.FC = () => {
                   </div>
                   <div className="xb-item--holder">
                     <p className="xb-item--content">
-                      <span>Innovation :</span> Des solutions technologiques de pointe pour votre réussite numérique.
+                      <span>Maîtrise technologique :</span> Des solutions conçues avec exigence, reposant sur des architectures solides, évolutives et maîtrisées.
                     </p>
                   </div>
                 </div>
@@ -51,7 +51,7 @@ const About: React.FC = () => {
                   </div>
                   <div className="xb-item--holder">
                     <p className="xb-item--content">
-                      <span>Approche Client :</span> Des solutions sur mesure adaptées à vos besoins spécifiques.
+                      <span>Approche Client :</span> Chaque projet est pensé sur mesure, en tenant compte des contraintes opérationnelles, des usages et des objectifs spécifiques de chaque organisation.
                     </p>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ const About: React.FC = () => {
                   </div>
                   <div className="xb-item--holder">
                     <p className="xb-item--content">
-                      <span>Excellence :</span> Un engagement envers la qualité et les résultats concrets.
+                      <span>Exigence :</span> Un engagement constant sur la qualité, la fiabilité et la pertinence des solutions livrées, dans une logique de partenariat durable.
                     </p>
                   </div>
                 </div>
@@ -75,13 +75,13 @@ const About: React.FC = () => {
                 <div className="xb-item--holder">
                   <h3 className="xb-item--title">Notre Mission</h3>
                   <p className="xb-item--content">
-                    Notre mission est de transformer votre présence numérique grâce à des solutions web et mobiles innovantes, en mettant l'accent sur la qualité, la performance et l'expérience utilisateur.
+                    Accompagner les entreprises et institutions dans la structuration et le déploiement de solutions digitales performantes, en combinant analyse, expertise technologique et compréhension des enjeux métiers afin de créer une valeur durable et mesurable.
                   </p>
                 </div>
                 <div className="xb-item--holder">
                   <h3 className="xb-item--title">Notre Vision</h3>
                   <p className="xb-item--content">
-                    Être le partenaire de référence pour les entreprises ambitieuses qui cherchent à se démarquer dans l'univers numérique, en combinant créativité, expertise technique et approche centrée sur les résultats.
+                    Devenir un partenaire de référence pour les organisations souhaitant renforcer leur écosystème digital, grâce à des solutions fiables, une approche méthodique et une vision long terme de la performance numérique.
                   </p>
                 </div>
               </div>

@@ -4,13 +4,25 @@ import Scrollbar from "@/components/scrollbar/scrollbar";
 import Footer from "@/components/footer/Footer";
 import CtaSection from "@/components/CtaSection/CtaSection";
 import BlogSingle from "@/components/BlogDetails/BlogDetails";
+import { notFound } from "next/navigation";
+import { getBlogBySlug, incrementBlogViews, getAllCategories, getAllTags } from '@/lib/blogServices';
+import { getBlogImageUrl } from '@/lib/imageUtils';
 
 import icon from "@/public/images/icon/cap.svg";
 import Image1 from "@/public/images/hero/cd-img02.png";
 import Image2 from "@/public/images/shape/brd_shape.png";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { getBlogBySlug, getAllCategories, getAllTags } from "@/lib/blogServices";
+
+// Helper function to construct image URL safely
+const getImageUrl = (coverImage?: string) => {
+  if (!coverImage) return '/images/blog/blog_details-img01.jpg';
+  
+  const baseUrl = 'http://localhost:3001';
+  // Ensure baseUrl doesn't end with slash and path starts with slash
+  const cleanBaseUrl = baseUrl.replace(/\/$/, '');
+  const imagePath = `/images/blog-covers/${coverImage.replace(/^\//, '')}`;
+  
+  return `${cleanBaseUrl}${imagePath}`;
+};
 
 export default async function BlogDetailsPage({
   params,
@@ -19,6 +31,9 @@ export default async function BlogDetailsPage({
 }) {
   const { slug } = await params;
   const blogData = await getBlogBySlug(slug);
+  
+  // Increment views
+  await incrementBlogViews(slug);
   const categories = await getAllCategories();
   const tags = await getAllTags();
   if (!blogData) {
@@ -97,19 +112,20 @@ export default async function BlogDetailsPage({
                 <div className="col-lg-9 mt-30">
                   <div className="page-title-box">
                     <span className="sub-title">
-                      <Image src={icon} alt="Icon" /> Détails du blog
+                      <img src={icon.src} alt="Icon" style={{width: '20px', height: '20px', marginRight: '8px', display: 'inline-block'}} /> Détails du blog
                     </span>
                     <h2 className="title">{blog?.title || 'Loading...'}</h2>
                   </div>
                 </div>
                 <div className="col-lg-3 mt-30">
                   <div className="sd-right-img pos-rel">
-                    <Image src={Image1} alt="Right Illustration" />
+                    <img src={Image1.src} alt="Right Illustration" style={{width: '100%', height: 'auto'}} />
                     <div className="sd-arrow-shape style-2">
-                      <Image
+                      <img
                         className="xbzoominzoomup"
-                        src={Image2}
+                        src={Image2.src}
                         alt="Arrow"
+                        style={{width: '100%', height: 'auto'}}
                       />
                     </div>
                   </div>

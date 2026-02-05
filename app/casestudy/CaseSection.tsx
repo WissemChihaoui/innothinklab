@@ -1,35 +1,53 @@
 'use client';
-
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
+import { getProjectImageUrl } from '@/lib/imageUtils';
 
-import caseStudies from "../../api/case";
-
-interface CaseStudy {
-  id: number;
+interface ProjectWithServices {
+  _id: string;
   title: string;
   slug: string;
-  img: StaticImageData;
-  category: string;
+  coverImage?: string;
+  description: string;
+  clientName: string;
+  services: {
+    _id: string;
+    name: string;
+    slug: string;
+  }[];
+  completedDate: string; // Changed from Date to string
+  location: string;
+  content: string;
+  createdAt: string; // Changed from Date to string
+  updatedAt: string; // Changed from Date to string
 }
 
-const CaseStudySection: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<string>("*");
+interface CaseSectionProps {
+  projects: ProjectWithServices[];
+  services: any[];
+}
+
+const CaseStudySection: React.FC<CaseSectionProps> = ({ projects, services }) => {
+  const [activeFilter, setActiveFilter] = useState<string>("all");
 
   const handleFilter = (category: string) => {
     setActiveFilter(category);
   };
 
   const filters = [
-    { key: "*", label: "View All" },
-    { key: "cat1", label: "Development" },
-    { key: "cat2", label: "Design" },
-    { key: "cat3", label: "Marketing" },
-    { key: "cat4", label: "Branding" },
-    { key: "cat5", label: "IT Services" },
+    { key: "all", label: "Tous les projets" },
+    ...services.map((service: any) => ({
+      key: service.slug,
+      label: service.name
+    }))
   ];
+
+  const filteredProjects = activeFilter === "all" 
+    ? projects 
+    : projects.filter((project: ProjectWithServices) => 
+        project.services.some((service: any) => service.slug === activeFilter)
+      );
 
   return (
     <section className="casestudy pt-70 pb-130" style={{ backgroundColor: "#f6f6f8" }}>
@@ -52,44 +70,46 @@ const CaseStudySection: React.FC = () => {
           </div>
         </div>
 
-        {/* Case Studies Grid */}
+        {/* Projects Grid */}
         <div className="casestudy-content mt-70">
           <div className="row grid mt-none-30">
             <AnimatePresence>
-              {caseStudies
-                .filter((item: CaseStudy) => activeFilter === "*" || item.category === activeFilter)
-                .map((study: CaseStudy) => (
-                  <motion.div
-                    key={study.id}
-                    className={`col-lg-${study.id === 2 || study.id === 7 ? "8" : study.category === "cat3" ? "8" : "4"} col-md-6 grid-item ${study.category} mt-30`}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="casestudy-item">
-                      <div className="casestudy-img">
-                        <Link href={'/casestudy-details'} passHref>
-                          <Image src={study.img} alt={study.title} />
-                        </Link>
-                        <div className="content_wrap">
-                          <h3 className="item_title">{study.title}</h3>
-                          <span className="item_tag">{study.slug}</span>
-                        </div>
-                      </div>
-                      <Link href={'/casestudy-details'} passHref>
-                        <span className="xb-overlay"></span>
+              {filteredProjects.map((project: ProjectWithServices, index: number) => (
+                <motion.div
+                  key={project._id}
+                  className="col-lg-4 col-md-6 grid-item mt-30"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <div className="casestudy-item">
+                    <div className="casestudy-img">
+                      <Link href={`/casestudy/${project.slug}`}>
+                        <img 
+                          src={getProjectImageUrl(project.coverImage)} 
+                          alt={project.title} 
+                          style={{width: '100%', height: '250px', objectFit: 'cover'}}
+                        />
                       </Link>
+                      <div className="content_wrap">
+                        <h3 className="item_title">{project.title}</h3>
+                        <span className="item_tag">{project.clientName}</span>
+                      </div>
                     </div>
-                  </motion.div>
-                ))}
+                    <Link href={`/casestudy/${project.slug}`}>
+                      <span className="xb-overlay"></span>
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
             </AnimatePresence>
           </div>
 
           {/* Load More Button */}
           <div className="text-center xb-btn mt-55">
-            <Link href="/casestudy" passHref className="thm-btn thm-btn--aso thm-btn--aso_black">
-              Load more case studies
+            <Link href="/casestudy" className="thm-btn thm-btn--aso thm-btn--aso_black">
+              Voir plus d'études de cas
             </Link>
           </div>
         </div>

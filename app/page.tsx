@@ -14,9 +14,52 @@ import FaqSection from '../components/FaqSection/FaqSection';
 import CtaSection from '../components/CtaSection/CtaSection';
 import Footer from '../components/footer/Footer';
 import Scrollbar from '../components/scrollbar/scrollbar';
+import { getAllProjects } from '@/lib/projectServices';
+import { getProjectImageUrl } from '@/lib/imageUtils';
 
+// Project interface for serialized data
+interface SerializedProject {
+  _id: string;
+  title: string;
+  slug: string;
+  coverImage?: string;
+  logo?: string;
+  description: string;
+  clientName: string;
+  services: {
+    _id: string;
+    name: string;
+    slug: string;
+  }[];
+  completedDate: string;
+  location: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
-const HomePage = () => {
+const HomePage = async () => {
+  // Fetch last 3 projects
+  let projects: SerializedProject[] = [];
+  try {
+    const projectsData = await getAllProjects();
+    // Serialize MongoDB objects to plain objects and take last 3
+    projects = projectsData.slice(-3).reverse().map(project => ({
+      ...project,
+      _id: project._id.toString(),
+      completedDate: project.completedDate instanceof Date ? project.completedDate.toISOString() : project.completedDate,
+      createdAt: project.createdAt instanceof Date ? project.createdAt.toISOString() : project.createdAt,
+      updatedAt: project.updatedAt instanceof Date ? project.updatedAt.toISOString() : project.updatedAt,
+      services: project.services.map((service: any) => ({
+        ...service,
+        _id: service._id.toString(),
+        createdAt: service.createdAt instanceof Date ? service.createdAt.toISOString() : service.createdAt,
+        updatedAt: service.updatedAt instanceof Date ? service.updatedAt.toISOString() : service.updatedAt
+      }))
+    }));
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+  }
 
     return (
         <Fragment>
@@ -27,7 +70,7 @@ const HomePage = () => {
                     {/* <PartnerSection /> */}
                     <About />
                     <ServiceSection />
-                    <ProjectSection />
+                    <ProjectSection projects={projects} />
                     <WorkProcess />
                     <IndustrieSection />
                     <Testimonial />

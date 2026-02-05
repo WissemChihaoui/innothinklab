@@ -54,12 +54,12 @@ export interface Service {
 const Services: Service[] = [
   {
     Id: '1',
-    sImg: icon1,
+    sImg: icon6,
     title: 'Développement Web',
     slug: 'web',
     thumb1: 'Site Vitrine',
     thumb2: 'E-commerce',
-    description: 'Création de sites web modernes et réactifs adaptés à tous les appareils.',
+    description: 'Conception et développement de plateformes web sur mesure, robustes et évolutives, adaptées aux usages métiers et aux exigences de performance, de sécurité et de maintenabilité',
   },
   {
     Id: '2',
@@ -68,7 +68,7 @@ const Services: Service[] = [
     slug: 'mobile',
     thumb1: 'iOS',
     thumb2: 'Android',
-    description: 'Applications mobiles natives et cross-plateformes pour atteindre vos utilisateurs partout.',
+    description: 'Développement d’applications mobiles natives et multiplateformes, pensées pour offrir des expériences fluides, performantes et cohérentes avec les objectifs fonctionnels et business.',
   },
   {
     Id: '3',
@@ -82,20 +82,20 @@ const Services: Service[] = [
   {
     Id: '4',
     sImg: icon4,
-    title: 'Référencement SEO',
+    title: 'Référencement naturel (SEO)',
     slug: 'seo',
     thumb1: 'Visibilité',
     thumb2: 'Classement',
-    description: 'Optimisation pour les moteurs de recherche pour améliorer votre visibilité en ligne.',
+    description: 'Optimisation technique, éditoriale et structurelle des plateformes digitales afin d’améliorer durablement la visibilité, la pertinence et la conformité aux standards des moteurs de recherche.',
   },
   {
     Id: '5',
     sImg: icon5,
-    title: 'Marketing Digital',
+    title: 'Stratégie & performance digitale',
     slug: 'marketing',
     thumb1: 'Stratégie',
     thumb2: 'Campagnes',
-    description: 'Stratégies de marketing digital pour développer votre présence en ligne.',
+    description: 'Définition et pilotage de stratégies digitales basées sur l’analyse des données, l’optimisation des parcours utilisateurs et l’amélioration continue des indicateurs de performance.',
   },
   {
     Id: '6',
