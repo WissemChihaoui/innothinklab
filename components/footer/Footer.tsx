@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import icon1 from '@/public/images/icon/sms-white.svg';
@@ -11,11 +11,62 @@ import Services from '../../api/service';
 
 interface FooterProps {}
 
-const SubmitHandler = (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-};
-
 const Footer: React.FC<FooterProps> = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState<'success' | 'error' | ''>('');
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      setMessage('Veuillez entrer votre adresse email');
+      setMessageType('error');
+      return;
+    }
+    
+    // Basic email validation
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    if (!emailRegex.test(email)) {
+      setMessage('Veuillez entrer une adresse email valide');
+      setMessageType('error');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setMessage('');
+    
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          name: '', // Optional name field
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setMessage(result.message);
+        setMessageType('success');
+        setEmail(''); // Clear email on success
+      } else {
+        setMessage(result.message);
+        setMessageType('error');
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      setMessage('Une erreur est survenue. Veuillez réessayer plus tard.');
+      setMessageType('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <footer
       className="footer footer-style-two pt-200 bg_img pos-rel"
@@ -33,7 +84,7 @@ const Footer: React.FC<FooterProps> = () => {
               </div>
               <div className="xb-item--holder">
                 <p className="xb-item--content">Notre Email</p>
-                <h4 className="xb-item--title">Contact@thinklab.tn</h4>
+                <h4 className="xb-item--title">contact@innothinklabs.com</h4>
               </div>
             </div>
             <div className="info-item ul_li">
@@ -68,15 +119,43 @@ const Footer: React.FC<FooterProps> = () => {
               <p className="xb-item--content clr-white">
                 Recevez nos dernières actualités
               </p>
-              <form className="xb-item--input_field pos-rel" onSubmit={SubmitHandler}>
-                <input type="email" name="gmail" id="text6" placeholder="Votre Email" required />
+              <form className="xb-item--input_field pos-rel" onSubmit={handleSubmit}>
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="text6" 
+                  placeholder="Votre Email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSubmitting}
+                  required 
+                />
                 <div className="img">
                   <Image src={icon4} alt="Mail Icon" />
                 </div>
-                <button type="submit" className="xb-item--btn">
-                  <i className="fas fa-paper-plane"></i>
+                <button type="submit" className="xb-item--btn" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <i className="fas fa-spinner fa-spin"></i>
+                  ) : (
+                    <i className="fas fa-paper-plane"></i>
+                  )}
                 </button>
               </form>
+              
+              {/* Message Display */}
+              {message && (
+                <div className={`xb-item--message ${messageType === 'success' ? 'success' : 'error'}`} style={{
+                  marginTop: '10px',
+                  padding: '8px 12px',
+                  borderRadius: '4px',
+                  fontSize: '14px',
+                  backgroundColor: messageType === 'success' ? '#d4edda' : '#f8d7da',
+                  color: messageType === 'success' ? '#155724' : '#721c24',
+                  border: `1px solid ${messageType === 'success' ? '#c3e6cb' : '#f5c6cb'}`
+                }}>
+                  {message}
+                </div>
+              )}
               <span className="xb-item--text">
                 En vous inscrivant, vous acceptez nos{' '}
                 <Link href="/terms-conditions">Conditions d'utilisation</Link> et{' '}

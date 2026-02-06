@@ -29,7 +29,7 @@ const ContactSection: React.FC = () => {
                       <Image src={icon1} alt="Phone" /> +216 99 310 778
                     </span>
                     <span className="xb-item--email">
-                      <Image src={icon2} alt="Email" /> innothinklab@gmail.com
+                      <Image src={icon2} alt="Email" /> contact@innothinklabs.com
                     </span>
                     <ul className="social_icons_block list-unstyled ul_li">
                       <li>
@@ -72,7 +72,7 @@ const ContactSection: React.FC = () => {
                   <div className="contact-info_widget">
                     <h3 className="xb-title">Contact</h3>
                     <span className="xb-location">
-                      Email: Contact@thinklab.tn <br />
+                      Email: contact@innothinklabs.com <br />
                       Téléphone: +216 99 310 778
                     </span>
                   </div>
