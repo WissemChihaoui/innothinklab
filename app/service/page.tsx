@@ -47,14 +47,7 @@ const ServicePage: React.FC = () => {
                     </h2>
                   </div>
                 </div>
-                {/* <div className="col-lg-3 mt-30">
-                  <div className="count-box">
-                    <h2 className="number">09</h2>
-                    <span className="text">
-                      Professional top <br /> services
-                    </span>
-                  </div>
-                </div> */}
+                
               </div>
             </div>
           </div>

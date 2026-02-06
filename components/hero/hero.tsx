@@ -71,10 +71,11 @@ const Hero: React.FC = () => {
                   <Image
                     className="wow fadeInRight"
                     data-wow-duration="600ms"
-                    src="/images/homeheader.jpeg"
+                    src="/images/home-header.png"
                     alt="Main Hero"
-                    fill
+                    width={500}
                     style={{ objectFit: 'contain' }}
+                    height={500}
                   />
                 </Fade>
               </div>

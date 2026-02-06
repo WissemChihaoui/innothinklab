@@ -38,6 +38,13 @@ import serviceImg02 from '@/public/images/service/service-img02.jpg'
 import serviceImg03 from '@/public/images/service/service-img03.jpg'
 import serviceImg04 from '@/public/images/service/service-img04.jpg'
 
+import serviceIcon01 from '@/public/images/services/laptop.gif'
+import serviceIcon02 from '@/public/images/services/smartphone-coding.gif'
+import serviceIcon03 from '@/public/images/services/idea.gif'
+import serviceIcon04 from '@/public/images/services/seo.gif'
+import serviceIcon05 from '@/public/images/services/marketing.gif'
+import serviceIcon06 from '@/public/images/services/website.gif'
+
 export interface Service {
   Id: string
   title: string
@@ -54,7 +61,7 @@ export interface Service {
 const Services: Service[] = [
   {
     Id: '1',
-    sImg: icon6,
+    sImg: serviceIcon01,
     title: 'Développement Web',
     slug: 'web',
     thumb1: 'Site Vitrine',
@@ -63,7 +70,7 @@ const Services: Service[] = [
   },
   {
     Id: '2',
-    sImg: icon2,
+    sImg: serviceIcon02,
     title: 'Développement Mobile',
     slug: 'mobile',
     thumb1: 'iOS',
@@ -81,7 +88,7 @@ const Services: Service[] = [
   },
   {
     Id: '4',
-    sImg: icon4,
+    sImg: serviceIcon04,
     title: 'Référencement naturel (SEO)',
     slug: 'seo',
     thumb1: 'Visibilité',
@@ -90,7 +97,7 @@ const Services: Service[] = [
   },
   {
     Id: '5',
-    sImg: icon5,
+    sImg: serviceIcon05,
     title: 'Stratégie & performance digitale',
     slug: 'marketing',
     thumb1: 'Stratégie',
@@ -99,7 +106,7 @@ const Services: Service[] = [
   },
   {
     Id: '6',
-    sImg: icon6,
+    sImg: serviceIcon06,
     title: 'Hébergement Web',
     slug: 'hosting',
     thumb1: 'Sécurisé',
