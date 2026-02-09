@@ -83,7 +83,7 @@ const BlogList = ({
   const getImageUrl = (coverImage?: string) => {
     if (!coverImage) return fallbackImage.src;
     
-    const baseUrl = 'http://localhost:3001';
+    const baseUrl = 'https://agencyadmin.innothinklabs.com/';
     console.log("baseUrl", baseUrl)
     // Ensure baseUrl doesn't end with slash and path starts with slash
     const cleanBaseUrl = baseUrl.replace(/\/$/, '');

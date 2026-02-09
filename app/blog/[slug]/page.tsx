@@ -16,7 +16,7 @@ import Image2 from "@/public/images/shape/brd_shape.png";
 const getImageUrl = (coverImage?: string) => {
   if (!coverImage) return '/images/blog/blog_details-img01.jpg';
   
-  const baseUrl = 'http://localhost:3001';
+  const baseUrl = 'https://agencyadmin.innothinklabs.com/';
   // Ensure baseUrl doesn't end with slash and path starts with slash
   const cleanBaseUrl = baseUrl.replace(/\/$/, '');
   const imagePath = `/images/blog-covers/${coverImage.replace(/^\//, '')}`;

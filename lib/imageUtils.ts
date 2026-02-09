@@ -6,10 +6,10 @@
 const getBaseUrl = (): string => {
   if (typeof window !== 'undefined') {
     // Client-side: use environment variable or fallback
-    return process.env.NEXT_PUBLIC_IMAGE_URL || 'http://localhost:3001';
+    return process.env.NEXT_PUBLIC_IMAGE_URL || 'https://agencyadmin.innothinklabs.com/';
   } else {
     // Server-side: use environment variable or fallback
-    return process.env.IMAGE_URL || process.env.NEXT_PUBLIC_IMAGE_URL || 'http://localhost:3001';
+    return process.env.IMAGE_URL || process.env.NEXT_PUBLIC_IMAGE_URL || 'https://agencyadmin.innothinklabs.com/';
   }
 };
 

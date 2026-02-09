@@ -309,7 +309,7 @@ export async function getProjectsByService(serviceSlug: string): Promise<Project
 export function getProjectImageUrl(coverImage?: string) {
   if (!coverImage) return '/images/projects/default-project.jpg';
   
-  const baseUrl = 'http://localhost:3001';
+  const baseUrl = 'https://agencyadmin.innothinklabs.com/';
   const cleanBaseUrl = baseUrl.replace(/\/$/, '');
   const imagePath = `/images/project-covers/${coverImage.replace(/^\//, '')}`;
   

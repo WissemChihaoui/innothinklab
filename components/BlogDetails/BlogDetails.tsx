@@ -23,7 +23,7 @@ import OtherDescription from './OtherDescription';
 const getImageUrl = (coverImage?: string) => {
   if (!coverImage) return blog2.src;
   
-  const baseUrl = 'http://localhost:3001';
+  const baseUrl = 'https://agencyadmin.innothinklabs.com/';
   // Ensure baseUrl doesn't end with slash and path starts with slash
   const cleanBaseUrl = baseUrl.replace(/\/$/, '');
   const imagePath = `/images/blog-covers/${coverImage.replace(/^\//, '')}`;
