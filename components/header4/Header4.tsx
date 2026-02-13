@@ -35,7 +35,7 @@ const Header4: React.FC = () => {
           <div className="header__wrap ul_li_between">
             <div className="header-logo">
               <Link href="/">
-                <Image src={logo} alt="Innomax Logo" />
+                <Image src={logo} alt="Innothinklabs Logo" />
               </Link>
             </div>
 
@@ -91,7 +91,7 @@ const Header4: React.FC = () => {
 
                     <div className="xb-logo-mobile xb-hide-xl">
                       <Link href="/" rel="home">
-                        <Image src={logo2} alt="Innomax Mobile Logo" />
+                        <Image src={logo2} alt="Innothinklabs Mobile Logo" />
                       </Link>
                     </div>
 

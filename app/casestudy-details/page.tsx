@@ -75,7 +75,7 @@ export default function CaseStudySingle() {
                 <Image src={cIcon1} alt="" />
               </div>
               <h6 className="xb-text">
-                client : <span> innomax</span>
+                client : <span> innothinklabs</span>
               </h6>
             </div>
             <div className="csd-item ul_li">

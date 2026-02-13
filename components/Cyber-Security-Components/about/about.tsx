@@ -52,7 +52,7 @@ const About: React.FC = () => {
                         data-wow-delay="300ms"
                         data-wow-duration="600ms"
                       >
-                        With over 35 years of experience, innomax is a trusted leader in cybersecurity
+                        With over 35 years of experience, innothinklabs is a trusted leader in cybersecurity
                         solutions, providing customized strategies to protect sensitive data. Our
                         commitment to innovation and customer satisfaction makes us a reliable in
                         safeguarding your digital assets.

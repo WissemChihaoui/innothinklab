@@ -29,7 +29,7 @@ const FeaturesService: React.FC<FeaturesServiceProps> = () => {
             </Fade>
             <Fade direction='down' triggerOnce={false} duration={1500} delay={9}>
               <div>
-                <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">Why is the best innomax?</h2>
+                <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">Why is the best innothinklabs?</h2>
               </div>
             </Fade>
           </div>
@@ -60,8 +60,8 @@ const FeaturesService: React.FC<FeaturesServiceProps> = () => {
               <p className="xb-item--content">Analyze automation and <br /> agent metrics.</p>
             </div>
             <div className="hd-button-box pos-rel">
-              <a href="index.html" className="hd-feature-button" aria-label="Innomax homepage">
-                <span><Image src={logo} alt="Innomax Logo" /></span>
+              <a href="index.html" className="hd-feature-button" aria-label="Innothinklabs homepage">
+                <span><Image src={logo} alt="Innothinklabs Logo" /></span>
               </a>
               <div className="xb-arrow">
                 <div className="arrow arrow--one"><Image src={icon5} alt="Arrow icon" /></div>

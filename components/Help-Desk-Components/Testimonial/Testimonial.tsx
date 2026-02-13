@@ -20,7 +20,7 @@ const Testimonial = () => {
         {
             authorImg: tImg1,
             content:
-                "“Most businesses are sitting on a data gold mine within their customer profiles. We use innomax to get on customer interactions.”",
+                "“Most businesses are sitting on a data gold mine within their customer profiles. We use innothinklabs to get on customer interactions.”",
             name: "Laurie Leduc",
             designation: "Head of Community Support",
             rating: 5.0,
@@ -28,7 +28,7 @@ const Testimonial = () => {
         {
             authorImg: tImg2,
             content:
-                "“The workflows we built in innomax suite allowed us to achieve or exceed customer expectations in handling urgent issues.”",
+                "“The workflows we built in innothinklabs suite allowed us to achieve or exceed customer expectations in handling urgent issues.”",
             name: "Gershwin Exeter",
             designation: "CEO of Global Services",
             rating: 5.0,
@@ -36,7 +36,7 @@ const Testimonial = () => {
         {
             authorImg: tImg3,
             content:
-                "“We love innomax because their API allows us to explore ways to get customer data more personalized experience.”",
+                "“We love innothinklabs because their API allows us to explore ways to get customer data more personalized experience.”",
             name: "Sophia Turner",
             designation: "Founder at Fleet chaser",
             rating: 5.0,
@@ -44,7 +44,7 @@ const Testimonial = () => {
         {
             authorImg: tImg1,
             content:
-                "“Most businesses are sitting on a data gold mine within their customer profiles. We use innomax to get on customer interactions.”",
+                "“Most businesses are sitting on a data gold mine within their customer profiles. We use innothinklabs to get on customer interactions.”",
             name: "Laurie Leduc",
             designation: "Head of Community Support",
             rating: 5.0,
@@ -52,7 +52,7 @@ const Testimonial = () => {
         {
             authorImg: tImg2,
             content:
-                "“The workflows we built in innomax suite allowed us to achieve or exceed customer expectations in handling urgent issues.”",
+                "“The workflows we built in innothinklabs suite allowed us to achieve or exceed customer expectations in handling urgent issues.”",
             name: "Gershwin Exeter",
             designation: "CEO of Global Services",
             rating: 5.0,
@@ -60,7 +60,7 @@ const Testimonial = () => {
         {
             authorImg: tImg3,
             content:
-                "“We love innomax because their API allows us to explore ways to get customer data more personalized experience.”",
+                "“We love innothinklabs because their API allows us to explore ways to get customer data more personalized experience.”",
             name: "Sophia Turner",
             designation: "Founder at Fleet chaser",
             rating: 5.0,

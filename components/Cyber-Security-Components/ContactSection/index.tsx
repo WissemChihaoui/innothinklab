@@ -49,7 +49,7 @@ const ContactSection: React.FC = () => {
                       <span className="clr-sky">
                         <Image src={icon3} alt="" />
                       </span>
-                      innomax@gmail.com
+                      innothinklabs@gmail.com
                     </li>
                     <li>
                       <span className="clr-orange">

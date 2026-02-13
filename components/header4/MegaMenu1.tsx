@@ -9,7 +9,7 @@ import quote from '@/public/images/icon/quote.png';
 
 const MegaMenu1: React.FC = () => {
   const items = [
-    { href: '/about', icon: '/images/icon/m_01.svg', title: 'About Us', desc: 'Learn more about Innomax' },
+    { href: '/about', icon: '/images/icon/m_01.svg', title: 'About Us', desc: 'Learn more about Innothinklabs' },
     { href: '/pricing', icon: '/images/icon/m_02.svg', title: 'Our Pricing', desc: 'Streamlined Pricing' },
     { href: '/team', icon: '/images/icon/m_03.svg', title: 'Our Team', desc: 'We are friendly. Join our team.' },
     { href: '/service', icon: '/images/icon/m_04.svg', title: 'Services', desc: 'Happy to help you!' },
@@ -117,11 +117,11 @@ const MegaMenu1: React.FC = () => {
                         </div>
                         <div className="author_box_content">
                           <h3 className="author_name text-white">Maverick Phoenix</h3>
-                          <span className="author_designation text-white">CEO at Innomax</span>
+                          <span className="author_designation text-white">CEO at Innothinklabs</span>
                         </div>
                       </div>
                       <p className="mb-0 text-white">
-                        “As CEO at Innomax, I’ve worked hard to clarify client requirements and deliver results
+                        “As CEO at Innothinklabs, I’ve worked hard to clarify client requirements and deliver results
                         efficiently without reinventing the wheel.”
                       </p>
                       <div className="author_box_quote">

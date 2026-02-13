@@ -26,7 +26,7 @@ const Footer = () => {
               </div>
               <h2 className="xb-item--title">Subscribe us</h2>
               <span className="xb-item--content">
-                Want to stay up to date? Sign up for innomax it services update.
+                Want to stay up to date? Sign up for innothinklabs it services update.
               </span>
               <form className="xb-item--contact mt-35" onSubmit={SubmitHandler}>
                 <div className="xb-item--input_field pos-rel">
@@ -89,7 +89,7 @@ const Footer = () => {
               </div>
               <div className="footer-copyright mt-50 ul_li_between">
                 <p className="copyright mt-20">
-                  Copyright © 2025 <Link href="/home">innomax</Link>. All rights reserved.
+                  Copyright © 2025 <Link href="/home">innothinklabs</Link>. All rights reserved.
                 </p>
                 <ul className="footer-links ul_li mt-20">
                   <li><Link href="/terms-conditions">Terms of Up</Link></li>

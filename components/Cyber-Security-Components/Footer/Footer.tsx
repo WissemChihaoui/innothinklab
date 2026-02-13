@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
           <div className="sec-title--two sec-title--three text-center mb-40">
             <span className="sub-title">
               <Image src={icon6} alt="Join icon" />
-              <span>Join the innomax community</span>
+              <span>Join the innothinklabs community</span>
             </span>
           </div>
 
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
             <div className="footer-widget">
               <span className="xb-item--sub-title">Resources</span>
               <ul className="xb-item--holder list-unstyled">
-                <li className="xb-item--list"><Link href="/blog">innomax Blog</Link></li>
+                <li className="xb-item--list"><Link href="/blog">innothinklabs Blog</Link></li>
                 <li className="xb-item--list"><Link href="/casestudy">Case Studies</Link></li>
                 <li className="xb-item--list"><Link href="/home-4">Achievements</Link></li>
                 <li className="xb-item--list"><Link href="/home-4">Our industries</Link></li>
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
 
             <div className="sa-newslatter footer-widget">
               <span className="xb-item--sub-title">Newsletter</span>
-              <p className="xb-item--content clr-white">Sign up for innomax weekly updates.</p>
+              <p className="xb-item--content clr-white">Sign up for innothinklabs weekly updates.</p>
               <div className="xb-item--input-box">
                 <label htmlFor="emailInput">Email</label>
                 <form
@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
 
           <div className="footer-copyright mt-70 ul_li_between">
             <p className="copyright mt-20">
-              Copyright © 2025 <Link href="/home-4">innomax</Link>. All rights reserved.
+              Copyright © 2025 <Link href="/home-4">innothinklabs</Link>. All rights reserved.
             </p>
             <p className="mt-20">
               Designed by <Link href="/home-4">XpressBuddy</Link>

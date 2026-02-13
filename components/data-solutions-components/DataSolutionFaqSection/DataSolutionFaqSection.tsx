@@ -19,13 +19,13 @@ const FaqSection: React.FC = () => {
   const faqsLeft: Faq[] = [
     {
       number: "1",
-      question: "What services does Innomax offer?",
+      question: "What services does Innothinklabs offer?",
       answer:
         "Data integration, AI-powered insights, predictive analytics, and business intelligence.",
     },
     {
       number: "2",
-      question: "How will Innomax’s solutions help my business?",
+      question: "How will Innothinklabs’s solutions help my business?",
       answer: "By turning data into actionable insights for growth.",
     },
     {
@@ -43,17 +43,17 @@ const FaqSection: React.FC = () => {
   const faqsRight: Faq[] = [
     {
       number: "5",
-      question: "Can Innomax solutions be customized?",
+      question: "Can Innothinklabs solutions be customized?",
       answer: "Yes, tailored to fit unique business needs.",
     },
     {
       number: "6",
-      question: "How secure is my data with Innomax?",
-      answer: "Innomax ensures top-level data security.",
+      question: "How secure is my data with Innothinklabs?",
+      answer: "Innothinklabs ensures top-level data security.",
     },
     {
       number: "7",
-      question: "What industries does Innomax support?",
+      question: "What industries does Innothinklabs support?",
       answer: "Suitable for finance, retail, healthcare, and more.",
     },
     {

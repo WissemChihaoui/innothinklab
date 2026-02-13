@@ -28,7 +28,7 @@ const Hero6: React.FC = () => {
                     data-wow-delay="150ms"
                     data-wow-duration="600ms"
                   >
-                    90K+ Businesses with AI-powered Innomax for Fast Support
+                    90K+ Businesses with AI-powered Innothinklabs for Fast Support
                   </p>
                 </Fade>
                 <Fade direction="up" triggerOnce duration={1400} delay={9}>

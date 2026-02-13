@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
           {/* Copyright */}
           <div className="footer-copyright mb-60 ul_li_between">
             <p className="copyright mb-30">
-              © 2025 <Link href="/">Innomax</Link>. All rights reserved.
+              © 2025 <Link href="/">Innothinklabs</Link>. All rights reserved.
             </p>
             <ul className="footer-links ul_li mb-30">
               <li><Link href="/terms-conditions">Terms of Use</Link></li>

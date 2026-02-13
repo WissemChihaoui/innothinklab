@@ -63,7 +63,7 @@ const OtherDescription: FC<OtherDescriptionProps> = ({navigation}) => {
         </div>
 
         <div className="xb-item--item-input_field pos-rel">
-          <input type="email" placeholder="innomax@example.com" />
+          <input type="email" placeholder="innothinklabs@example.com" />
           <button type="submit">S'abonner</button>
         </div>
       </div>

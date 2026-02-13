@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
               <div className="xb-item--logo mt-20">
                 {/* Remove <a>, just keep Image inside Link */}
                 <Link href="/home-3" >
-                  <Image src={logo} alt="Innomax Logo" />
+                  <Image src={logo} alt="Innothinklabs Logo" />
                 </Link>
               </div>
               <span className="xb-item--content mt-20">AI and Data Analytics solutions</span>
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="footer-copyright mt-40 ul_li_between">
             <p className="copyright">
-              ©Copyright 2024 <Link href="/home-3">innomax</Link>. All rights reserved.
+              ©Copyright 2024 <Link href="/home-3">innothinklabs</Link>. All rights reserved.
             </p>
             <ul className="footer-links ul_li">
               <li><Link href="/terms-conditions">Terms of Up</Link></li>

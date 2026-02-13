@@ -19,7 +19,7 @@ const Hero3: React.FC = () => {
                 {/* Heading */}
                 <Fade direction="up" triggerOnce={false} duration={800} delay={6}>
                   <h1 className="xb-item--title wow fadeInUp" data-wow-delay="0ms" data-wow-duration="600ms">
-                    Get AI and Data Analytics solutions With Innomax
+                    Get AI and Data Analytics solutions With Innothinklabs
                   </h1>
                 </Fade>
 

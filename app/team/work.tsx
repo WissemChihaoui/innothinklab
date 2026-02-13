@@ -58,14 +58,14 @@ const workItems: WorkItem[] = [
     icon: icon5,
     title: 'Career change option',
     content:
-      'No need to job hunt to learn new tech or switch roles—we’ll support your transition within innomax.',
+      'No need to job hunt to learn new tech or switch roles—we’ll support your transition within innothinklabs.',
   },
   {
     id: 6,
     icon: icon6,
     title: 'Friendly atmosphere',
     content:
-      'We value people as innomax greatest asset and ensure hierarchy never works against our employees.',
+      'We value people as innothinklabs greatest asset and ensure hierarchy never works against our employees.',
   },
 ];
 

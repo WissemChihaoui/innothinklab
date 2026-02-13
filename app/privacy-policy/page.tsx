@@ -162,6 +162,45 @@ const PrivacyPage: React.FC = () => {
                       <a href="mailto:contact@innothinklab.com">contact@innothinklab.com</a>
                     </p>
                   </div>
+
+                  <div className="item-details-widget">
+                    <h2 className="item_details_info_title">Téléchargement</h2>
+                    <p>
+                      Vous pouvez télécharger notre règlement intérieur complet au format PDF :
+                    </p>
+                    <div className="download-section mt-20">
+                      <a 
+                        href="/regelement_interieur.pdf" 
+                        download="regelement_interieur.pdf"
+                        className="thm-btn thm-btn--border"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          padding: '12px 24px',
+                          textDecoration: 'none',
+                          fontSize: '14px',
+                          fontWeight: '500',
+                          border: '2px solid #0C111D',
+                          color: '#0C111D',
+                          backgroundColor: 'transparent',
+                          transition: 'all 0.3s ease',
+                          cursor: 'pointer'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#0C111D';
+                          e.currentTarget.style.color = '#ffffff';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#0C111D';
+                        }}
+                      >
+                        <i className="fas fa-download me-2"></i>
+                        Télécharger le règlement intérieur
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

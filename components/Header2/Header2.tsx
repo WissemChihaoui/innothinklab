@@ -34,10 +34,10 @@ const Header2: FC = () => {
             {/* Logo */}
             <div className="header-logo">
               <Link href="/" className="logo01">
-                <Image src={logoWhite} alt="Innomax Logo White" />
+                <Image src={logoWhite} alt="Innothinklabs Logo White" />
               </Link>
               <Link href="/" className="logo02">
-                <Image src={logoBlack} alt="Innomax Logo Black" />
+                <Image src={logoBlack} alt="Innothinklabs Logo Black" />
               </Link>
             </div>
 
@@ -92,7 +92,7 @@ const Header2: FC = () => {
 
                     <div className="xb-logo-mobile xb-hide-xl">
                       <Link href="/" rel="home">
-                        <Image src={logoWhite} alt="Innomax Logo" />
+                        <Image src={logoWhite} alt="Innothinklabs Logo" />
                       </Link>
                     </div>
 

@@ -35,7 +35,7 @@ const CareerSingle: React.FC = () => {
                     <h2 className="title">
                       Be a part of shaping the <br />
                       future & career opportunities <br />
-                      at Innomax today.
+                      at Innothinklabs today.
                     </h2>
                   </div>
                 </div>

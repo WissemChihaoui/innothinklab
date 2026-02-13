@@ -39,7 +39,7 @@ const CareerPage: React.FC = () => {
                     <h2 className="title">
                       Be a part of shaping the <br />
                       future & career opportunities <br />
-                      at Innomax today.
+                      at Innothinklabs today.
                     </h2>
                   </div>
                 </div>
@@ -91,7 +91,7 @@ const CareerPage: React.FC = () => {
                   Your browser does not support the video tag.
                 </video>
               </div>
-              <h2 className="title">innomax</h2>
+              <h2 className="title">innothinklabs</h2>
             </div>
           </div>
         </div>

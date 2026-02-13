@@ -56,7 +56,7 @@ const PartnerSection: React.FC = () => {
       <div className="container">
         <div className="da-brand_wrapper">
           <h2 className="xb-item--title">
-            More than <span>25,000</span> brands trust Innomax
+            More than <span>25,000</span> brands trust Innothinklabs
           </h2>
 
           <div

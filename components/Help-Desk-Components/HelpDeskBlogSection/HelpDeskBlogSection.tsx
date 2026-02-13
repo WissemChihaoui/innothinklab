@@ -83,7 +83,7 @@ const HelpDeskBlogSection: React.FC = () => {
                     <Link href="/blog-single">{blog.title}</Link>
                   </h2>
                   <span className="xb-item--content">
-                    Innomax’s AI-Support boosts efficiency and enhances customer service.
+                    Innothinklabs’s AI-Support boosts efficiency and enhances customer service.
                   </span>
                 </div>
               </div>

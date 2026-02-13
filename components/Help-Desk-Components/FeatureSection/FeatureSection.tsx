@@ -63,7 +63,7 @@ const FeatureSection = () => {
                                             <h2 className="title mb-15 wow skewIn" data-wow-duration="600ms">Maximize your ROI</h2>
                                         </div>
                                     </Fade>
-                                    <p>Save time and money with Innomax. According to Forrester&apos;s our Total Economic Impact™ (TEI) study, customers saw a 286% ROI over three years.</p>
+                                    <p>Save time and money with Innothinklabs. According to Forrester&apos;s our Total Economic Impact™ (TEI) study, customers saw a 286% ROI over three years.</p>
                                 </div>
                                 <div className="xb-faq xb-faq-two">
                                     <ul className="accordion_box clearfix list-unstyled">

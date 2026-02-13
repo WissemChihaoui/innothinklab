@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                     <span>
                       <Image src={icon2} alt="Email icon" />
                     </span>
-                    innomax@gmail.com
+                    innothinklabs@gmail.com
                   </li>
                 </ul>
                 <ul className="xb-item--social-link list-unstyled ul_li mt-45">
@@ -129,8 +129,8 @@ const Footer: React.FC = () => {
           <div className="footer-copyright ul_li_between">
             <p className="copyright mt-20">
               Copyright © 2025{' '}
-              <Link href="/home-6" aria-label="Innomax homepage">
-                innomax
+              <Link href="/home-6" aria-label="Innothinklabs homepage">
+                innothinklabs
               </Link>
               . All rights reserved.
             </p>

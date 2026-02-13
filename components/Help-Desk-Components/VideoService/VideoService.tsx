@@ -32,7 +32,7 @@ const VideoService: React.FC = () => {
             </Fade>
             <Fade direction='down' triggerOnce={false} duration={1500} delay={9}>
               <div>
-                <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">Simplify work innomax</h2>
+                <h2 className="title wow fadeInDown" data-wow-delay="150ms" data-wow-duration="600ms">Simplify work innothinklabs</h2>
               </div>
             </Fade>
           </div>

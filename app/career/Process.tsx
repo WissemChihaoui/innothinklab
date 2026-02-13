@@ -52,7 +52,7 @@ const Process: React.FC = () => {
                           { id: '2', title: 'Initial screening results?', text: 'Our recruiter will get back to you if your resume meets our requirements in order to introduce you to the role.' },
                           { id: '3', title: 'Job interview', text: 'You will meet a few of your potential colleagues to talk about your skills, background, and expectations in detail.' },
                           { id: '4', title: 'Test task', text: 'If needed, we’ll arrange a small test task. Depending on the project and role, this may be followed by a client interview.' },
-                          { id: '5', title: 'You’re hired!', text: 'By deciding we are a good match for each other, we’ll agree the terms of you starting your career at innomax..' }
+                          { id: '5', title: 'You’re hired!', text: 'By deciding we are a good match for each other, we’ll agree the terms of you starting your career at innothinklabs..' }
                         ].map(({ id, title, text }) => (
                           <AccordionItem key={id} className="block">
                             <AccordionHeader targetId={id} className="acc-btn">

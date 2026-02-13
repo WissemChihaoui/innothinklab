@@ -5,7 +5,7 @@ const ApplyForm = () => {
     return (
         <div className="cs-contact-wrap cs-contact-form cd-contact-form">
             <h2 className="xb-title">Apply for this job</h2>
-            <p className="xb-content">innomax doesn’t accept unsolicited resumes from recruiters or employment agencies.</p>
+            <p className="xb-content">innothinklabs doesn’t accept unsolicited resumes from recruiters or employment agencies.</p>
             <form className="contact-form">
                 <div className="row">
                     <div className="col-lg-6">

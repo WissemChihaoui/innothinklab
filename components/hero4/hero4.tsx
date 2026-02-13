@@ -141,7 +141,7 @@ const Hero4: React.FC = () => {
                     style={{ width: '100%', height: '100%' }}
                 >
                     <source
-                        src="https://html.xpressbuddy.com/innomax/cyber_security_hero.mp4"
+                        src="https://html.xpressbuddy.com/innothinklabs/cyber_security_hero.mp4"
                         type="video/mp4"
                     />
                 </video>
