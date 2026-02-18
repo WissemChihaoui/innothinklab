@@ -52,7 +52,7 @@ const Header: React.FC = () => {
             {/* Logo */}
             <div className="header-logo">
               <Link href="/">
-                <Image src="/logo.png" alt="Texpo Logo" width={100} height={1} />
+                <Image src="/logo.png" alt="Innothinklabs" title="Innothinklabs" width={100} height={1} />
               </Link>
             </div>
 
@@ -95,7 +95,7 @@ const Header: React.FC = () => {
                     <div className="xb-menu-close xb-hide-xl xb-close" onClick={() => setMobailState(!mobailActive)} />
                     <div className="xb-logo-mobile xb-hide-xl">
                       <Link href="/" rel="home">
-                        <Image src="/logo.png" alt="Mobile Logo" width={100} height={1} />
+                        <Image src="/logo.png" alt="Innothinklabs" title="Innothinklabs" width={100} height={1} />
                       </Link>
                     </div>
                     <div className="xb-header-mobile-search xb-hide-xl">

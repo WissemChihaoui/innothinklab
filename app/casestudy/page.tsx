@@ -80,10 +80,10 @@ const CaseStudyPage = async () => {
                     <span className="sub-title">
                       <img src={icon.src} alt="" style={{width: '20px', height: '20px', marginRight: '8px', display: 'inline-block'}} /> Études de cas
                     </span>
-                    <h2 className="title">
+                    <h1 className="title">
                       Découvrez nos études de cas <br /> mettant en valeur des solutions <br /> SEO et IT
                       transformatrices
-                    </h2>
+                    </h1>
                   </div>
                 </div>
                 <div className="col-lg-3 mt-30">

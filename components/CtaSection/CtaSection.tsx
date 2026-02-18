@@ -32,7 +32,7 @@ const CtaSection: React.FC<CtaSectionProps> = ({ cClass = '' }) => {
                         <Fade direction="right" triggerOnce={false} duration={1000} delay={9}>
                             <div>
                                 <div className="cta-right_img wow fadeInRight" data-wow-delay="150ms" data-wow-duration="600ms">
-                                    <Image className="updown" src={cta} alt="SEO Consultation Illustration" />
+                                    <Image className="updown" src={cta} alt="Innothinklabs" title='Innothinklabs'/>
                                 </div>
                             </div>
                         </Fade>

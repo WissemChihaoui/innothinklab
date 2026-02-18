@@ -22,10 +22,7 @@ const MegaMenu1: React.FC = () => {
     { href: '/privacy-policy', icon: '/images/icon/m_11.svg', title: 'Privacy Policy', desc: 'Commitment to confidentiality.' },
   ];
 
-  const clientLogos = [
-    { src: '/images/logo/client-logo.svg', alt: 'Client 1' },
-    { src: '/images/logo/client-logo2.svg', alt: 'Client 2' },
-  ];
+
 
   return (
     <ul className="submenu">
@@ -71,33 +68,7 @@ const MegaMenu1: React.FC = () => {
                       </Link>
                     </li>
 
-                    {clientLogos.map((logo, idx) => (
-                      <li key={idx}>
-                        <div className="review_short_info_2">
-                          <div className="review_admin_logo">
-                            <Image
-                              src={logo.src}
-                              alt={logo.alt}
-                              width={40}
-                              height={40}
-                              style={{ height: 'auto' }}
-                            />
-                          </div>
-                          <div className="review_info_content">
-                            <ul className="rating_block unordered_list">
-                              {[...Array(5)].map((_, i) => (
-                                <li key={i}>
-                                  <i className="fas fa-star" />
-                                </li>
-                              ))}
-                            </ul>
-                            <div className="review_counter">
-                              From <b>200+</b> reviews
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    ))}
+                   
                   </ul>
                 </div>
 
@@ -116,7 +87,7 @@ const MegaMenu1: React.FC = () => {
                           />
                         </div>
                         <div className="author_box_content">
-                          <h3 className="author_name text-white">Maverick Phoenix</h3>
+                          <h3 className="author_name text-white">Khaled Benzarti</h3>
                           <span className="author_designation text-white">CEO at Innothinklabs</span>
                         </div>
                       </div>

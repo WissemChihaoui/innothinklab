@@ -11,7 +11,7 @@ const MegaMenu2 = () => {
           <div className="container">
             <div className="mega_menu_wrapper_inner megamenu_widget_wrapper">
               <div className="row justify-content-lg-between">
-                <div className="col-xl-8">
+                <div className="col-xl-12">
                   <div className="megamenu_widget_inner">
                     <div className="row">
                       <div className="col-xl-6">
@@ -77,7 +77,7 @@ const MegaMenu2 = () => {
                   </div>
                   <div className="social_area">
                     <div className="social_inner ul_li">
-                      <h5>Nous Suivre:</h5>
+                      <span>Nous Suivre:</span>
                       <ul className="social_icons_block unordered_list">
                         {/* <li>
                                                     <Link href="/">
@@ -115,30 +115,7 @@ const MegaMenu2 = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-xl-3">
-                  <div className="megamenu_case">
-                    <h3>Software</h3>
-                    <h4>Madical SEO success..</h4>
-                    <Image src={mImg} alt="" />
-                    <Link className="megamenu_btn" href="/casestudy">
-                      <span className="btn_label">Voir l'article</span>
-                      <span className="btn_icon">
-                        <svg
-                          width="13"
-                          height="13"
-                          viewBox="0 0 13 13"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M13 1C13 0.447715 12.5523 2.00008e-07 12 -5.28728e-08L3 7.47917e-07C2.44771 4.10743e-07 2 0.447716 2 1C2 1.55228 2.44772 2 3 2L11 2L11 10C11 10.5523 11.4477 11 12 11C12.5523 11 13 10.5523 13 10L13 1ZM1.70711 12.7071L12.7071 1.70711L11.2929 0.292894L0.292893 11.2929L1.70711 12.7071Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </span>
-                    </Link>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

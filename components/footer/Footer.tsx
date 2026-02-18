@@ -84,7 +84,7 @@ const Footer: React.FC<FooterProps> = () => {
               </div>
               <div className="xb-item--holder">
                 <p className="xb-item--content">Notre Email</p>
-                <h4 className="xb-item--title">contact@innothinklabs.com</h4>
+                <h3 className="xb-item--title">contact@innothinklabs.com</h3>
               </div>
             </div>
             <div className="info-item ul_li">
@@ -95,7 +95,7 @@ const Footer: React.FC<FooterProps> = () => {
               </div>
               <div className="xb-item--holder">
                 <p className="xb-item--content">Notre Téléphone</p>
-                <h4 className="xb-item--title">+216 99 310 778</h4>
+                <h3 className="xb-item--title">+216 99 310 778</h3>
               </div>
             </div>
             <div className="info-item ul_li">
@@ -106,7 +106,7 @@ const Footer: React.FC<FooterProps> = () => {
               </div>
               <div className="xb-item--holder">
                 <p className="xb-item--content">Notre Adresse</p>
-                <h4 className="xb-item--title">5 eme étage, Place F.Hached,<br/> Immeuble Hadrumet, Sousse 4000</h4>
+                <h3 className="xb-item--title">5 eme étage, Place F.Hached,<br/> Immeuble Hadrumet, Sousse 4000</h3>
               </div>
             </div>
           </div>

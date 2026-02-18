@@ -61,7 +61,7 @@ const Teams = [
    {
       Id: '6',
       tImg: timg6,
-      name: 'Maverick Phoenix',
+      name: 'Khaled Benzarti',
       slug: 'Maverick-Phoenix',
       title: 'data analyst',
       exprience:'15 Years experience',
@@ -115,7 +115,7 @@ const Teams = [
    {
       Id: '12',
       tImg: timg12,
-      name: 'Maverick Phoenix',
+      name: 'Khaled Benzarti',
       slug: 'Maverick-Phoenix',
       title: 'data analyst',
       exprience:'15 Years experience',

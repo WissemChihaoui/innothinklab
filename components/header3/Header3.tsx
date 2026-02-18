@@ -97,7 +97,7 @@ const Header3 = () => {
                     <div className="xb-header-menu-scroll lenis lenis-smooth">
                       <div className="xb-menu-close xb-hide-xl xb-close" onClick={() => setMobailState(false)}></div>
                       <div className="xb-logo-mobile xb-hide-xl">
-                        <Link href="/"><Image src={logo2} alt="Mobile Logo" /></Link>
+                        <Link href="/"><Image src={logo2} alt="Innothinklabs" title="Innothinklabs" /></Link>
                       </div>
 
                       {/* Mobile Search */}

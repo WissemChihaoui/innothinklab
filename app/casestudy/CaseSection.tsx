@@ -88,12 +88,13 @@ const CaseStudySection: React.FC<CaseSectionProps> = ({ projects, services }) =>
                       <Link href={`/casestudy/${project.slug}`}>
                         <img 
                           src={getProjectImageUrl(project.coverImage)} 
-                          alt={project.title} 
+                          alt={project.title}
+                          title={project.title}
                           style={{width: '100%', height: '250px', objectFit: 'cover'}}
                         />
                       </Link>
                       <div className="content_wrap">
-                        <h3 className="item_title">{project.title}</h3>
+                        <h2 className="item_title">{project.title}</h2>
                         <span className="item_tag">{project.clientName}</span>
                       </div>
                     </div>

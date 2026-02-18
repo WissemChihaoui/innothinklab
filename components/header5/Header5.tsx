@@ -100,7 +100,7 @@ const Header5: React.FC = () => {
                   <div className="xb-header-menu-scroll lenis lenis-smooth">
                     <div className="xb-menu-close xb-hide-xl xb-close" onClick={() => setMobailState(false)}></div>
                     <div className="xb-logo-mobile xb-hide-xl">
-                      <Link href="/" rel="home"><Image src={logo} alt="Mobile Logo" /></Link>
+                      <Link href="/" rel="home"><Image src={logo} alt="Innothinklabs" title="Innothinklabs" /></Link>
                     </div>
                     <div className="xb-header-mobile-search xb-hide-xl">
                       <form role="search" onSubmit={SubmitHandler}>

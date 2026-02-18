@@ -85,11 +85,11 @@ export default async function BlogPage({ searchParams }: HomePageProps) {
                                         <span className="sub-title">
                                             <Image src={icon} alt="Blog Icon" /> Blog
                                         </span>
-                                        <h2 className="title">
+                                        <h1 className="title">
                                             Expert insights from our SEO <br />
                                             & IT solutions blog your <br />
                                             source for success
-                                        </h2>
+                                        </h1>
                                     </div>
                                 </div>
                                 <div className="col-lg-3 mt-30">

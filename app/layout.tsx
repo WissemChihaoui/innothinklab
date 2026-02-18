@@ -13,15 +13,35 @@ import { initCronJobs } from "@/lib/cronJobs";
 export const metadata: Metadata = {
   title: "InnoThinkLab - Création de sites web, SEO & Marketing",
   description:
-    "Optimisez votre présence en ligne avec nos services de création de sites web, développement mobile, développement de site web personnalisé, marketing en ligne et référencement. Notre équipe de specialiste en SEO vous offre des solutions professionnelles, performantes et de haute qualité. Nous vous aidons à développer votre visibilité en ligne, à augmenter votre trafic organique et à améliorer votre conversion.",
+    "Agence experte en création de sites web, SEO et marketing digital. Développement sur mesure, référencement et stratégies digitales pour booster votre visibilité en ligne.",
   keywords:
     "site web, création de site web, SEO, marketing en ligne, agence de création de site web, agence de développement de site web, agence de SEO, agence de marketing en ligne",
+  authors: [{ name: "InnoThinkLab" }],
+  creator: "InnoThinkLab",
+  publisher: "InnoThinkLab",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   viewport: "width=device-width,initial-scale=1",
+  alternates: {
+    canonical: 'https://innothinklab.com',
+  },
   openGraph: {
     title: "InnoThinkLab - Création de sites web, SEO & Marketing",
     description:
-      "Optimisez votre présence en ligne avec nos services de création de sites web, développement mobile, développement de site web personnalisé, marketing en ligne et référencement. Notre équipe de specialiste en SEO vous offre des solutions professionnelles, performantes et de haute qualité. Nous vous aidons à développer votre visibilité en ligne, à augmenter votre trafic organique et à améliorer votre conversion.",
+      "Agence experte en création de sites web, SEO et marketing digital. Développement sur mesure, référencement et stratégies digitales pour booster votre visibilité en ligne.",
     type: "website",
+    url: "https://innothinklab.com",
+    siteName: "InnoThinkLab",
+    locale: "fr_FR",
     images: [
       {
         url: "https://innothinklab.com/images/logo.png",
@@ -30,6 +50,13 @@ export const metadata: Metadata = {
         alt: "Logo InnoThinkLab",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "InnoThinkLab - Création de sites web, SEO & Marketing",
+    description:
+      "Agence experte en création de sites web, SEO et marketing digital. Développement sur mesure, référencement et stratégies digitales pour booster votre visibilité en ligne.",
+    images: ["https://innothinklab.com/images/logo.png"],
   },
 };
 
@@ -44,7 +71,7 @@ export default function RootLayout({
   
 
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

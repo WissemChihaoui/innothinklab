@@ -161,6 +161,8 @@ const BlogList = ({
                         <img
                           src={getImageUrl(blog.coverImage)}
                           alt={blog.title}
+                          title={blog.title}
+                          loading="lazy"
                           width={1200}
                           height={600}
                           style={{ objectFit: "contain", width: "100%", height: 600}}
@@ -190,10 +192,10 @@ const BlogList = ({
             {blogs.length > 1 && (
               <div className="blog-item_button">
                 <div className="blog-swiper-btn swiper-button-prev" ref={prevRef}>
-                  <Image src={iconPrev} alt="Previous" width={40} height={40} />
+                  <Image title="Previous" src={iconPrev} alt="Previous" width={40} height={40} />
                 </div>
                 <div className="blog-swiper-btn swiper-button-next" ref={nextRef}>
-                  <Image src={iconNext} alt="Next" width={40} height={40} />
+                  <Image title="Next" src={iconNext} alt="Next" width={40} height={40} />
                 </div>
               </div>
             )}
@@ -226,8 +228,10 @@ const BlogList = ({
                           <img
                             src={getImageUrl(blog.coverImage)}
                             alt={blog.title}
+                            title={blog.title}
                             width={800}
                             height={500}
+                            loading="lazy"
                           />
                         </Link>
                       </div>

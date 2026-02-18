@@ -91,7 +91,7 @@ const Header4: React.FC = () => {
 
                     <div className="xb-logo-mobile xb-hide-xl">
                       <Link href="/" rel="home">
-                        <Image src={logo2} alt="Innothinklabs Mobile Logo" />
+                        <Image src={logo2} alt="Innothinklabs" title="Innothinklabs" />
                       </Link>
                     </div>
 
